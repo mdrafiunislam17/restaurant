@@ -1,15 +1,11 @@
 <?php
 
 
-use App\Http\Controllers\admin\CartItemController;
+
 use App\Http\Controllers\admin\CategoryController;
-use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MenuItemController;
-use App\Http\Controllers\admin\OrderController;
-use App\Http\Controllers\admin\RestaurantController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\admin\OrderItemController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -60,41 +56,3 @@ Route::get('/menuItems/{id}/edit', [MenuItemController::class, 'edit'])->name('a
 Route::put('/menuItems/{id}', [MenuItemController::class, 'update'])->name('admin.menuItems.update');
 Route::delete('/menuItems/{id}', [MenuItemController::class, 'destroy'])->name('admin.menuItems.destroy');
 
-
-////CustomerController
-//Route::get('/customers', [CustomerController::class, 'index'])->name('admin.customers.index');
-//Route::get('/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
-//Route::post('/customers', [CustomerController::class, 'store'])->name('admin.customers.store');
-//Route::get('/customers/{id}', [CustomerController::class, 'show'])->name('admin.customers.show');
-//Route::get('/customers/{id}/edit', [CustomerController::class, 'edit'])->name('admin.customers.edit');
-//Route::put('/customers/{id}', [CustomerController::class, 'update'])->name('admin.customers.update');
-//Route::delete('/customers/{id}', [CustomerController::class, 'destroy'])->name('admin.customers.destroy');
-//
-//
-////OrderController
-//Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders.index');
-//Route::get('/orders/create', [OrderController::class, 'create'])->name('admin.orders.create');
-//Route::post('/orders', [OrderController::class, 'store'])->name('admin.orders.store');
-//Route::get('/orders/{id}', [OrderController::class, 'show'])->name('admin.orders.show');
-//Route::get('/orders/{id}/edit', [OrderController::class, 'edit'])->name('admin.orders.edit');
-//Route::put('/orders/{id}', [OrderController::class, 'update'])->name('admin.orders.update');
-//Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('admin.orders.destroy');
-//Route::get('/admin/get-menu-item-price', [OrderController::class, 'getMenuItemPrice'])->name('admin.get.menu.item.price');
-
-// OrderItemManagementController
-//Route::get('/orderItems', [OrderItemController::class, 'index'])->name('admin.orderItems.index');
-//Route::get('/orderItems/create', [OrderItemController::class, 'create'])->name('admin.orderItems.create');
-//Route::post('/orderItems', [OrderItemController::class, 'store'])->name('admin.orderItems.store');
-//Route::get('/orderItems/{id}', [OrderItemController::class, 'show'])->name('admin.orderItems.show');
-//Route::get('/orderItems/{id}/edit', [OrderItemController::class, 'edit'])->name('admin.orderItems.edit');
-//Route::put('/orderItems/{id}', [OrderItemController::class, 'update'])->name('admin.orderItems.update');
-//Route::delete('/orderItems/{id}', [OrderItemController::class, 'destroy'])->name('admin.orderItems.destroy');
-//
-////CartItemController
-//Route::get('/cartItems', [CartItemController::class, 'index'])->name('admin.cartItems.index');
-//Route::get('/cartItems/create', [CartItemController::class, 'create'])->name('admin.cartItems.create');
-//Route::post('/cartItems', [CartItemController::class, 'store'])->name('admin.cartItems.store');
-//Route::get('/cartItems/{id}', [CartItemController::class, 'show'])->name('admin.cartItems.show');
-//Route::get('/cartItems/{id}/edit', [CartItemController::class, 'edit'])->name('admin.cartItems.edit');
-//Route::put('/cartItems/{id}', [CartItemController::class, 'update'])->name('admin.cartItems.update');
-//Route::delete('/cartItems/{id}', [CartItemController::class, 'destroy'])->name('admin.cartItems.destroy');
