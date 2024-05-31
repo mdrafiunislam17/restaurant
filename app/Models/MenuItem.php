@@ -9,30 +9,12 @@ class MenuItem extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "restaurant_id",
-        "category_id",
-        "name",
-        "image",
-        "description",
-        "price",
-        "is_available",
+        'category_id',
+        'name',
+        'slug',
+        'image',
+        'description',
+        'price',
+        'status',
     ];
-    public function restaurant()
-    {
-        return $this->belongsTo(Restaurant::class);
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function orders()
-    {
-        return $this->belongsToMany(Order::class, 'order_items')
-            ->withPivot('quantity', 'price')
-            ->withTimestamps();
-    }
-
-
 }
