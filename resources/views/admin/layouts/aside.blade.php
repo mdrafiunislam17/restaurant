@@ -75,17 +75,17 @@
 
 
 
-    <li class="nav-item {{
-    request()->routeIs('admin.orders.index') ||
-    request()->routeIs('admin.orders.create') ||
-    request()->routeIs('admin.orders.show') ||
-    request()->routeIs('admin.orders.edit')
-    ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.orders.index') }}">
-            <i class="fa-brands fa-first-order-alt"></i>
-            <span>orders</span>
-        </a>
-    </li>
+{{--    <li class="nav-item {{--}}
+{{--    request()->routeIs('admin.orders.index') ||--}}
+{{--    request()->routeIs('admin.orders.create') ||--}}
+{{--    request()->routeIs('admin.orders.show') ||--}}
+{{--    request()->routeIs('admin.orders.edit')--}}
+{{--    ? 'active' : '' }}">--}}
+{{--        <a class="nav-link" href="{{ route('admin.orders.index') }}">--}}
+{{--            <i class="fa-brands fa-first-order-alt"></i>--}}
+{{--            <span>orders</span>--}}
+{{--        </a>--}}
+{{--    </li>--}}
 
 {{--    <li class="nav-item {{--}}
 {{--    request()->routeIs('admin.orderItems.index') ||--}}

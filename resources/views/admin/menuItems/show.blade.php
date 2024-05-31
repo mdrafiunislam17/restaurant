@@ -78,6 +78,12 @@
                             <input type="text" class="form-control" id="name" value="{{ $menuItem->name }}" name="name" disabled>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="slug" class="col-sm-3 col-form-label text-right font-weight-bold">Slug *</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="slug" value="{{ $menuItem->slug }}" name="slug" disabled>
+                        </div>
+                    </div>
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2024 at 11:35 AM
+-- Generation Time: May 31, 2024 at 02:19 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,37 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `restaurant`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart_items`
---
-
-CREATE TABLE `cart_items` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `customer_id` bigint(20) NOT NULL,
-  `menu_item_id` bigint(20) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `cart_items`
---
-
-INSERT INTO `cart_items` (`id`, `customer_id`, `menu_item_id`, `quantity`, `created_at`, `updated_at`) VALUES
-(1, 2, 3, 657, '2024-05-30 05:18:39', '2024-05-30 05:26:56'),
-(2, 10, 5, 887, '2024-05-30 05:18:44', '2024-05-30 05:18:44'),
-(3, 1, 3, 454, '2024-05-30 05:18:49', '2024-05-30 05:18:49'),
-(4, 5, 2, 627, '2024-05-30 05:18:53', '2024-05-30 05:18:53'),
-(5, 6, 1, 905, '2024-05-30 05:18:57', '2024-05-30 05:18:57'),
-(6, 7, 2, 450, '2024-05-30 05:19:01', '2024-05-30 05:19:01'),
-(7, 8, 6, 789, '2024-05-30 05:19:06', '2024-05-30 05:19:06'),
-(8, 4, 9, 559, '2024-05-30 05:19:10', '2024-05-30 05:19:10'),
-(9, 2, 10, 398, '2024-05-30 05:19:15', '2024-05-30 05:19:15'),
-(10, 8, 9, 541, '2024-05-30 05:19:19', '2024-05-30 05:19:19');
 
 -- --------------------------------------------------------
 
@@ -72,16 +41,16 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Dawn Carver', 'Omnis at id sed dol', '1717066279.jpg', '2024-05-30 04:51:19', '2024-05-30 04:51:19'),
-(2, 'Judith Robertson', 'Ullamco quia consequ', '1717066289.jpg', '2024-05-30 04:51:29', '2024-05-30 04:51:29'),
-(3, 'Harriet Mckee', 'Cumque fugit fugiat', '1717066299.jpg', '2024-05-30 04:51:39', '2024-05-30 04:51:39'),
-(4, 'Brody Waller', 'Quia totam impedit', '1717066311.jpg', '2024-05-30 04:51:51', '2024-05-30 04:51:51'),
-(5, 'Adara Lang', 'Dignissimos est reru', '1717066321.jpg', '2024-05-30 04:52:01', '2024-05-30 04:52:01'),
-(6, 'April Morrison', 'Laboriosam ut qui i', '1717066342.jpg', '2024-05-30 04:52:22', '2024-05-30 04:52:22'),
-(7, 'Margaret Merritt', 'Rerum mollit nulla v', '1717066351.jpg', '2024-05-30 04:52:31', '2024-05-30 04:52:31'),
-(8, 'Mallory Joseph', 'Aperiam repudiandae', '1717066369.jpg', '2024-05-30 04:52:49', '2024-05-30 04:52:49'),
-(9, 'Galvin Oneill', 'Nostrud qui exercita', '1717067169.jpg', '2024-05-30 05:06:09', '2024-05-30 05:06:09'),
-(10, 'Yardley King', 'Aliquid voluptate qu', '1717067248.jpg', '2024-05-30 05:07:28', '2024-05-30 05:07:28');
+(1, 'Candace Kemp', 'Nesciunt voluptate', '1717155214.jpg', '2024-05-31 05:33:34', '2024-05-31 05:33:34'),
+(2, 'Mariam Herman', 'Omnis temporibus et', '1717155225.jpg', '2024-05-31 05:33:45', '2024-05-31 05:33:45'),
+(3, 'Gretchen Garner', 'Enim harum tempore', '1717155238.jpg', '2024-05-31 05:33:58', '2024-05-31 05:33:58'),
+(4, 'Aiko Davidson', 'Iste fuga Exercitat', '1717155257.jpg', '2024-05-31 05:34:17', '2024-05-31 05:34:17'),
+(5, 'Ryan Garner', 'A adipisicing volupt', '1717155268.jpg', '2024-05-31 05:34:28', '2024-05-31 05:34:28'),
+(6, 'Bethany Meyers', 'Voluptatem Dolor oc', '1717155343.jpg', '2024-05-31 05:35:43', '2024-05-31 05:35:43'),
+(7, 'Beau Hebert', 'Sit modi voluptate', '1717155354.jpg', '2024-05-31 05:35:54', '2024-05-31 05:35:54'),
+(8, 'Ivor Ward', 'Adipisci consequuntu', '1717155370.jpg', '2024-05-31 05:36:10', '2024-05-31 05:36:10'),
+(9, 'Colby Vincent', 'Et debitis veritatis', '1717155489.jpg', '2024-05-31 05:38:09', '2024-05-31 05:38:09'),
+(10, 'Kirk Rodgers', 'Animi expedita fugi', '1717155503.jpg', '2024-05-31 05:38:23', '2024-05-31 05:38:23');
 
 -- --------------------------------------------------------
 
@@ -93,18 +62,12 @@ CREATE TABLE `customers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `contact_info` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`id`, `name`, `email`, `password`, `contact_info`, `created_at`, `updated_at`) VALUES
-(1, 'Kyle Wilkins', 'cijyr@mailinator.com', 'Pa$$w0rd!', 'At eveniet et in co', '2024-05-31 03:29:56', '2024-05-31 03:29:56');
 
 -- --------------------------------------------------------
 
@@ -130,13 +93,14 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `menu_items` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `restaurant_id` bigint(20) NOT NULL,
-  `category_id` bigint(20) NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `price` decimal(8,2) NOT NULL,
-  `is_available` tinyint(1) NOT NULL DEFAULT 1,
+  `discount_price` decimal(8,2) NOT NULL DEFAULT 0.00,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -145,17 +109,17 @@ CREATE TABLE `menu_items` (
 -- Dumping data for table `menu_items`
 --
 
-INSERT INTO `menu_items` (`id`, `restaurant_id`, `category_id`, `name`, `image`, `description`, `price`, `is_available`, `created_at`, `updated_at`) VALUES
-(1, 7, 6, 'Kenyon Owen', '1717067265.jpeg', 'Mollit doloremque mo', 452.00, 1, '2024-05-30 05:07:45', '2024-05-30 05:07:45'),
-(2, 3, 5, 'Fulton Ray', '1717067275.jpg', 'Vitae nostrum autem', 522.00, 1, '2024-05-30 05:07:55', '2024-05-30 05:07:55'),
-(3, 9, 2, 'Ira Brooks', '1717067441.jpeg', 'Tempora facere atque', 139.00, 1, '2024-05-30 05:10:41', '2024-05-30 05:10:41'),
-(4, 9, 4, 'Odette Kline', '1717067454.jpg', 'Qui quaerat non comm', 202.00, 1, '2024-05-30 05:10:54', '2024-05-30 05:10:54'),
-(5, 5, 6, 'Geoffrey Blanchard', '1717067465.jpg', 'Amet architecto dol', 585.00, 1, '2024-05-30 05:11:05', '2024-05-30 05:11:05'),
-(6, 7, 7, 'Gemma Ochoa', '1717067755.jpeg', 'Nisi rerum in quo am', 438.00, 1, '2024-05-30 05:11:17', '2024-05-30 05:15:55'),
-(7, 5, 6, 'Petra Michael', '1717067740.jpeg', 'Adipisci amet facil', 314.00, 1, '2024-05-30 05:11:28', '2024-05-30 05:15:40'),
-(8, 6, 1, 'Adena Kidd', '1717067730.jpeg', 'Dolores ullamco quae', 275.00, 1, '2024-05-30 05:11:37', '2024-05-30 05:15:30'),
-(9, 4, 4, 'Nevada Buchanan', '1717067718.jpg', 'Sunt pariatur Et u', 769.00, 1, '2024-05-30 05:11:56', '2024-05-30 05:15:18'),
-(10, 4, 7, 'Elliott Olsen', '1717067705.jpg', 'Numquam quod quod ni', 747.00, 1, '2024-05-30 05:12:07', '2024-05-30 05:15:05');
+INSERT INTO `menu_items` (`id`, `category_id`, `name`, `slug`, `image`, `description`, `price`, `discount_price`, `status`, `created_at`, `updated_at`) VALUES
+(1, 7, 'Cain Grant', 'Paki Rios', '1717157438.jpeg', 'Aut autem aliqua Et', 370.00, 0.00, 1, '2024-05-31 06:10:38', '2024-05-31 06:10:38'),
+(2, 10, 'May Garrison', 'Orson Parks', '1717157450.jpg', 'Est aut nobis amet', 400.00, 0.00, 1, '2024-05-31 06:10:50', '2024-05-31 06:10:50'),
+(3, 10, 'Latifah Clark', 'Alexa Pate', '1717157468.jpeg', 'Sed tempor ut cillum', 465.00, 0.00, 1, '2024-05-31 06:11:08', '2024-05-31 06:11:08'),
+(4, 2, 'Casey Mcgowan', 'Maile Chang', '1717157894.jpg', 'Dolor qui quia inven', 472.00, 0.00, 1, '2024-05-31 06:11:23', '2024-05-31 06:18:14'),
+(5, 9, 'Cameron Mcfadden', 'Lydia Richard', '1717157869.jpg', 'Eiusmod corrupti at', 763.00, 0.00, 1, '2024-05-31 06:12:43', '2024-05-31 06:17:49'),
+(6, 6, 'Courtney Rojas', 'Astra Melton', '1717157852.jpg', 'Similique aliquam lo', 223.00, 0.00, 1, '2024-05-31 06:13:01', '2024-05-31 06:17:32'),
+(7, 7, 'Tad Livingston', 'Bertha Russell', '1717157831.jpg', 'Reprehenderit dolor', 728.00, 0.00, 1, '2024-05-31 06:13:17', '2024-05-31 06:17:11'),
+(8, 5, 'Lacey Campos', 'Madeline Coffey', '1717157815.jpeg', 'Tempora laudantium', 348.00, 0.00, 1, '2024-05-31 06:13:40', '2024-05-31 06:16:55'),
+(9, 7, 'Alma Phillips', 'Cruz Mckee', '1717157803.jpeg', 'Excepturi autem maio', 933.00, 0.00, 1, '2024-05-31 06:14:50', '2024-05-31 06:16:43'),
+(10, 10, 'Harriet Mills', 'Anthony Frederick', '1717157792.jpeg', 'Ea nihil pariatur O', 51.00, 0.00, 1, '2024-05-31 06:15:04', '2024-05-31 06:16:32');
 
 -- --------------------------------------------------------
 
@@ -176,20 +140,14 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(6, '2014_10_12_100000_create_password_resets_table', 2),
-(7, '2024_05_29_094103_create_restaurants_table', 2),
-(10, '2024_05_29_095744_create_categories_table', 3),
-(11, '2024_05_29_100108_create_menu_items_table', 4),
-(12, '2024_05_29_101901_create_orders_table', 5),
-(13, '2024_05_29_102436_create_customers_table', 5),
-(14, '2024_05_29_103023_create_order_items_table', 6),
-(15, '2024_05_29_103403_create_cart_items_table', 7),
-(16, '2024_05_29_172941_update_pickup_time_column_type_in_orders_table', 8),
-(17, '2024_05_30_035808_update_status_default_value_in_orders_table', 9),
-(18, '2024_05_31_043407_remove_order_id_from_order_items_table', 10),
-(19, '2024_05_31_043925_remove_customer_id_from_orders_table', 11);
+(3, '2014_10_12_100000_create_password_resets_table', 1),
+(4, '2019_08_19_000000_create_failed_jobs_table', 1),
+(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(6, '2024_05_31_111919_create_categories_table', 2),
+(8, '2024_05_31_112027_create_customers_table', 3),
+(9, '2024_05_31_112338_create_menu_items_table', 4),
+(10, '2024_05_31_112516_create_orders_table', 5),
+(11, '2024_05_31_112651_create_order_items_table', 6);
 
 -- --------------------------------------------------------
 
@@ -199,21 +157,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `order_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `total_amount` decimal(10,2) NOT NULL,
-  `delivery_address` text DEFAULT NULL,
-  `pickup_time` time NOT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'pending',
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
+  `discount` decimal(8,2) NOT NULL DEFAULT 0.00,
+  `status` enum('Pending','Confirmed','Canceled','Processing','Completed') NOT NULL DEFAULT 'Pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id`, `order_date`, `total_amount`, `delivery_address`, `pickup_time`, `status`, `created_at`, `updated_at`) VALUES
-(1, '2006-11-28 18:00:00', 188668.00, 'Qui sapiente eos al', '13:57:00', 'complete', '2024-05-31 03:29:56', '2024-05-31 03:29:56');
 
 -- --------------------------------------------------------
 
@@ -223,19 +172,14 @@ INSERT INTO `orders` (`id`, `order_date`, `total_amount`, `delivery_address`, `p
 
 CREATE TABLE `order_items` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `menu_item_id` bigint(20) NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `menu_item_id` bigint(20) UNSIGNED NOT NULL,
+  `quantity` smallint(5) UNSIGNED NOT NULL DEFAULT 1,
   `price` decimal(8,2) NOT NULL,
+  `discount` decimal(8,2) NOT NULL DEFAULT 0.00,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `order_items`
---
-
-INSERT INTO `order_items` (`id`, `menu_item_id`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
-(1, 4, 934, 202.00, '2024-05-31 03:29:56', '2024-05-31 03:29:56');
 
 -- --------------------------------------------------------
 
@@ -283,39 +227,6 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `restaurants`
---
-
-CREATE TABLE `restaurants` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `address` text NOT NULL,
-  `contact_info` varchar(255) NOT NULL,
-  `operating_hours` varchar(255) NOT NULL,
-  `is_available` tinyint(1) NOT NULL DEFAULT 1,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `restaurants`
---
-
-INSERT INTO `restaurants` (`id`, `name`, `address`, `contact_info`, `operating_hours`, `is_available`, `created_at`, `updated_at`) VALUES
-(1, 'Mason Bray', 'Veritatis aut id nih', 'Blanditiis blanditii', 'Sunt magni qui dele', 1, '2024-05-30 04:50:16', '2024-05-30 04:50:16'),
-(2, 'Barbara Steele', 'Ratione error praese', 'Omnis quasi a laboru', 'Qui sit aperiam ut', 1, '2024-05-30 04:50:22', '2024-05-30 04:50:22'),
-(3, 'Nell Cash', 'Irure aut cum deleni', 'Consectetur enim adi', 'Ut sit tenetur dolor', 1, '2024-05-30 04:50:26', '2024-05-30 04:50:26'),
-(4, 'Xenos Tran', 'Enim fugiat quos re', 'Fugiat nihil volupt', 'Odio modi autem cons', 1, '2024-05-30 04:50:32', '2024-05-30 04:50:32'),
-(5, 'Maxine Warren', 'Natus rerum elit od', 'In duis voluptatem c', 'Odit qui in eum temp', 1, '2024-05-30 04:50:37', '2024-05-30 04:50:37'),
-(6, 'Kameko Brock', 'Adipisci et sunt dis', 'Sit enim fuga Qui s', 'Magni mollit sit as', 1, '2024-05-30 04:50:42', '2024-05-30 04:50:42'),
-(7, 'Jayme Glover', 'Laboriosam neque pa', 'Quidem est maiores r', 'Aut unde quibusdam t', 1, '2024-05-30 04:50:47', '2024-05-30 04:50:47'),
-(8, 'Cynthia Byrd', 'Quia aut quas omnis', 'Numquam tempore imp', 'Nemo maxime explicab', 1, '2024-05-30 04:50:51', '2024-05-30 04:50:51'),
-(9, 'Angela Ward', 'Deserunt esse in rei', 'Sint est cupiditate', 'Est ut maiores dolo', 1, '2024-05-30 04:50:55', '2024-05-30 04:50:55'),
-(10, 'Cairo Valenzuela', 'Odio dolorum minima', 'Totam nemo consequat', 'Qui ex rerum aliqua', 1, '2024-05-30 04:50:59', '2024-05-30 04:50:59');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -335,18 +246,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'MD RAFIUN ISLAM', 'asifrafiun@gmail.com', NULL, '$2y$10$Ea0Trlv6PpDpYojZjTGSfu.VNx6r/rJt71AoipG4kaB2dAIsF5TZy', NULL, '2024-05-29 02:21:00', '2024-05-29 02:21:00'),
-(2, 'Nadine Kent', 'viwyduv@mailinator.com', NULL, '$2y$10$5AFu9LDIzg1gEfL19oceju8CkKBkI2kzxkGWbsHJ5UA/CQs139X6C', NULL, '2024-05-29 03:28:19', '2024-05-29 03:28:19');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$QWG/SdkUwlDrWLFSV51mI.7oPjwLXqbOD9HTb6R3SWdFxdR31TPhu', NULL, '2024-05-31 05:31:34', '2024-05-31 05:31:34');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `cart_items`
---
-ALTER TABLE `cart_items`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `categories`
@@ -372,7 +276,8 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `menu_items_category_id_foreign` (`category_id`);
 
 --
 -- Indexes for table `migrations`
@@ -384,13 +289,16 @@ ALTER TABLE `migrations`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `orders_customer_id_foreign` (`customer_id`);
 
 --
 -- Indexes for table `order_items`
 --
 ALTER TABLE `order_items`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_items_order_id_foreign` (`order_id`),
+  ADD KEY `order_items_menu_item_id_foreign` (`menu_item_id`);
 
 --
 -- Indexes for table `password_resets`
@@ -413,12 +321,6 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `restaurants`
---
-ALTER TABLE `restaurants`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -430,12 +332,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `cart_items`
---
-ALTER TABLE `cart_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
@@ -445,7 +341,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -463,19 +359,19 @@ ALTER TABLE `menu_items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -484,16 +380,33 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `restaurants`
---
-ALTER TABLE `restaurants`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `menu_items`
+--
+ALTER TABLE `menu_items`
+  ADD CONSTRAINT `menu_items_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_menu_item_id_foreign` FOREIGN KEY (`menu_item_id`) REFERENCES `menu_items` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

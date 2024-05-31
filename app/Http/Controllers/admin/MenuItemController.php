@@ -19,9 +19,9 @@ class MenuItemController extends Controller
 
     public function create()
     {
-        $restaurants = Restaurant::all();
+
         $categories = Category::all();
-        return view('admin.menuItems.create', compact('restaurants', 'categories'));
+        return view('admin.menuItems.create', compact( 'categories'));
     }
 
     // Store a new menu item
@@ -29,9 +29,9 @@ class MenuItemController extends Controller
     {
         // Validate the request
         $validatedData = $request->validate([
-            'restaurant_id' => 'required|integer',
             'category_id' => 'required|integer',
             'name' => 'required|string|max:255',
+            'slug' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|string',
             'price' => 'required|numeric',
@@ -53,28 +53,26 @@ class MenuItemController extends Controller
 
     public function show($id)
     {
-        $restaurants = Restaurant::all();
+
         $categories = Category::all();
         $menuItem = MenuItem::findOrFail($id);
-        return view('admin.menuItems.show', compact('menuItem', 'restaurants', 'categories'));
+        return view('admin.menuItems.show', compact('menuItem',  'categories'));
     }
 
     public function edit($id)
     {
-        $menuItem = MenuItem::findOrFail($id);
-        $restaurants = Restaurant::all();
+        $menuItem = MenuItem::findOrFail($id);;
         $categories = Category::all();
-        return view('admin.menuItems.edit', compact('menuItem', 'restaurants', 'categories'));
+        return view('admin.menuItems.edit', compact('menuItem', 'categories'));
     }
 
     public function update(Request $request, $id)
     {
         // Validate the request
         $validatedData = $request->validate([
-            'restaurant_id' => 'required|integer',
             'category_id' => 'required|integer',
             'name' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'slug' => 'required',
             'description' => 'required|string',
             'price' => 'required|numeric',
         ]);
