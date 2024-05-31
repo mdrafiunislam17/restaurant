@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2024 at 01:30 PM
+-- Generation Time: May 31, 2024 at 11:35 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -104,16 +104,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `password`, `contact_info`, `created_at`, `updated_at`) VALUES
-(1, 'Sacha Le', 'ravon@mailinator.com', 'Pa$$w0rd!', 'Ullam omnis qui ipsa', '2024-05-30 05:16:08', '2024-05-30 05:16:08'),
-(2, 'Joan Nolan', 'pibafan@mailinator.com', 'Pa$$w0rd!', 'Sit labore reiciendi', '2024-05-30 05:16:13', '2024-05-30 05:16:13'),
-(3, 'Derek Carrillo', 'tyxonunif@mailinator.com', 'Pa$$w0rd!', 'Eligendi vel dolorum', '2024-05-30 05:16:19', '2024-05-30 05:16:19'),
-(4, 'Lillith Gregory', 'jybirone@mailinator.com', 'Pa$$w0rd!', 'Iusto aliqua Nisi i', '2024-05-30 05:16:24', '2024-05-30 05:16:24'),
-(5, 'Samuel Vinson', 'vine@mailinator.com', 'Pa$$w0rd!', 'Minus ut numquam imp', '2024-05-30 05:16:29', '2024-05-30 05:16:29'),
-(6, 'Alma Mcbride', 'wykezokyw@mailinator.com', 'Pa$$w0rd!', 'Voluptatem quae omn', '2024-05-30 05:16:33', '2024-05-30 05:16:33'),
-(7, 'Gloria Mcpherson', 'xexahuvan@mailinator.com', 'Pa$$w0rd!', 'Consequuntur molesti', '2024-05-30 05:16:39', '2024-05-30 05:16:39'),
-(8, 'Nevada Marsh', 'lyqa@mailinator.com', 'Pa$$w0rd!', 'Est voluptate velit', '2024-05-30 05:16:45', '2024-05-30 05:16:45'),
-(9, 'Cailin Bray', 'nakibyx@mailinator.com', 'Pa$$w0rd!', 'Inventore et accusan', '2024-05-30 05:16:50', '2024-05-30 05:16:50'),
-(10, 'Thomas Mercer', 'zokudusida@mailinator.com', 'Pa$$w0rd!', 'Quod hic omnis repre', '2024-05-30 05:16:56', '2024-05-30 05:16:56');
+(1, 'Kyle Wilkins', 'cijyr@mailinator.com', 'Pa$$w0rd!', 'At eveniet et in co', '2024-05-31 03:29:56', '2024-05-31 03:29:56');
 
 -- --------------------------------------------------------
 
@@ -196,7 +187,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2024_05_29_103023_create_order_items_table', 6),
 (15, '2024_05_29_103403_create_cart_items_table', 7),
 (16, '2024_05_29_172941_update_pickup_time_column_type_in_orders_table', 8),
-(17, '2024_05_30_035808_update_status_default_value_in_orders_table', 9);
+(17, '2024_05_30_035808_update_status_default_value_in_orders_table', 9),
+(18, '2024_05_31_043407_remove_order_id_from_order_items_table', 10),
+(19, '2024_05_31_043925_remove_customer_id_from_orders_table', 11);
 
 -- --------------------------------------------------------
 
@@ -206,12 +199,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `customer_id` bigint(20) UNSIGNED NOT NULL,
   `order_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `total_amount` decimal(10,2) NOT NULL,
   `delivery_address` text DEFAULT NULL,
   `pickup_time` time NOT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'Active',
+  `status` varchar(255) NOT NULL DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -220,17 +212,8 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `total_amount`, `delivery_address`, `pickup_time`, `status`, `created_at`, `updated_at`) VALUES
-(1, 7, '1992-04-29 18:00:00', 50.00, 'Nostrum nisi dolor v', '21:23:00', '1', '2024-05-30 05:17:06', '2024-05-30 05:17:06'),
-(2, 9, '1971-01-15 18:00:00', 7.00, 'Eos dolor explicabo', '07:41:00', '0', '2024-05-30 05:17:11', '2024-05-30 05:17:11'),
-(3, 3, '1999-09-06 18:00:00', 14.00, 'Laudantium exercita', '03:59:00', '1', '2024-05-30 05:17:16', '2024-05-30 05:17:16'),
-(4, 3, '1971-03-10 18:00:00', 3.00, 'Blanditiis elit dol', '13:28:00', '1', '2024-05-30 05:17:21', '2024-05-30 05:17:21'),
-(5, 8, '1973-04-20 18:00:00', 97.00, 'Culpa eius nemo lab', '15:13:00', '1', '2024-05-30 05:17:26', '2024-05-30 05:17:26'),
-(6, 3, '2001-10-09 18:00:00', 8.00, 'Quia et libero dolor', '02:08:00', '1', '2024-05-30 05:17:31', '2024-05-30 05:17:31'),
-(7, 5, '1999-06-21 18:00:00', 9.00, 'Assumenda tempor con', '13:06:00', '0', '2024-05-30 05:17:35', '2024-05-30 05:17:35'),
-(8, 10, '2000-11-12 18:00:00', 73.00, 'Veniam in reprehend', '00:42:00', '1', '2024-05-30 05:17:39', '2024-05-30 05:17:39'),
-(9, 6, '2006-12-30 18:00:00', 17.00, 'Officia dolore labor', '06:33:00', '1', '2024-05-30 05:17:43', '2024-05-30 05:17:43'),
-(10, 6, '2010-01-08 18:00:00', 27.00, 'Iure numquam nihil o', '05:35:00', '0', '2024-05-30 05:17:47', '2024-05-30 05:17:47');
+INSERT INTO `orders` (`id`, `order_date`, `total_amount`, `delivery_address`, `pickup_time`, `status`, `created_at`, `updated_at`) VALUES
+(1, '2006-11-28 18:00:00', 188668.00, 'Qui sapiente eos al', '13:57:00', 'complete', '2024-05-31 03:29:56', '2024-05-31 03:29:56');
 
 -- --------------------------------------------------------
 
@@ -240,7 +223,6 @@ INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `total_amount`, `delive
 
 CREATE TABLE `order_items` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `order_id` bigint(20) NOT NULL,
   `menu_item_id` bigint(20) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` decimal(8,2) NOT NULL,
@@ -252,17 +234,8 @@ CREATE TABLE `order_items` (
 -- Dumping data for table `order_items`
 --
 
-INSERT INTO `order_items` (`id`, `order_id`, `menu_item_id`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
-(1, 1, 7, 727, 72.00, '2024-05-30 05:17:55', '2024-05-30 05:21:38'),
-(2, 7, 2, 903, 163.00, '2024-05-30 05:17:58', '2024-05-30 05:17:58'),
-(3, 9, 6, 82, 422.00, '2024-05-30 05:18:03', '2024-05-30 05:18:03'),
-(4, 8, 8, 466, 276.00, '2024-05-30 05:18:08', '2024-05-30 05:18:08'),
-(5, 6, 6, 714, 185.00, '2024-05-30 05:18:12', '2024-05-30 05:18:12'),
-(6, 2, 10, 390, 700.00, '2024-05-30 05:18:16', '2024-05-30 05:18:16'),
-(7, 1, 2, 990, 563.00, '2024-05-30 05:18:20', '2024-05-30 05:18:20'),
-(8, 3, 7, 646, 552.00, '2024-05-30 05:18:24', '2024-05-30 05:18:24'),
-(9, 5, 2, 582, 599.00, '2024-05-30 05:18:28', '2024-05-30 05:18:28'),
-(10, 7, 10, 454, 840.00, '2024-05-30 05:18:31', '2024-05-30 05:18:31');
+INSERT INTO `order_items` (`id`, `menu_item_id`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
+(1, 4, 934, 202.00, '2024-05-31 03:29:56', '2024-05-31 03:29:56');
 
 -- --------------------------------------------------------
 
@@ -472,7 +445,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -490,19 +463,19 @@ ALTER TABLE `menu_items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
