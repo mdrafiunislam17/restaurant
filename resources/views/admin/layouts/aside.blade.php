@@ -21,17 +21,17 @@
 
 
 
-    <li class="nav-item {{
-    request()->routeIs('admin.restaurant.index') ||
-    request()->routeIs('admin.restaurant.create') ||
-    request()->routeIs('admin.restaurant.show') ||
-    request()->routeIs('admin.restaurant.edit')
-    ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.restaurant.index') }}">
-            <i class="fa-solid fa-utensils"></i>
-            <span>Restaurant</span>
-        </a>
-    </li>
+{{--    <li class="nav-item {{--}}
+{{--    request()->routeIs('admin.restaurant.index') ||--}}
+{{--    request()->routeIs('admin.restaurant.create') ||--}}
+{{--    request()->routeIs('admin.restaurant.show') ||--}}
+{{--    request()->routeIs('admin.restaurant.edit')--}}
+{{--    ? 'active' : '' }}">--}}
+{{--        <a class="nav-link" href="{{ route('admin.restaurant.index') }}">--}}
+{{--            <i class="fa-solid fa-utensils"></i>--}}
+{{--            <span>Restaurant</span>--}}
+{{--        </a>--}}
+{{--    </li>--}}
 
     <li class="nav-item {{
     request()->routeIs('admin.categories.index') ||
@@ -61,17 +61,17 @@
 
 
 
-    <li class="nav-item {{
-    request()->routeIs('admin.customers.index') ||
-    request()->routeIs('admin.customers.create') ||
-    request()->routeIs('admin.customers.show') ||
-    request()->routeIs('admin.customers.edit')
-    ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.customers.index') }}">
-            <i class="fa-solid fa-person-military-pointing"></i>
-            <span>customers</span>
-        </a>
-    </li>
+{{--    <li class="nav-item {{--}}
+{{--    request()->routeIs('admin.customers.index') ||--}}
+{{--    request()->routeIs('admin.customers.create') ||--}}
+{{--    request()->routeIs('admin.customers.show') ||--}}
+{{--    request()->routeIs('admin.customers.edit')--}}
+{{--    ? 'active' : '' }}">--}}
+{{--        <a class="nav-link" href="{{ route('admin.customers.index') }}">--}}
+{{--            <i class="fa-solid fa-person-military-pointing"></i>--}}
+{{--            <span>customers</span>--}}
+{{--        </a>--}}
+{{--    </li>--}}
 
 
 
@@ -87,30 +87,30 @@
         </a>
     </li>
 
-    <li class="nav-item {{
-    request()->routeIs('admin.orderItems.index') ||
-    request()->routeIs('admin.orderItems.create') ||
-    request()->routeIs('admin.orderItems.show') ||
-    request()->routeIs('admin.orderItems.edit')
-    ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.orderItems.index') }}">
-            <i class="fa-solid fa-arrow-down-short-wide"></i>
-            <span>orderItems</span>
-        </a>
-    </li>
+{{--    <li class="nav-item {{--}}
+{{--    request()->routeIs('admin.orderItems.index') ||--}}
+{{--    request()->routeIs('admin.orderItems.create') ||--}}
+{{--    request()->routeIs('admin.orderItems.show') ||--}}
+{{--    request()->routeIs('admin.orderItems.edit')--}}
+{{--    ? 'active' : '' }}">--}}
+{{--        <a class="nav-link" href="{{ route('admin.orderItems.index') }}">--}}
+{{--            <i class="fa-solid fa-arrow-down-short-wide"></i>--}}
+{{--            <span>orderItems</span>--}}
+{{--        </a>--}}
+{{--    </li>--}}
 
 
-    <li class="nav-item {{
-    request()->routeIs('admin.cartItems.index') ||
-    request()->routeIs('admin.cartItems.create') ||
-    request()->routeIs('admin.cartItems.show') ||
-    request()->routeIs('admin.cartItems.edit')
-    ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.cartItems.index') }}">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span>cartItems</span>
-        </a>
-    </li>
+{{--    <li class="nav-item {{--}}
+{{--    request()->routeIs('admin.cartItems.index') ||--}}
+{{--    request()->routeIs('admin.cartItems.create') ||--}}
+{{--    request()->routeIs('admin.cartItems.show') ||--}}
+{{--    request()->routeIs('admin.cartItems.edit')--}}
+{{--    ? 'active' : '' }}">--}}
+{{--        <a class="nav-link" href="{{ route('admin.cartItems.index') }}">--}}
+{{--            <i class="fa-solid fa-cart-shopping"></i>--}}
+{{--            <span>cartItems</span>--}}
+{{--        </a>--}}
+{{--    </li>--}}
 
 
 

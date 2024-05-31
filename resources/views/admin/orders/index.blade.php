@@ -1,12 +1,12 @@
 @extends("admin.layouts.master")
-@section("title", "orders")
+@section("title", "Orders")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">orders</h1>
+            <h1 class="h3 mb-0 text-gray-800">Orders</h1>
             <a href="{{ route("admin.orders.create") }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa-sm text-white-50"></i> Create orders
+                <i class="fas fa-plus fa-sm text-white-50"></i> Create Order
             </a>
         </div>
 
@@ -35,9 +35,10 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Order Date</th>
-                            <th>Total Amount</th>
-                            <th>status</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Menu Item</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -45,8 +46,16 @@
                         @foreach($orders as $i => $order)
                             <tr>
                                 <td>{{ ++$i }}</td>
-                                <td>{{ date("Y-m-d h:i A", strtotime($order->order_date)) }}</td>
-                                <td>{{ $order->total_amount }}</td>
+                                <td>{{ $order->customer->name }}</td>
+                                <td>{{ $order->customer->email }}</td>
+                                <td>
+                                    @foreach($order->menuItems as $menuItem)
+                                        {{ $menuItem->name }}
+                                        @if (!$loop->last)
+                                            ,
+                                        @endif
+                                    @endforeach
+                                </td>
                                 <td>
                                     @if ($order->status == 1)
                                         <span class="badge badge-success badge-counter">Active</span>
@@ -65,8 +74,6 @@
                                         </button>
                                     </form>
                                 </td>
-
-
                             </tr>
                         @endforeach
                         </tbody>

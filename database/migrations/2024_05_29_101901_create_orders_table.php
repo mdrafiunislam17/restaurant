@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal("total_amount", 10, 2);
             $table->text("delivery_address")->nullable();
             $table->timestamp("pickup_time")->nullable();
-            $table->string("status", 255);
+            $table->string("status")->default("pending");
             $table->timestamps();
         });
     }

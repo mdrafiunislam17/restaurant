@@ -14,4 +14,10 @@ class Customer extends Model
         "password",
         "contact_info",
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

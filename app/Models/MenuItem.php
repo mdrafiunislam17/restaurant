@@ -26,4 +26,13 @@ class MenuItem extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_items')
+            ->withPivot('quantity', 'price')
+            ->withTimestamps();
+    }
+
+
 }

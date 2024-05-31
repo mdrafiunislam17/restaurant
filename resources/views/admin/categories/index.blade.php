@@ -42,19 +42,13 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         @foreach($categories as $i => $categorie)
                             <tr>
                                 <td>{{ ++$i }}</td>
                                 <td>{{ $categorie->name }}</td>
                                 <td>{{ $categorie->slug }}</td>
-                                <td>
-                                    @if ($categorie->image)
-                                    <img src="{{ asset("storage/uploads/$categorie->image") }}" width="100" alt="">
-                                    @else
-                                        No image
-                                    @endif
-                                </td>
-
+                                <td><img src="{{ asset("storage/uploads/$categorie->image") }}" width="100" alt=""></td>
                                 <td>
                                     <a href="{{ route("admin.categories.show", $categorie->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route("admin.categories.edit", $categorie->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>

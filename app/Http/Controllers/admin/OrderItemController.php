@@ -35,6 +35,7 @@ class OrderItemController extends Controller
             'price' => 'required|numeric|min:0',
         ]);
 
+
         // Create the order item
         OrderItem::create($validatedData);
 

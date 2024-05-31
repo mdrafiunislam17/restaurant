@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\MenuItem;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
@@ -14,26 +15,65 @@ class OrderController extends Controller
     // Display a listing of the orders
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::with('customer', 'menuItems'); // Eager load relationships
         return view('admin.orders.index', compact('orders'));
     }
 
     // Show the form for creating a new order
     public function create()
     {
-        $customers = Customer::all();
-        return view('admin.orders.create' , compact('customers'));
+
+        $menuItems = MenuItem::all();
+        return view('admin.orders.create' , compact('menuItems'));
     }
 
     // Store a newly created order in the database
+    // app/Http/Controllers/admin/OrderController.php
+
+    public function getMenuItemPrice(Request $request)
+    {
+        $menuItemId = $request->query('id');
+        $menuItem = MenuItem::find($menuItemId);
+
+        if ($menuItem) {
+            return response()->json(['price' => $menuItem->price]);
+        } else {
+            return response()->json(['price' => null]);
+        }
+    }
+
     public function store(Request $request)
     {
+
+
+        //  Customer Validate the request
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:customers,email',
+            'password' => 'required|string|min:6',
+            'contact_info' => 'nullable|string|max:255',
+        ]);
+
+        // Create the customer
+        Customer::create($request->all());
+
+
+
+        // OrderItem  Validate the request
+        $validatedData = $request->validate([
+            'menu_item_id' => 'required|exists:menu_items,id',
+            'quantity' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
+
+        ]);
+
+        OrderItem::create($request->all());
+
         // Validate the request
         $validatedData = $request->validate([
-            'customer_id' => 'required|exists:customers,id',
             'order_date' => 'required|date',
             'total_amount' => 'required|numeric',
-            'status' => 'required|string',
+            'status' => 'required|string|in:pending,confirm,processing,complete',
         ]);
 
         // Debugging: Log the validated data to ensure correct format

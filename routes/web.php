@@ -89,6 +89,7 @@ Route::get('/orders/{id}', [OrderController::class, 'show'])->name('admin.orders
 Route::get('/orders/{id}/edit', [OrderController::class, 'edit'])->name('admin.orders.edit');
 Route::put('/orders/{id}', [OrderController::class, 'update'])->name('admin.orders.update');
 Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('admin.orders.destroy');
+Route::get('/admin/get-menu-item-price', [OrderController::class, 'getMenuItemPrice'])->name('admin.get.menu.item.price');
 
 // OrderItemManagementController
 Route::get('/orderItems', [OrderItemController::class, 'index'])->name('admin.orderItems.index');
