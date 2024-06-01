@@ -47,17 +47,7 @@
                 <form action="{{ route("admin.menuItems.update", $menuItem->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="form-group row">
-                        <label for="restaurant_id" class="col-sm-3 col-form-label text-right font-weight-bold">Restaurant *</label>
-                        <div class="col-sm-6">
-                            <select class="form-control" id="restaurant_id" name="restaurant_id" disabled>
-                                <option value="" selected disabled>Select Restaurant</option>
-                                @foreach ($restaurants as $restaurant)
-                                    <option value="{{ $restaurant->id }}" {{ $restaurant->id == $menuItem->restaurant_id ? 'selected' : '' }}>{{ $restaurant->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+
 
                     <div class="form-group row">
                         <label for="category_id" class="col-sm-3 col-form-label text-right font-weight-bold">Category *</label>
