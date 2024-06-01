@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MenuItemController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,13 +21,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 
 
-
+Route::get('/', [WebsiteController::class,'index'])->name('website.home');
+Route::get('/menu', [WebsiteController::class,'menu'])->name('website.menu');
+Route::get('/about', [WebsiteController::class,'about'])->name('website.about');
+Route::get('/bookTable.blade.php', [WebsiteController::class,'bookTable'])->name('website.bookTable.blade.php');
+Route::get('/shopDetails', [WebsiteController::class,'shopDeals'])->name('website.shopDetails');
+Route::get('/cartShopDetails', [WebsiteController::class,'cartShopDeals'])->name('website.cartShopDetails');
 
 Auth::routes();
 
