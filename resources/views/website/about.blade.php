@@ -1,5 +1,5 @@
 @extends("website.layouts.master")
-@section("title", "food index")
+@section("title", "food about")
 @section("content")
 
 

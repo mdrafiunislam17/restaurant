@@ -55,7 +55,7 @@
     ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.menuItems.index') }}">
             <i class="fa-solid fa-sitemap"></i>
-            <span>menuItems</span>
+            <span>MenuItems</span>
         </a>
     </li>
 

@@ -35,10 +35,10 @@
                                     Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                 </p>
                                 <div class="options">
-                                    <h6>
+                                    <h1>
                                         $20
-                                    </h6>
-                                    <a href="{{route('website.shopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                    </h1>
+                                    <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -59,16 +59,15 @@
                                     Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                 </p>
                                 <div class="options">
-                                    <h6>
+                                    <h1>
                                         $15
-                                    </h6>
-                                    <a href="{{route('website.shopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                    </h1>
+                                    <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-6 col-lg-4 all pizza">
                     <div class="box">
                         <div>
@@ -83,21 +82,20 @@
                                     Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                 </p>
                                 <div class="options">
-                                    <h6>
+                                    <h1>
                                         $17
-                                    </h6>
-                                    <a href="{{route('website.shopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                    </h1>
+                                    <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-6 col-lg-4 all pasta">
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{asset('asset/images/f3.png')}}" alt="">
+                                <img src="{{asset('asset/images/f4.png')}}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -107,10 +105,10 @@
                                     Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                 </p>
                                 <div class="options">
-                                    <h6>
+                                    <h1>
                                         $18
-                                    </h6>
-                                    <a href="{{route('website.shopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                    </h1>
+                                    <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +118,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{asset('asset/images/f4.png')}}" alt="">
+                                <img src="{{asset('asset/images/f5.png')}}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -130,10 +128,10 @@
                                     Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                 </p>
                                 <div class="options">
-                                    <h6>
+                                    <h1>
                                         $10
-                                    </h6>
-                                    <a href="{{route('website.shopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                    </h1>
+                                    <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +141,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{asset('asset/images/f5.png')}}" alt="">
+                                <img src="{{asset('asset/images/f6.png')}}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -153,33 +151,10 @@
                                     Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                 </p>
                                 <div class="options">
-                                    <h6>
+                                    <h1>
                                         $15
-                                    </h6>
-                                    <a href="{{route('website.shopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 all burger">
-                    <div class="box">
-                        <div>
-                            <div class="img-box">
-                                <img src="{{asset('asset/images/f6.png')}}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Tasty Burger
-                                </h5>
-                                <p>
-                                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                                </p>
-                                <div class="options">
-                                    <h6>
-                                        $12
-                                    </h6>
-                                    <a href="{{route('website.shopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                    </h1>
+                                    <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -199,10 +174,33 @@
                                     Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                 </p>
                                 <div class="options">
-                                    <h6>
+                                    <h1>
+                                        $12
+                                    </h1>
+                                    <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 all burger">
+                    <div class="box">
+                        <div>
+                            <div class="img-box">
+                                <img src="{{asset('asset/images/f8.png')}}" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Tasty Burger
+                                </h5>
+                                <p>
+                                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                                </p>
+                                <div class="options">
+                                    <h1>
                                         $14
-                                    </h6>
-                                    <a href="{{route('website.shopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                    </h1>
+                                    <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +210,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{asset('asset/images/f8.png')}}" alt="">
+                                <img src="{{asset('asset/images/f9.png')}}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -222,10 +220,10 @@
                                     Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                 </p>
                                 <div class="options">
-                                    <h6>
+                                    <h1>
                                         $10
-                                    </h6>
-                                    <a href="{{route('website.shopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                    </h1>
+                                    <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                 </div>
                             </div>
                         </div>

@@ -8,7 +8,7 @@
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" target="_blank" href="">&nbsp;restaurant</a>
+            <a class="nav-link" target="_blank" href="{{route('website.home')}}">&nbsp;restaurant</a>
 {{--            <i class="fa fa-globe"></i>--}}
         </li>
         <li class="nav-item dropdown no-arrow">

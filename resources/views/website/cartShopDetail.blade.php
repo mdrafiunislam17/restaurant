@@ -1,272 +1,510 @@
-@extends("website.layouts.master")
-@section("title", "food cartShopDetail")
-@section("content")
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")}}">
+    <link rel="shortcut icon" href="{{asset('asset/images/favicon.png')}}" type="">
+    <link rel="stylesheet" href="{{asset('asset/css/custom.css')}}">
+    <title> Card Shop Detail</title>
     <style>
-        .custom-card{
-            padding-left: 20px;
+        body {
+
+            font-size: 17px;
+            padding: 8px;
+            background-color: #f2f2f2;
         }
 
-        .input-group {
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: -ms-flexbox; /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE10 */
+            flex-wrap: wrap;
+            margin: 0 -16px;
+        }
+
+        .col-25 {
+            -ms-flex: 25%; /* IE10 */
+            flex: 25%;
+        }
+
+        .col-50 {
+            -ms-flex: 50%; /* IE10 */
+            flex: 50%;
+        }
+
+        .col-75 {
+            -ms-flex: 75%; /* IE10 */
+            flex: 75%;
+        }
+
+        .col-25,
+        .col-50,
+        .col-75 {
+            padding: 0 16px;
+        }
+
+        .container {
+            background-color: #f2f2f2;
+
+        }
+
+        input[type=text] {
+            width: 100%;
+            margin-bottom: 30px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .icon-container {
+            margin-bottom: 20px;
+            padding: 7px 0;
+            font-size: 24px;
+        }
+
+        .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            width: 100%;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #fff;
+        }
+
+        hr {
+            border: 1px solid lightgrey;
+        }
+
+        span.price {
+            float: right;
+            color: grey;
+        }
+
+        .product-container {
             display: flex;
             align-items: center;
-            justify-content: center;
+            margin-bottom: 15px;
         }
-
-        .input-group button {
-            background-color: #000;
-            border: 1px solid #ced4da;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            line-height: 0;
+        .product-image {
+            width: 100px;
+            margin-top: 15px;
         }
-
-        .input-group button:hover {
-            background-color: #f0f0f0;
+        .quantity-controls {
+            display: flex;
+            align-items: center;
         }
-
-        .input-group input {
-            max-width: 30px;
-            text-align: center;
+        .btn-white {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px 12px;
+        }
+        .btn-white i {
+            margin-left: -3px;
         }
         .form-control1 {
-            font-size: 18px;
-            border: none;
-            outline: none;
-            box-shadow: none;
-        }
-        .custom-font-size {
-            font-size: 35px;
-        }
-        .custom-price{
-            font-size: 20px;
+            width: 50px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            height: 38px;
         }
 
-        .form-control-lg {
-            height: calc(1.5em + 1rem + 2px);
-            padding: 0.5rem 1rem;
-            font-size: 3.2rem;
-            line-height: 1.5;
-            border-radius: 0.3rem;
+
+
+        .product-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
         }
-        .payment-form{
-            font-size: 25px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        .product-image {
+            width: 100px;
+            margin-right: 15px;
         }
-        .button{
-            margin-left: 173px;
-            margin-top: -40px;
-            padding-top: 8px;
-            padding-left: 36px;
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+        .button {
+            background-color: black;
+            border: 1px solid #ccc;
+            width: 50px;
+            border-radius: 50px;
+            padding-left: 17px;
+        }
+        .input{
+            color: black;
+            border-radius: 50px !important;
+            margin-top: 30px !important;
+            width: 50px !important;
+        }
+        .cardb{
+            margin-top: -90px;
+            padding-left: 470px;
+        }
+        .price1{
+            padding-left: 550px;
         }
 
-        @media (max-width: 768px) {
-            .custom-font-size {
-                font-size: 16px;
+        .comment{
+            margin-top: 50px;
+            padding: 15px;
+        }
+
+        .custom-card{
+            padding-left: 75px;
+            margin-top: -60px;
+        }
+        .header{
+            background-color: #00000080;
+            margin-top: -15px;
+
+        }
+        .header ul li a {
+            color: rgb(255, 255, 255) ;
+        }
+
+
+
+        /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+        @media (max-width: 800px) {
+            .row {
+                flex-direction: column-reverse;
             }
-
-            .custom-price {
-                font-size: 16px;
-            }
-
-            .payment-form {
-                font-size: 16px;
-            }
-
-            .button {
-                margin-left: 0;
-                margin-top: 20px;
-                padding-left: 0;
-                display: block;
-                text-align: center;
-            }
-
-            .header ul li {
-                display: block;
-                text-align: center;
-            }
-
-            .social span, .social a {
-                font-size: 16px;
-                padding-left: 20px;
-                padding-right: 5px;
+            .col-25 {
+                margin-bottom: 20px;
             }
         }
     </style>
+</head>
+<body>
 
-    <section class="h-100 h-custom" style="background-color: #eee;">
-        <div class="container h-100 py-5">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col">
-                    <div class="card shopping-cart">
-                        <div class="card-body text-black">
+<div class="hero_area" style="margin-top: 7px; background-color: #797979;">
 
-                            <div class="row">
-                                <div class="col-lg-6 px-5 py-4">
-                                    <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your Foods</h3>
+    <!-- header section strats -->
+    <header class="header_section" >
+        <div class="container"   style="background-color: #797979;" >
+            <a href="#" class="logo">
+                <img src="{{asset('asset/images/logo.png')}}" width="60px" height="60px" alt="Footcap logo">
+            </a>
 
-                                    <div class="d-flex align-items-center mb-5">
-                                        <div class="flex-shrink-0">
-                                            <img src="{{asset('asset/images/pizza-img-1.png')}}"
-                                                 class="img-fluid" style="width: 100px;" >
-                                        </div>
-                                        <div class="flex-grow-1 ms-3 custom-card">
-                                            <h3 class="text-dark d-inline-block">Shrimp pizza</h3>
-                                            <a href="#!" class="float-end text-dark d-inline-block " style="padding-left: 200px;"><i class="fa-solid fa-trash"></i></a>
-                                            <div class="d-flex align-items-center">
-                                                <p class="fw-bold mb-0 me-5 pe-3 custom-price">$799</p>
-                                                <div class="input-group mb-3" style="width: 165px; padding-top: 10px;">
-                                                    <button class="btn btn-white border px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
-                                                        <i class="fas fa-minus" style="margin-left: -3px;"></i>
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <ul class="navbar-list" style="margin-top: -60px; font-size: 20px;">
+                    <li class="navbar-item">
+                        <a class="nav-link" href="{{route('website.home')}}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link" href="{{route('website.menu')}}">Menu</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link" href="{{route('website.about')}}">About</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link" href="{{route('website.bookTable.blade.php')}}">Book Table</a>
+                    </li>
+                </ul>
 
-                                                    </button>
-                                                    <input type="text" class="form-control1 text-center" value="1" id="quantity" />
-                                                    <button class="btn btn-white border px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-                                                        <i class="fas fa-plus" style="margin-left: -3px;"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                <ul class="nav-action-list" style="margin-top: -60px; font-size: 20px;">
+                    <li class="nav-item">
+                        <a href="" class="user_link">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('website.cartShopDetails')}}">
+                            <i class="fa fa-shopping-cart text-white"></i>
 
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form class="form" action="/search" method="GET">
+                            <button type="submit" aria-label="Search" style="color: white;">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-                                    <div class="d-flex align-items-center mb-5">
-                                        <div class="flex-shrink-0">
-                                            <img src="{{asset('asset/images/pizza-img-2.png')}}"
-                                                 class="img-fluid" style="width: 100px;" >
-                                        </div>
-                                        <div class="flex-grow-1 ms-3 custom-card">
-                                            <h3 class="text-dark d-inline-block">Seafood pizza</h3>
-                                            <a href="#!" class="float-end text-dark d-inline-block " style="padding-left: 200px;"><i class="fa-solid fa-trash"></i></a>
-                                            <div class="d-flex align-items-center">
-                                                <p class="fw-bold mb-0 me-5 pe-3 custom-price">$799</p>
-                                                <div class="input-group mb-3" style="width: 165px; padding-top: 10px;">
-                                                    <button class="btn btn-white border px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
-                                                        <i class="fas fa-minus" style="margin-left: -3px;"></i>
+</div>
 
-                                                    </button>
-                                                    <input type="text" class="form-control1 text-center" value="1" id="quantity" />
-                                                    <button class="btn btn-white border px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-                                                        <i class="fas fa-plus" style="margin-left: -3px;"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+<br><br>
 
-                                    <div class="d-flex align-items-center mb-5">
-                                        <div class="flex-shrink-0">
-                                            <img src="{{asset('asset/images/pizza-img-3.png')}}"
-                                                 class="img-fluid" style="width: 100px;" >
-                                        </div>
-                                        <div class="flex-grow-1 ms-3 custom-card">
-                                            <h3 class="text-dark d-inline-block">Cheese pizza</h3>
-                                            <a href="#!" class="float-end text-dark d-inline-block " style="padding-left: 200px;"><i class="fa-solid fa-trash"></i></a>
-                                            <div class="d-flex align-items-center">
-                                                <p class="fw-bold mb-0 me-5 pe-3 custom-price">$799</p>
-                                                <div class="input-group mb-3" style="width: 165px; padding-top: 10px;">
-                                                    <button class="btn btn-white border px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
-                                                        <i class="fas fa-minus" style="margin-left: -3px;"></i>
+<h2 style="text-align: center; font-size: 40px; font-family: 'Times New Roman', Times, serif;">Responsive Checkout Form</h2>
+<div class="row">
+    <div class="col-75">
+        <div class="container">
+            <h1>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h1>
 
-                                                    </button>
-                                                    <input type="text" class="form-control1 text-center" value="1" id="quantity" />
-                                                    <button class="btn btn-white border px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-                                                        <i class="fas fa-plus" style="margin-left: -3px;"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+            <p class="product-container">
+                <img src="{{asset('asset/images/pizza-img-1.png')}}" class="img-fluid product-image" alt="">
+            <div class="quantity-controls cardb">
+                <button class="btn  button" type="button" id="button-addon1">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <input type="text" class="form-control1 text-center input" value="1" id="quantity" />
+                <button class="btn button" type="button" id="button-addon2">
+                    <i class="fa fa-plus"></i>
+                </button>
+                <span class="price1" id="price"><b>$15</b></span>
+            </div>
 
 
-
-                                    <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
-
-                                    <div class="d-flex justify-content-between px-x custom-font-size">
-                                        <p class="fw-bold">Discount:</p>
-                                        <p class="fw-bold">$95</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between p-2 mb-2 custom-font-size" style="background-color: #e1f5fe;">
-                                        <p class="fw-bold mb-0">Total:</p>
-                                        <p class="fw-bold mb-0">$2261</p>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="col-lg-6 px-5 py-4">
-                                    <h1 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h1>
-                                    <form class="mb-5">
-                                        <div class="form-outline mb-5">
-                                            <label class="form-label payment-form" for="typeText">Card Number</label>
-                                            <input type="text" id="typeText" class="form-control form-control-lg" size="20"
-                                                   value="1234 5678 9012 3457" minlength="19" maxlength="19" />
-
-                                        </div>
-
-                                        <div class="form-outline mb-5">
-                                            <label class="form-label payment-form" for="typeName">Name on card</label>
-                                            <input type="text" id="typeName" class="form-control form-control-lg" size="17"
-                                                   value="John Smith" />
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6 mb-5">
-                                                <div class="form-outline">
-                                                    <label class="form-label payment-form" for="typeExp">Expiration</label>
-                                                    <input type="text" id="typeExp" class="form-control form-control-lg" value="01/22"
-                                                           size="7" minlength="7" maxlength="7" />
-
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-5">
-                                                <div class="form-outline">
-                                                    <label class="form-label payment-form" for="typeCvv">Cvv</label>
-                                                    <input type="password" id="typeCvv" class="form-control form-control-lg"
-                                                           value="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <p class="mb-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit <a
-                                                href="#!">obcaecati sapiente</a>.</p>
-
-                                        <button type="button" class="btn bg-primary btn-lg button">Buy now</button>
-                                        <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
-                                            <a href="{{route('website.shopDetails')}}" style="font-size: 20px;"><i class="fas fa-angle-left me-2"></i>Back to shopping</a>
-                                        </h5>
-                                    </form>
-                                </div>
+            <p class="product-container">
+                <img src="{{asset('asset/images/pizza-img-2.png')}}" class="img-fluid product-image" alt="">
+            <div class="quantity-controls cardb">
+                <button class="btn  button" type="button" id="button-addon1">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <input type="text" class="form-control1 text-center input" value="1" id="quantity" />
+                <button class="btn button" type="button" id="button-addon2">
+                    <i class="fa fa-plus"></i>
+                </button>
+                <span class="price1" id="price"><b>$15</b></span>
+            </div>
 
 
+            <p class="product-container">
+                <img src="{{asset('asset/images/pizza-img-3.png')}}" class="img-fluid product-image" alt="">
+            <div class="quantity-controls cardb">
+                <button class="btn  button" type="button" id="button-addon1">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <input type="text" class="form-control1 text-center input" value="1" id="quantity" />
+                <button class="btn button" type="button" id="button-addon2">
+                    <i class="fa fa-plus"></i>
+                </button>
+                <span class="price1" id="price"><b>$15</b></span>
+            </div>
+
+
+            <p class="product-container">
+                <img src="{{asset('asset/images/pizza-img-4.png')}}" class="img-fluid product-image" alt="">
+            <div class="quantity-controls cardb">
+                <button class="btn  button" type="button" id="button-addon1">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <input type="text" class="form-control1 text-center input" value="1" id="quantity" />
+                <button class="btn button" type="button" id="button-addon2">
+                    <i class="fa fa-plus"></i>
+                </button>
+                <span class="price1" id="price"><b>$15</b></span>
+            </div>
+
+
+
+
+            <p style="padding-top: 35px;">Total <span class="price" style="color:black; padding-right: 20px;" ><b>$30</b></span></p>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 40px;">
+    <div class="col-75">
+        <div class="container">
+            <form action="#">
+
+                <div class="row">
+
+                    <div class="col-50">
+                        <h3>Billing Address</h3><br>
+                        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                        <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                        <input type="text" id="email" name="email" placeholder="john@example.com">
+                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                        <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+                        <label for="city"><i class="fa fa-institution"></i> City</label>
+                        <input type="text" id="city" name="city" placeholder="New York">
+
+                        <div class="row">
+                            <div class="col-50">
+                                <label for="state">State</label>
+                                <input type="text" id="state" name="state" placeholder="NY">
                             </div>
+                            <div class="col-50">
+                                <label for="zip">Zip</label>
+                                <input type="text" id="zip" name="zip" placeholder="10001">
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="col-50">
+                        <h3>Payment</h3><br>
+                        <label for="fname">Accepted Cards</label>
+                        <div class="icon-container">
+                            <i class="fa fa-cc-visa" style="color:navy;"></i>
+                            <i class="fa fa-cc-amex" style="color:blue;"></i>
+                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        </div>
+                        <label for="cname">Name on Card</label>
+                        <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                        <label for="ccnum">Credit card number</label>
+                        <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                        <label for="expmonth">Exp Month</label>
+                        <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                        <div class="row">
+                            <div class="col-50">
+                                <label for="expyear">Exp Year</label>
+                                <input type="text" id="expyear" name="expyear" placeholder="2018">
+                            </div>
+                            <div class="col-50">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="352">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row mt-4">
+                    <div class="col-50">
+                        <h3>Cash on Delivery</h3>
+                        <label class="checkbox-container" style="padding-top: 20px;">
+                            <input type="checkbox" id="cashondelivery" name="cashondelivery">
+                            <span class="checkmark" style="margin-top: -20px;"></span>
+                            Select this option to pay with cash upon delivery
+                        </label>
+
+                        <label class="checkbox-container" style="padding-top: 20px;">
+                            <input type="checkbox" id="cashondelivery" name="cashondelivery">
+                            <span class="checkmark" style="margin-top: -20px;"></span>
+                            The shipping address is the same as billing
+                        </label>
+
+
+                    </div>
+                </div>
+
+                <input type="submit" value="Continue to checkout"
+                        style="border-radius: 10px;
+                        width: 200px;
+                        background-color: #04AA6D;
+                        color: white;
+                        padding: 16px;
+                        margin: 10px 0;">
+            </form>
+            <div class="row">
+                <div class="col-12 lg-12">
+                    <div class="d-flex align-items-center mb-lg-5 comment">
+                        <div class="flex-shrink-0">
+                            <img src="https://avatars.discourse-cdn.com/v4/letter/c/ecc23a/48.png"
+                                 alt="" width="48" height="48" style="border-radius: 50px">
+
+                        </div>
+                        <div class="flex-grow-1 ms-3 custom-card">
+                            <h3 class="text-secondary userName" style="font-weight: bold; display: inline-block;">Candace Kemp</h3>
+                            <h3 href="#!" class="float-end text-dark " style="padding-left: 900px; display: inline-block;">Oct 2024</h3><br><br>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aperiam aspernatur blanditiis
+                                cumque dolorem eius error esse, est et, eveniet in ipsum iusto molestiae obcaecati
+                                odio pariatur veritatis vitae voluptatem.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 lg-12">
+                    <div class="d-flex align-items-center mb-lg-5 comment">
+                        <div class="flex-shrink-0">
+                            <img src="https://avatars.discourse-cdn.com/v4/letter/c/ecc23a/48.png"
+                                 alt="" width="48" height="48" style="border-radius: 50px">
+
+                        </div>
+                        <div class="flex-grow-1 ms-3 custom-card">
+                            <h3 class="text-secondary userName" style="font-weight: bold; display: inline-block;">Mariam Herman</h3>
+                            <h3 href="#!" class="float-end text-dark " style="padding-left: 900px; display: inline-block;">Oct 2024</h3><br><br>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aperiam aspernatur blanditiis
+                                cumque dolorem eius error esse, est et, eveniet in ipsum iusto molestiae obcaecati
+                                odio pariatur veritatis vitae voluptatem.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 lg-12">
+                    <div class="d-flex align-items-center mb-lg-5 comment">
+                        <div class="flex-shrink-0">
+                            <img src="https://avatars.discourse-cdn.com/v4/letter/c/ecc23a/48.png"
+                                 alt="" width="48" height="48" style="border-radius: 50px">
+
+                        </div>
+                        <div class="flex-grow-1 ms-3 custom-card">
+                            <h3 class="text-secondary userName" style="font-weight: bold; display: inline-block;">Gretchen Garner</h3>
+                            <h3 href="#!" class="float-end text-dark " style="padding-left: 900px; display: inline-block;">Oct 2024</h3><br><br>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aperiam aspernatur blanditiis
+                                cumque dolorem eius error esse, est et, eveniet in ipsum iusto molestiae obcaecati
+                                odio pariatur veritatis vitae voluptatem.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 lg-12">
+                    <div class="d-flex align-items-center mb-lg-5 comment">
+                        <div class="flex-shrink-0">
+                            <img src="https://avatars.discourse-cdn.com/v4/letter/c/ecc23a/48.png"
+                                 alt="" width="48" height="48" style="border-radius: 50px">
+
+                        </div>
+                        <div class="flex-grow-1 ms-3 custom-card">
+                            <h3 class="text-secondary userName" style="font-weight: bold; display: inline-block;">Aiko Davidson</h3>
+                            <h3 href="#!" class="float-end text-dark " style="padding-left: 900px; display: inline-block;">Oct 2024</h3><br><br>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aperiam aspernatur blanditiis
+                                cumque dolorem eius error esse, est et, eveniet in ipsum iusto molestiae obcaecati
+                                odio pariatur veritatis vitae voluptatem.</p>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
-    </section>
 
+    </div>
 
+</div>
+<!-- Ensure jQuery is included before this script -->
+<script src="{{url("https://code.jquery.com/jquery-3.6.0.min.js")}}"></script>
 
-
-    <script>
-        $(document).ready(function(){
-            $('#button-addon1').click(function(){
-                var quantity = parseInt($('#quantity').val());
-                if(quantity > 1){
-                    $('#quantity').val(quantity - 1);
-                }
-            });
-            $('#button-addon2').click(function(){
-                var quantity = parseInt($('#quantity').val());
-                $('#quantity').val(quantity + 1);
-            });
+<script>
+    $(document).ready(function() {
+        // Increment quantity
+        $(".button#button-addon2").click(function() {
+            var input = $(this).prev();
+            var currentValue = parseInt(input.val());
+            input.val(currentValue + 1);
         });
-    </script>
 
-@endsection
+        // Decrement quantity
+        $(".button#button-addon1").click(function() {
+            var input = $(this).next();
+            var currentValue = parseInt(input.val());
+            if (currentValue > 1) {
+                input.val(currentValue - 1);
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

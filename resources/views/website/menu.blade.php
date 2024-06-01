@@ -41,10 +41,10 @@
                                         Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                     </p>
                                     <div class="options">
-                                        <h6>
+                                        <h1>
                                             $20
-                                        </h6>
-                                        <a href="shop-deals.html"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                        </h1>
+                                        <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -65,10 +65,10 @@
                                         Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                     </p>
                                     <div class="options">
-                                        <h6>
+                                        <h1>
                                             $15
-                                        </h6>
-                                        <a href="shop-deals.html"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                        </h1>
+                                        <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -88,10 +88,10 @@
                                         Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                     </p>
                                     <div class="options">
-                                        <h6>
+                                        <h1>
                                             $17
-                                        </h6>
-                                        <a href="shop-deals.html"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                        </h1>
+                                        <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -111,10 +111,10 @@
                                         Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                     </p>
                                     <div class="options">
-                                        <h6>
+                                        <h1>
                                             $18
-                                        </h6>
-                                        <a href="shop-deals.html"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                        </h1>
+                                        <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -134,10 +134,10 @@
                                         Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                     </p>
                                     <div class="options">
-                                        <h6>
+                                        <h1>
                                             $10
-                                        </h6>
-                                        <a href="shop-deals.html"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                        </h1>
+                                        <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -157,10 +157,10 @@
                                         Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                     </p>
                                     <div class="options">
-                                        <h6>
+                                        <h1>
                                             $15
-                                        </h6>
-                                        <a href="shop-deals.html"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                        </h1>
+                                        <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -180,10 +180,10 @@
                                         Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                     </p>
                                     <div class="options">
-                                        <h6>
+                                        <h1>
                                             $12
-                                        </h6>
-                                        <a href="shop-deals.html"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                        </h1>
+                                        <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -203,10 +203,10 @@
                                         Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                     </p>
                                     <div class="options">
-                                        <h6>
+                                        <h1>
                                             $14
-                                        </h6>
-                                        <a href="shop-deals.html"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                        </h1>
+                                        <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -226,10 +226,10 @@
                                         Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
                                     </p>
                                     <div class="options">
-                                        <h6>
+                                        <h1>
                                             $10
-                                        </h6>
-                                        <a href="shop-deals.html"><i class="fa-solid fa-cart-shopping text-white"></i></a>
+                                        </h1>
+                                        <a href="{{route('website.cartShopDetails')}}"><i class="fa-solid fa-cart-shopping text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
