@@ -28,7 +28,7 @@
                             <h6>
                                 <span>20%</span> Off
                             </h6>
-                            <a href="{{route('website.shopDetails')}}">
+                            <a href="">
                                 Order Now <i class="fa-solid fa-cart-shopping text-white"></i>
                             </a>
                         </div>
@@ -46,7 +46,7 @@
                             <h6>
                                 <span>15%</span> Off
                             </h6>
-                            <a href="{{route('website.shopDetails')}}">
+                            <a href="">
                                 Order Now<i class="fa-solid fa-cart-shopping text-white"></i>
                             </a>
                         </div>

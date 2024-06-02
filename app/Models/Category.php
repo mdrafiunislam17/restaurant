@@ -13,4 +13,9 @@ class Category extends Model
         'slug',
         'image',
     ];
+
+    public function menuItems()
+    {
+        return $this->hasMany(MenuItem::class);
+    }
 }

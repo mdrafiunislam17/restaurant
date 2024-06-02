@@ -2,19 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\MenuItem;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('website.index');
+        $categories = Category::all();
+        $selectedCategory = $request->get('category');
+
+        $menuItems = $selectedCategory
+            ? MenuItem::whereHas('category', function($query) use ($selectedCategory) {
+                $query->where('slug', $selectedCategory);
+            })->get()
+            : MenuItem::all();
+        return view('website.index',compact('categories','menuItems','selectedCategory'));
     }
 
-    public function menu()
+    public function menu(Request $request)
     {
-        return view('website.menu');
+        $categories = Category::all();
+        $selectedCategory = $request->get('category');
 
+        $menuItems = $selectedCategory
+            ? MenuItem::whereHas('category', function($query) use ($selectedCategory) {
+                $query->where('slug', $selectedCategory);
+            })->get()
+            : MenuItem::all();
+
+        return view('website.menu', compact('categories', 'menuItems', 'selectedCategory'));
     }
 
     public function about()
@@ -29,10 +47,11 @@ class WebsiteController extends Controller
 
     }
 
-    public function shopDeals()
+    public function shopDeals(Request $request, $id)
     {
-        return view('website.shopDetail');
-
+        $menuItem = MenuItem::findOrFail($id);
+        $quantity = $request->input('quantity', 1);
+        return view('website.shopDetail', compact('menuItem', 'quantity'));
     }
     public function cartShopDeals()
     {

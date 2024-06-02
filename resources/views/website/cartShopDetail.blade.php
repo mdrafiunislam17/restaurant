@@ -415,18 +415,27 @@
                     <div class="d-flex align-items-center mb-lg-5 comment">
                         <div class="flex-shrink-0">
                             <img src="https://avatars.discourse-cdn.com/v4/letter/c/ecc23a/48.png"
-                                 alt="" width="48" height="48" style="border-radius: 50px">
-
+                                 alt="User Avatar" width="48" height="48" style="border-radius: 50px">
                         </div>
                         <div class="flex-grow-1 ms-3 custom-card">
                             <h3 class="text-secondary userName" style="font-weight: bold; display: inline-block;">Candace Kemp</h3>
-                            <h3 href="#!" class="float-end text-dark " style="padding-left: 900px; display: inline-block;">Oct 2024</h3><br><br>
+                            <h3 class="float-end text-dark" style="padding-left: 900px; display: inline-block;">Oct 2024</h3>
+                            <br><br>
+                            <div class="text-warning mb-1 me-2" style="color: #ffc107;">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half"></i>
+                                <span class="ms-1">10K Reviews</span>
+                            </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aperiam aspernatur blanditiis
                                 cumque dolorem eius error esse, est et, eveniet in ipsum iusto molestiae obcaecati
                                 odio pariatur veritatis vitae voluptatem.</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 lg-12">
                     <div class="d-flex align-items-center mb-lg-5 comment">
                         <div class="flex-shrink-0">
@@ -437,6 +446,13 @@
                         <div class="flex-grow-1 ms-3 custom-card">
                             <h3 class="text-secondary userName" style="font-weight: bold; display: inline-block;">Mariam Herman</h3>
                             <h3 href="#!" class="float-end text-dark " style="padding-left: 900px; display: inline-block;">Oct 2024</h3><br><br>
+                            <div class="text-warning mb-1 me-2" style="color: #ffc107;">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half"></i>
+                                <span class="ms-1">10K Reviews</span>
+                            </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aperiam aspernatur blanditiis
                                 cumque dolorem eius error esse, est et, eveniet in ipsum iusto molestiae obcaecati
                                 odio pariatur veritatis vitae voluptatem.</p>
@@ -453,6 +469,14 @@
                         <div class="flex-grow-1 ms-3 custom-card">
                             <h3 class="text-secondary userName" style="font-weight: bold; display: inline-block;">Gretchen Garner</h3>
                             <h3 href="#!" class="float-end text-dark " style="padding-left: 900px; display: inline-block;">Oct 2024</h3><br><br>
+                            <div class="text-warning mb-1 me-2" style="color: #ffc107;">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half"></i>
+                                <span class="ms-1">10K Reviews</span>
+                            </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aperiam aspernatur blanditiis
                                 cumque dolorem eius error esse, est et, eveniet in ipsum iusto molestiae obcaecati
                                 odio pariatur veritatis vitae voluptatem.</p>
@@ -469,6 +493,13 @@
                         <div class="flex-grow-1 ms-3 custom-card">
                             <h3 class="text-secondary userName" style="font-weight: bold; display: inline-block;">Aiko Davidson</h3>
                             <h3 href="#!" class="float-end text-dark " style="padding-left: 900px; display: inline-block;">Oct 2024</h3><br><br>
+                            <div class="text-warning mb-1 me-2" style="color: #ffc107;">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half"></i>
+                                <span class="ms-1">10K Reviews</span>
+                            </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aperiam aspernatur blanditiis
                                 cumque dolorem eius error esse, est et, eveniet in ipsum iusto molestiae obcaecati
                                 odio pariatur veritatis vitae voluptatem.</p>

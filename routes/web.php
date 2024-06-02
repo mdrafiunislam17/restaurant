@@ -31,7 +31,7 @@ Route::get('/', [WebsiteController::class,'index'])->name('website.home');
 Route::get('/menu', [WebsiteController::class,'menu'])->name('website.menu');
 Route::get('/about', [WebsiteController::class,'about'])->name('website.about');
 Route::get('/bookTable.blade.php', [WebsiteController::class,'bookTable'])->name('website.bookTable.blade.php');
-Route::get('/shopDetails', [WebsiteController::class,'shopDeals'])->name('website.shopDetails');
+Route::get('/shopDetails/{id}', [WebsiteController::class,'shopDeals'])->name('website.shopDetails');
 Route::get('/cartShopDetails', [WebsiteController::class,'cartShopDeals'])->name('website.cartShopDetails');
 
 Auth::routes();

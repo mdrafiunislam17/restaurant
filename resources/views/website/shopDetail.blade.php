@@ -97,7 +97,7 @@
         border: 1px solid #ced4da;
         border-radius: 50%;
         width: 40px;
-        height: 40px;
+        height: 45px;
         line-height: 0;
     }
 
@@ -205,7 +205,6 @@
 
 
 </style>
-<h1>hello</h1>
 
     <section class="py-5">
         <div class="container">
@@ -213,26 +212,19 @@
                 <aside class="col-lg-6">
                     <div class="slider">
                         <div class="slides">
-                            <div class="slide"><img src="{{asset('asset/images/pizza-img-1.png')}}" alt="pizza-img-1"></div>
-                            <div class="slide"><img src="{{asset('asset/images/pizza-img-2.png')}}" alt="pizza-img-2"></div>
-                            <div class="slide"><img src="{{asset('asset/images/pizza-img-3.png')}}" alt="pizza-img-3"></div>
-                            <div class="slide"><img src="{{asset('asset/images/pizza-img-4.png')}}" alt="pizza-img-4"></div>
-                            <div class="slide"><img src="{{asset('asset/images/pizza-img-5.png')}}" alt="pizza-img-5"></div>
+                            <img class="slide" src="{{ asset("storage/uploads/menuItems/$menuItem->image") }}" alt="{{ $menuItem->name }}">
                         </div>
                         <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
                         <button class="next" onclick="changeSlide(1)">&#10095;</button>
                     </div>
                     <div class="slider2">
-                        <img class="gc-overlay-display" alt="pizza-img-1" src="{{asset('asset/images/pizza-img-1.png')}}" height="100px" onclick="currentSlide(0)">
-                        <img class="gc-overlay-display" alt="pizza-img-2" src="{{asset('asset/images/pizza-img-2.png')}}" height="100px" onclick="currentSlide(1)">
-                        <img class="gc-overlay-display" alt="pizza-img-3" src="{{asset('asset/images/pizza-img-3.png')}}" height="100px" onclick="currentSlide(2)">
-                        <img class="gc-overlay-display" alt="pizza-img-4" src="{{asset('asset/images/pizza-img-4.png')}}" height="100px" onclick="currentSlide(3)">
-                        <img class="gc-overlay-display" alt="pizza-img-5" src="{{asset('asset/images/pizza-img-5.png')}}" height="100px" onclick="currentSlide(4)">
+                        <img class="gc-overlay-display" src="{{ asset("storage/uploads/menuItems/$menuItem->image") }}"
+                             alt="{{ $menuItem->name }}" height="100px" onclick="currentSlide(0)">
                     </div>
                 </aside>
                 <main class="col-lg-6">
                     <div class="ps-lg-3">
-                        <h1 class="title text-dark">Shrimp Pizza</h1>
+                        <h1 class="title text-dark">{{ $menuItem->name }}</h1>
                         <div class="d-flex flex-row my-3">
                             <div class="text-warning mb-1 me-2">
                                 <i class="fa fa-star"></i>
@@ -247,13 +239,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <span class="h5">$75.00</span>
+                            <span>${{ $menuItem->price }}</span>
                         </div>
 
-                        <p style="font-size: 18px; font-family: 'Times New Roman', Times, serif;">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper sagittis dolor aliquet quam feugiat nisi
-                            a ultrices feugiat. Viverra facilisi turpis eget tempor. Mattis risus amet euismod eleifend.
-                        </p>
+                        <p>{{ $menuItem->description }}</p>
 
                         <div class="row">
                             <dt class="col-3">Category :</dt>
@@ -266,13 +255,14 @@
                         <hr/>
 
                         <div class="row mb-4">
+
                             <div class="col-md-4 col-6 mb-3">
                                 <label class="mb-2 d-block">Quantity</label>
                                 <div class="input-group mb-3" style="width: 170px;">
                                     <button class="btn btn-white border px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
                                         <i class="fas fa-minus"></i>
                                     </button>
-                                    <input type="text" class="form-control text-center" value="1" id="quantity" />
+                                    <input type="text" class="form-control text-center" value="{{ $quantity }}" id="quantity" />
                                     <button class="btn btn-white border px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
                                         <i class="fas fa-plus"></i>
                                     </button>
@@ -292,6 +282,8 @@
             </div>
         </div>
     </section>
+<script src="{{url('https://code.jquery.com/jquery-3.6.0.min.js')}}" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 
     <script>
         let currentSlideIndex = 0;
