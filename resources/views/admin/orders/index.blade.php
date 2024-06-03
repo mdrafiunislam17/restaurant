@@ -1,11 +1,11 @@
-@extends("admin.layouts.master")
+@extends("Admin.layouts.master")
 @section("title", "Orders")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Orders</h1>
-            <a href="{{ route("admin.orders.create") }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <a href="{{ route("Admin.orders.create") }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Create Order
             </a>
         </div>
@@ -64,9 +64,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route("admin.orders.show", $order->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
-                                    <a href="{{ route("admin.orders.edit", $order->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
-                                    <form action="{{ route('admin.orders.destroy', $order->id) }}" method="post" class="d-inline">
+                                    <a href="{{ route("Admin.orders.show", $order->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route("Admin.orders.edit", $order->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('Admin.orders.destroy', $order->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm" onclick="return confirm('Are you sure to delete?')">

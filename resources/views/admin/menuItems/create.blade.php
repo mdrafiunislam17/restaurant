@@ -1,11 +1,11 @@
-@extends("admin.layouts.master")
+@extends("Admin.layouts.master")
 @section("title", "Create menuItems")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Create menuItems</h1>
-            <a href="{{ route("admin.menuItems.index") }}"
+            <a href="{{ route("Admin.menuItems.index") }}"
                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-eye fa-sm text-white-50"></i> menuItems index</a>
         </div>
@@ -44,7 +44,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
-                <form action="{{ route("admin.menuItems.store") }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route("Admin.menuItems.store") }}" method="post" enctype="multipart/form-data">
                     @csrf
 {{--                    <div class="form-group row">--}}
 {{--                        <label for="restaurant_id" class="col-sm-3 col-form-label text-right font-weight-bold">Restaurant *</label>--}}

@@ -4,44 +4,77 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\MenuItem;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class WebsiteController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * @return Collection
+     */
+    private function categories(): Collection
     {
-        $categories = Category::all();
-        $selectedCategory = $request->get('category');
+        return Category::all();
+    }
 
-        $menuItems = $selectedCategory
-            ? MenuItem::whereHas('category', function($query) use ($selectedCategory) {
-                $query->where('slug', $selectedCategory);
-            })->get()
-            : MenuItem::all();
+    /**
+     * @return Collection
+     */
+    private function menuItems(): Collection
+    {
+        return MenuItem::all();
+    }
+
+    /**
+     * @param $categorySlug
+     * @return Builder[]|Collection
+     */
+    private function selectMenuItems($categorySlug): Builder|Collection
+    {
+        return MenuItem::query()->whereHas('category', function($query) use ($categorySlug) {
+            $query->where('slug', $categorySlug);
+        })->get();
+    }
+
+    /**
+     * @return View
+     */
+    public function index(): View
+    {
+        $categories = $this->categories();
+        $menuItems =$this->menuItems();
+        $selectedCategory = null;
+
         return view('website.index',compact('categories','menuItems','selectedCategory'));
     }
 
-    public function menu(Request $request)
+    /**
+     * @param string $selectedCategory
+     * @return View
+     */
+    public function menu(string $selectedCategory): View
     {
-        $categories = Category::all();
-        $selectedCategory = $request->get('category');
-
-        $menuItems = $selectedCategory
-            ? MenuItem::whereHas('category', function($query) use ($selectedCategory) {
-                $query->where('slug', $selectedCategory);
-            })->get()
-            : MenuItem::all();
+        $categories = $this->categories();
+        $menuItems = $selectedCategory ? $this->selectMenuItems($selectedCategory) : $this->menuItems();
 
         return view('website.menu', compact('categories', 'menuItems', 'selectedCategory'));
     }
 
-    public function about()
+    /**
+     * @return View
+     */
+    public function about(): View
     {
         return view('website.about');
 
     }
 
-    public function bookTable()
+    /**
+     * @return View
+     */
+    public function bookTable(): View
     {
         return view('website.bookTable');
 
@@ -53,9 +86,9 @@ class WebsiteController extends Controller
         $quantity = $request->input('quantity', 1);
         return view('website.shopDetail', compact('menuItem', 'quantity'));
     }
+
     public function cartShopDeals()
     {
         return view('website.cartShopDetail');
-
     }
 }

@@ -1,11 +1,11 @@
-@extends("admin.layouts.master")
+@extends("Admin.layouts.master")
 @section("title", "Edit Category")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Edit Category</h1>
-            <a href="{{ route("admin.categories.index") }}"
+            <a href="{{ route("Admin.categories.index") }}"
                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-eye fa-sm text-white-50"></i> Categories Index</a>
         </div>
@@ -44,7 +44,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
-                <form action="{{ route("admin.categories.update", $category->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route("Admin.categories.update", $category->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

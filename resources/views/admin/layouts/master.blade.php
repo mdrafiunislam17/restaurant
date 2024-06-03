@@ -13,7 +13,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{ asset("css/sb-admin-2.min.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/sb-Admin-2.min.css") }}" rel="stylesheet">
     <link href="{{ asset("css/custom.css") }}" rel="stylesheet">
     <link href="{{ asset("vendor/datatables/dataTables.bootstrap4.min.css") }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -28,7 +28,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    @include("admin.layouts.aside")
+    @include("Admin.layouts.aside")
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -37,7 +37,7 @@
         <!-- Main Content -->
         <div id="content">
             <!-- Navbar -->
-            @include("admin.layouts.nav")
+            @include("Admin.layouts.nav")
             <!-- End of Navbar -->
 
             <!-- Begin Page Content -->
@@ -48,7 +48,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        @include("admin.layouts.footer")
+        @include("Admin.layouts.footer")
         <!-- End of Footer -->
 
     </div>
@@ -90,7 +90,7 @@
 <script src="{{ asset("vendor/jquery-easing/jquery.easing.min.js") }}"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="{{ asset("js/sb-admin-2.min.js") }}"></script>
+<script src="{{ asset("js/sb-Admin-2.min.js") }}"></script>
 
 <!-- Page level plugins -->
 <script src="{{ asset("vendor/datatables/jquery.dataTables.min.js") }}"></script>

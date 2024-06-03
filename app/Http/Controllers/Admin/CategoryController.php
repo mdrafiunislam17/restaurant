@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -15,13 +15,13 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        return view('Admin.categories.index', compact('categories'));
     }
 
     // Show the form for creating a new resource.
     public function create()
     {
-        return view('admin.categories.create');
+        return view('Admin.categories.create');
     }
 
     // Store a newly created resource in storage.
@@ -48,7 +48,7 @@ class CategoryController extends Controller
 
         Category::create($data);
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('Admin.categories.index')->with('success', 'Category created successfully.');
     }
 
 
@@ -56,7 +56,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::findOrFail($id);
-        return view('admin.categories.show', compact('category'));
+        return view('Admin.categories.show', compact('category'));
     }
 
 
@@ -64,7 +64,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('admin.categories.edit', compact('category'));
+        return view('Admin.categories.edit', compact('category'));
     }
 
     public function update(Request $request, $id)
@@ -91,7 +91,7 @@ class CategoryController extends Controller
 
         $category->update($data);
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('Admin.categories.index')->with('success', 'Category updated successfully.');
     }
 
     // Remove the specified resource from storage.
@@ -105,6 +105,6 @@ class CategoryController extends Controller
         }
 
         $category->delete();
-        return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('Admin.categories.index')->with('success', 'Category deleted successfully.');
     }
 }

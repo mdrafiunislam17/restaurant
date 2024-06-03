@@ -1,11 +1,11 @@
-@extends("admin.layouts.master")
+@extends("Admin.layouts.master")
 @section("title", "restaurant")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">restaurant</h1>
-            <a href="{{ route("admin.restaurant.create") }}"
+            <a href="{{ route("Admin.restaurant.create") }}"
                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-plus fa-sm text-white-50"></i>Create restaurant</a>
         </div>
@@ -49,11 +49,11 @@
                                 <td>{{ $restaurant->address }}</td>
 
                                 <td>
-                                    <a href="{{ route("admin.restaurant.show", $restaurant->id) }}" class="btn btn-sm"><i
+                                    <a href="{{ route("Admin.restaurant.show", $restaurant->id) }}" class="btn btn-sm"><i
                                             class="fa fa-eye"></i></a>
-                                    <a href="{{ route("admin.restaurant.edit", $restaurant->id) }}" class="btn btn-sm"><i
+                                    <a href="{{ route("Admin.restaurant.edit", $restaurant->id) }}" class="btn btn-sm"><i
                                             class="fa fa-edit"></i></a>
-                                    <form action="{{ route("admin.restaurant.destroy", $restaurant->id) }}" method="post" class="d-inline">
+                                    <form action="{{ route("Admin.restaurant.destroy", $restaurant->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm" onclick="return confirm('Are you sure to delete?')">
