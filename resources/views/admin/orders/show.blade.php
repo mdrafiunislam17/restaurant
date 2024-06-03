@@ -1,11 +1,11 @@
-@extends("admin.layouts.master")
+@extends("Admin.layouts.master")
 @section("title", "Show Order")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Show orders</h1>
-            <a href="{{ route("admin.orders.index") }}"
+            <a href="{{ route("Admin.orders.index") }}"
                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-arrow-left fa-sm text-white-50"></i> Back to Orders</a>
         </div>

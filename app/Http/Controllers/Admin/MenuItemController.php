@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -14,14 +14,14 @@ class MenuItemController extends Controller
     public function index()
     {
         $menuItems = MenuItem::all();
-        return view('admin.menuItems.index', compact('menuItems'));
+        return view('Admin.menuItems.index', compact('menuItems'));
     }
 
     public function create()
     {
 
         $categories = Category::all();
-        return view('admin.menuItems.create', compact( 'categories'));
+        return view('Admin.menuItems.create', compact( 'categories'));
     }
 
     // Store a new menu item
@@ -48,7 +48,7 @@ class MenuItemController extends Controller
         // Create the menu item
         MenuItem::create($validatedData);
 
-        return redirect()->route('admin.menuItems.index')->with('success', 'Menu item created successfully.');
+        return redirect()->route('Admin.menuItems.index')->with('success', 'Menu item created successfully.');
     }
 
     public function show($id)
@@ -56,14 +56,14 @@ class MenuItemController extends Controller
 
         $categories = Category::all();
         $menuItem = MenuItem::findOrFail($id);
-        return view('admin.menuItems.show', compact('menuItem',  'categories'));
+        return view('Admin.menuItems.show', compact('menuItem',  'categories'));
     }
 
     public function edit($id)
     {
         $menuItem = MenuItem::findOrFail($id);;
         $categories = Category::all();
-        return view('admin.menuItems.edit', compact('menuItem', 'categories'));
+        return view('Admin.menuItems.edit', compact('menuItem', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -99,7 +99,7 @@ class MenuItemController extends Controller
         // Update the menu item
         $menuItem->update($validatedData);
 
-        return redirect()->route('admin.menuItems.index')->with('success', 'Menu item updated successfully.');
+        return redirect()->route('Admin.menuItems.index')->with('success', 'Menu item updated successfully.');
     }
 
 
@@ -119,6 +119,6 @@ class MenuItemController extends Controller
         // Delete the menu item
         $menuItem->delete();
 
-        return redirect()->route('admin.menuItems.index')->with('success', 'Menu item deleted successfully.');
+        return redirect()->route('Admin.menuItems.index')->with('success', 'Menu item deleted successfully.');
     }
 }

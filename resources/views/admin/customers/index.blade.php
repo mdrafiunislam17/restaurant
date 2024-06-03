@@ -1,11 +1,11 @@
-@extends("admin.layouts.master")
+@extends("Admin.layouts.master")
 @section("title", "customers")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">customers</h1>
-            <a href="{{ route("admin.customers.create") }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <a href="{{ route("Admin.customers.create") }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Create customers
             </a>
         </div>
@@ -49,9 +49,9 @@
                                 <td>{{ $customer->email }}</td>
                                 <td>{{ $customer->contact_info }}</td>
                                    <td>
-                                       <a href="{{ route("admin.customers.show", $customer->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
-                                       <a href="{{ route("admin.customers.edit", $customer->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
-                                       <form action="{{ route('admin.customers.destroy', $customer->id) }}" method="post" class="d-inline">
+                                       <a href="{{ route("Admin.customers.show", $customer->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
+                                       <a href="{{ route("Admin.customers.edit", $customer->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
+                                       <form action="{{ route('Admin.customers.destroy', $customer->id) }}" method="post" class="d-inline">
                                            @csrf
                                            @method('DELETE')
                                            <button class="btn btn-sm" onclick="return confirm('Are you sure to delete?')">

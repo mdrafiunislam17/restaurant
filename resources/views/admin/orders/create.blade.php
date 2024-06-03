@@ -1,11 +1,11 @@
-@extends("admin.layouts.master")
+@extends("Admin.layouts.master")
 @section("title", "Create orders")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Create orders</h1>
-            <a href="{{ route("admin.orders.index") }}"
+            <a href="{{ route("Admin.orders.index") }}"
                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-eye fa-sm text-white-50"></i> Orders Index</a>
         </div>
@@ -47,7 +47,7 @@
         <!-- Order Form -->
         <div class="card shadow mb-4">
             <div class="card-body">
-                <form action="{{ route("admin.orders.store") }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route("Admin.orders.store") }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group row">
@@ -171,7 +171,7 @@
                 var menuItemId = $(this).val();
                 if (menuItemId) {
                     $.ajax({
-                        url: '{{ route("admin.get.menu.item.price") }}',
+                        url: '{{ route("Admin.get.menu.item.price") }}',
                         type: 'GET',
                         data: { id: menuItemId },
                         success: function(response) {

@@ -1,11 +1,11 @@
-@extends("admin.layouts.master")
+@extends("Admin.layouts.master")
 @section("title", "Edit OrderItem")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Edit OrderItem</h1>
-            <a href="{{ route('admin.orderItems.index') }}"
+            <a href="{{ route('Admin.orderItems.index') }}"
                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-eye fa-sm text-white-50"></i> OrderItems Index</a>
         </div>
@@ -47,7 +47,7 @@
         <!-- Form for Editing OrderItem -->
         <div class="card shadow mb-4">
             <div class="card-body">
-                <form action="{{ route('admin.orderItems.update', $orderItem->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('Admin.orderItems.update', $orderItem->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group row">

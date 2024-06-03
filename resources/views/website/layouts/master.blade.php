@@ -37,9 +37,6 @@
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     @stack("styles")
     <style>
-
-
-
         .header{
             background-color: #00000080;
             margin-top: -15px;
@@ -96,8 +93,6 @@
 
 <body>
 
-
-
 <!-- Main Content -->
 <div id="content">
     <!-- Navbar -->
@@ -111,12 +106,6 @@
 </div>
 
 @include("website.layouts.footer")
-
-
-
-
-
-
 
 <!-- jQery -->
 <script src="{{url('js/jquery-3.4.1.min.js')}}"></script>
@@ -138,9 +127,6 @@
 <script src="{{url('https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap')}}">
 </script>
 <!-- End Google Map -->
-
-
-
 
 
 <!-- jQuery, Popper.js, and Bootstrap JS -->
