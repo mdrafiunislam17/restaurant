@@ -7,6 +7,7 @@ use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -26,10 +27,14 @@ class CategoryController extends Controller
     // Store a newly created resource in storage.
     public function store(Request $request)
     {
+        $request->merge([
+           'slug' => !empty($request->input('slug')) ? Str::slug($request->input('slug')) : Str::slug($request->input('name')),
+        ]);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:categories,slug',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $data = $request->only(['name', 'slug']);
