@@ -202,6 +202,26 @@
             height: 60px;
         }
     }
+    .rating-main {
+    display: flex;
+    align-items: center;
+    }
+
+    .rating {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    }
+
+    .rating li {
+    margin-right: 5px; /* Adjust spacing between stars as needed */
+    }
+
+    .total-review {
+    margin-left: 10px; /* Adjust spacing between stars and the review count as needed */
+    }
+
 
 
 </style>
@@ -227,54 +247,72 @@
                         <h1 class="title text-dark">{{ $menuItem->name }}</h1>
                         <div class="d-flex flex-row my-3">
                             <div class="text-warning mb-1 me-2">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span class="ms-1">80K Reviews</span>
-                            </div>
-                            <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
-                            <span class="text-success ms-2">In stock</span>
-                        </div>
+                                <div class="rating-main">
+                                    <ul class="rating">
+                                        @php
+                                            $reviews = $menuItem->getReview; // Fetch the related reviews
+                                            $rate = $reviews ? ceil($reviews->avg('rate')) : 0; // Check if reviews exist and calculate the average rating
+                                        @endphp
 
-                        <div class="mb-3">
-                            <span>${{ $menuItem->price }}</span>
-                        </div>
-
-                        <p>{{ $menuItem->description }}</p>
-
-                        <div class="row">
-                            <dt class="col-3">Category :</dt>
-                            <dd class="col-9">Chicken, Lunch, Pizza, Burger</dd>
-
-                            <dt class="col-3">Tags :</dt>
-                            <dd class="col-9">Healthy, Organic, Chicken, Sauce</dd>
-                        </div>
-
-                        <hr/>
-
-                        <div class="row mb-4">
-
-                            <div class="col-md-4 col-6 mb-3">
-                                <label class="mb-2 d-block">Quantity</label>
-                                <div class="input-group mb-3" style="width: 170px;">
-                                    <button class="btn btn-white border px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <input type="text" class="form-control text-center" value="{{ $quantity }}" id="quantity" />
-                                    <button class="btn btn-white border px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
+                                        @for($i = 1; $i <= 5; $i++)
+                                            @if($rate >= $i)
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            @else
+                                            <li><i class="fa-regular fa-star"></i></li> <!-- Use fa-star-o for empty stars -->
+                                            @endif
+                                        @endfor
+                                    </ul>
+                                    <a href="#" class="total-review">({{ $reviews ? $reviews->count() : 0 }}) Review</a>
                                 </div>
                             </div>
 
                         </div>
 
+                        <div class="mb-3">
+                            <span style="font-weight: bold; font-size:30px" >
+                                $@php
+                                    $after_discount = $menuItem->price - (($menuItem->price * $menuItem->discount) / 100);
+                                @endphp
+                                {{ number_format($after_discount, 2) }}
+                                <!-- Display the calculated price with two decimal places -->
+                            </span>
+                        </div>
 
-                        <a href="#" class="btn btn-warning shadow-0"> Buy now </a>
-                        <a href="{{route('website.cartShopDetails')}}" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
-                        <a href="#" class="btn btn-info"> <i class="me-1 fa fa-heart "></i>Save </a>
+                        <p>{{ $menuItem->description }}</p>
+                        <p>Category :{{$menuItem->name}}</p>
+                        <p>Sub Category :{{$menuItem->slug}}</p>
+
+                        <hr/>
+                        <div class="product-buy">
+                            <form action="{{route('singleAddToCart',['menuItem' => $menuItem->slug])}}" method="post">
+                                @csrf
+                                <div class="row mb-4">
+
+                                    <div class="col-md-4 col-6 mb-3">
+                                        <label class="mb-2 d-block">Quantity</label>
+                                        <div class="input-group mb-3" style="width: 170px;">
+                                            <button class="btn btn-white border px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="text" class="form-control text-center" value="{{ $quantity }}" id="quantity" />
+                                            <button class="btn btn-white border px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <a href="#" class="btn btn-warning shadow-0"> Buy now </a>
+                                <a href="{{route('wishlist-count',$menuItem->slug)}}"
+                                class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+                                <a href="{{route('wishlist-count',$menuItem->slug)}}" class="btn btn-info"> <i class="me-1 fa fa-heart "></i>Save </a>
+
+                            </form>
+
+                        </div>
+
 
 
                     </div>

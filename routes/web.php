@@ -5,8 +5,10 @@
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MenuItemController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\WishlistsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +32,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebsiteController::class,'index'])->name('website.home');
 Route::get('/menu', [WebsiteController::class,'menu'])->name('website.menu');
 Route::get('/about', [WebsiteController::class,'about'])->name('website.about');
-Route::get('/bookTable.blade.php', [WebsiteController::class,'bookTable'])->name('website.bookTable.blade.php');
-Route::get('/shopDetails/{id}', [WebsiteController::class,'shopDeals'])->name('website.shopDetails');
-Route::get('/cartShopDetails', [WebsiteController::class,'cartShopDeals'])->name('website.cartShopDetails');
+Route::get('/book-table', [WebsiteController::class,'bookTable'])->name('website.bookTable.blade.php');
+Route::get('/shop-details/{id}', [WebsiteController::class,'shopDeals'])->name('website.shopDetails');
+Route::get('/cart-shop-details', [WebsiteController::class,'cartShopDeals'])->name('website.cartShopDetails');
+
+
+//CartController
+Route::get('add-to-cart/{id}', [CartController::class,'addToCart'])->name('addToCart');
+Route::post('cart/single-add/{menuItem}',[CartController::class,'singleAddToCart'])->name('singleAddToCart');
+Route::put('update-cart/{id}', [CartController::class,'updateCart'])->name('updateCart');
+Route::delete('remove-from-cart/{id}', [CartController::class,'removeFromCart'])->name('removeFromCart');
+
+//WishlistsController
+Route::get('wishlist/count', [WishlistsController::class,'wishListCount'])->name('wishlist-count');
+Route::delete('remove-wishlist/{id}', [WishlistsController::class,'removeWishlist'])->name('remove-wishlist');
+
+
 
 Auth::routes();
 
@@ -61,4 +76,7 @@ Route::get('/menuItems/{id}', [MenuItemController::class, 'show'])->name('admin.
 Route::get('/menuItems/{id}/edit', [MenuItemController::class, 'edit'])->name('admin.menuItems.edit');
 Route::put('/menuItems/{id}', [MenuItemController::class, 'update'])->name('admin.menuItems.update');
 Route::delete('/menuItems/{id}', [MenuItemController::class, 'destroy'])->name('admin.menuItems.destroy');
+
+
+
 

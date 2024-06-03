@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2024 at 02:19 PM
+-- Generation Time: Jun 03, 2024 at 04:48 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `restaurant`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `menu_item_id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `status` enum('new','progress','delivered','cancel') NOT NULL DEFAULT 'new',
+  `quantity` int(11) NOT NULL,
+  `amount` double(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -41,16 +59,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Candace Kemp', 'Nesciunt voluptate', '1717155214.jpg', '2024-05-31 05:33:34', '2024-05-31 05:33:34'),
-(2, 'Mariam Herman', 'Omnis temporibus et', '1717155225.jpg', '2024-05-31 05:33:45', '2024-05-31 05:33:45'),
-(3, 'Gretchen Garner', 'Enim harum tempore', '1717155238.jpg', '2024-05-31 05:33:58', '2024-05-31 05:33:58'),
-(4, 'Aiko Davidson', 'Iste fuga Exercitat', '1717155257.jpg', '2024-05-31 05:34:17', '2024-05-31 05:34:17'),
-(5, 'Ryan Garner', 'A adipisicing volupt', '1717155268.jpg', '2024-05-31 05:34:28', '2024-05-31 05:34:28'),
-(6, 'Bethany Meyers', 'Voluptatem Dolor oc', '1717155343.jpg', '2024-05-31 05:35:43', '2024-05-31 05:35:43'),
-(7, 'Beau Hebert', 'Sit modi voluptate', '1717155354.jpg', '2024-05-31 05:35:54', '2024-05-31 05:35:54'),
-(8, 'Ivor Ward', 'Adipisci consequuntu', '1717155370.jpg', '2024-05-31 05:36:10', '2024-05-31 05:36:10'),
-(9, 'Colby Vincent', 'Et debitis veritatis', '1717155489.jpg', '2024-05-31 05:38:09', '2024-05-31 05:38:09'),
-(10, 'Kirk Rodgers', 'Animi expedita fugi', '1717155503.jpg', '2024-05-31 05:38:23', '2024-05-31 05:38:23');
+(11, 'Burger', 'Lunchtime just got an upgrade!', '1717341323.png', '2024-06-02 09:15:23', '2024-06-02 09:15:23'),
+(12, 'Pizza', 'All Season Gulliver Pizza (20 Inch)', '1717342056.jpg', '2024-06-02 09:27:36', '2024-06-02 09:27:36'),
+(13, 'Pasta', 'Pasta Arrabiata', '1717342343.jpg', '2024-06-02 09:32:23', '2024-06-02 09:32:23'),
+(14, 'Fries', 'Perfect French Fries', '1717342419.jpeg', '2024-06-02 09:33:40', '2024-06-02 09:33:40');
 
 -- --------------------------------------------------------
 
@@ -110,16 +122,22 @@ CREATE TABLE `menu_items` (
 --
 
 INSERT INTO `menu_items` (`id`, `category_id`, `name`, `slug`, `image`, `description`, `price`, `discount_price`, `status`, `created_at`, `updated_at`) VALUES
-(1, 7, 'Cain Grant', 'Paki Rios', '1717157438.jpeg', 'Aut autem aliqua Et', 370.00, 0.00, 1, '2024-05-31 06:10:38', '2024-05-31 06:10:38'),
-(2, 10, 'May Garrison', 'Orson Parks', '1717157450.jpg', 'Est aut nobis amet', 400.00, 0.00, 1, '2024-05-31 06:10:50', '2024-05-31 06:10:50'),
-(3, 10, 'Latifah Clark', 'Alexa Pate', '1717157468.jpeg', 'Sed tempor ut cillum', 465.00, 0.00, 1, '2024-05-31 06:11:08', '2024-05-31 06:11:08'),
-(4, 2, 'Casey Mcgowan', 'Maile Chang', '1717157894.jpg', 'Dolor qui quia inven', 472.00, 0.00, 1, '2024-05-31 06:11:23', '2024-05-31 06:18:14'),
-(5, 9, 'Cameron Mcfadden', 'Lydia Richard', '1717157869.jpg', 'Eiusmod corrupti at', 763.00, 0.00, 1, '2024-05-31 06:12:43', '2024-05-31 06:17:49'),
-(6, 6, 'Courtney Rojas', 'Astra Melton', '1717157852.jpg', 'Similique aliquam lo', 223.00, 0.00, 1, '2024-05-31 06:13:01', '2024-05-31 06:17:32'),
-(7, 7, 'Tad Livingston', 'Bertha Russell', '1717157831.jpg', 'Reprehenderit dolor', 728.00, 0.00, 1, '2024-05-31 06:13:17', '2024-05-31 06:17:11'),
-(8, 5, 'Lacey Campos', 'Madeline Coffey', '1717157815.jpeg', 'Tempora laudantium', 348.00, 0.00, 1, '2024-05-31 06:13:40', '2024-05-31 06:16:55'),
-(9, 7, 'Alma Phillips', 'Cruz Mckee', '1717157803.jpeg', 'Excepturi autem maio', 933.00, 0.00, 1, '2024-05-31 06:14:50', '2024-05-31 06:16:43'),
-(10, 10, 'Harriet Mills', 'Anthony Frederick', '1717157792.jpeg', 'Ea nihil pariatur O', 51.00, 0.00, 1, '2024-05-31 06:15:04', '2024-05-31 06:16:32');
+(11, 11, 'Delicious Burger', 'Burger', '1717341570.png', 'Burgers, Lobsters and plenty to get your teeth into in between.', 95.00, 0.00, 1, '2024-06-02 09:19:30', '2024-06-02 09:19:30'),
+(12, 11, 'Delicious Burger', 'Delicious Burger Test', '1717341658.png', 'Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque', 30.00, 0.00, 1, '2024-06-02 09:20:59', '2024-06-02 09:20:59'),
+(13, 11, 'Tasty Burger', 'Veniam debitis quaerat officiis', '1717341710.png', 'Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque', 50.00, 0.00, 1, '2024-06-02 09:21:50', '2024-06-02 09:21:50'),
+(14, 11, 'Tastiest Burger', 'agnam voluptatem', '1717341778.png', 'Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque', 50.00, 0.00, 1, '2024-06-02 09:22:58', '2024-06-02 09:22:58'),
+(15, 14, 'Perfect French Fries', 'These French fries are super crunchy and easy to make', '1717342484.jpeg', 'These French fries are super crunchy and easy to make. You don\'t need a heavy-duty fryer and you', 50.00, 0.00, 1, '2024-06-02 09:34:44', '2024-06-02 09:34:44'),
+(16, 14, 'Homemade', 'Homemade French Fries', '1717342599.jpg', 'your favorite restaurant staple at home! These are so easy to make with just 2 main', 90.00, 0.00, 1, '2024-06-02 09:36:39', '2024-06-02 09:36:39'),
+(17, 14, 'French Fries', 'the best recipe for easy crispy homemade fries', '1717342713.png', 'French fries are a tasty, popular side dish everyone loves. Crispy on the outside and fluffy on the', 100.00, 0.00, 1, '2024-06-02 09:38:33', '2024-06-02 09:38:33'),
+(18, 14, 'Garlic Butter Fries', 'RECIPES, SIDES & SALADS, UNCATEGORIZED', '1717342839.jpeg', 'Why make regular fries when you can make garlic butter fries with a whole head of garlic that’s been roasted to perfection. These fries are golden and crispy on the outside while fluffy on the inside and have been tossed through an incredibly indulgent garlic \r\nbutter sauce and finished off with a sprinkling of parsley and pecorino romano. This is what dreams are made of.', 100.00, 0.00, 1, '2024-06-02 09:40:39', '2024-06-02 09:40:39'),
+(19, 13, 'Penne Arrabbiata', 'Penne is what I like to use but feel free to use any kind you’d like!', '1717343020.jpg', 'Now that’s a mouthful, figuratively and literally. Not only is this sauce packed with all of the constants in the alphabet, but it’s also got a perfectly spicy, tomatoey, garlicky flavor. I absolutely love keeping a jar of this stuff in the fridge, to spoon it over a range of carbs including any number of pastas.', 100.00, 0.00, 1, '2024-06-02 09:43:40', '2024-06-02 09:43:40'),
+(20, 13, 'Creamy Chicken Pasta', 'Buy Chicken Pasta at the Best Price in BD', '1717343182.jpg', 'The actual color of the physical product may slightly vary due to the deviation of lighting sources, photography or your device display settings.', 200.00, 0.00, 1, '2024-06-02 09:46:23', '2024-06-02 09:46:23'),
+(21, 13, 'Alfredo Pasta', 'Be the first to leave a review.', '1717343305.jpg', 'Creamy Alfredo sauce with mozzarella cheese tossed with special penne pasta. A combination of juicy shrimp and calamari ring tossed with linguine', 202.00, 0.00, 1, '2024-06-02 09:48:25', '2024-06-02 09:48:25'),
+(22, 13, 'Noodles Company Visit Loveland', 'Fresh & Frozen Pasta', '1717343487.jpg', 'Tossed in Light Tomato Cream Add Pan-Seared Chicken Add Peas Italian bacon (Pancetta) Mushrooms Add Gluten-Friendly', 275.00, 0.00, 1, '2024-06-02 09:51:27', '2024-06-02 09:51:27'),
+(23, 12, 'Pizza in the United States Wikipedia', 'Best pizza in Dallas,', '1717343610.png', 'Bill’s thin crust pizzas are known locally in the Chicagoland area as “tavern-style” or “cracker crust,” and are homemade from scratch using only the', 300.00, 0.00, 1, '2024-06-02 09:53:30', '2024-06-02 09:53:30'),
+(24, 12, 'Pizza pâté au poulet', 'White Pizza', '1717343731.jpeg', 'Vous avez bien lu: on vous propose ici une pizza pâté au poulet, une combinaison originale de deux', 300.00, 0.00, 1, '2024-06-02 09:55:31', '2024-06-02 09:55:31'),
+(25, 12, 'P06 Allo Pizza', 'This White Pizza from', '1717343792.jpeg', 'Base sauce tomate, emmental, mozzarella,émince de poulet aux épices, crème fraiche, piment végétarien', 299.00, 0.00, 1, '2024-06-02 09:56:32', '2024-06-02 09:56:32'),
+(26, 12, 'What is full form of PIZZA? Who gave the Name? Quora', 'What is full form of PIZZA', '1717343853.jpg', 'Buscas una Pizzería en la zona? Consulta Pixatl Somos expertos en una amplia gama de platos como pizza margarita y pizza', 400.00, 0.00, 1, '2024-06-02 09:57:33', '2024-06-02 09:57:33');
 
 -- --------------------------------------------------------
 
@@ -147,7 +165,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2024_05_31_112027_create_customers_table', 3),
 (9, '2024_05_31_112338_create_menu_items_table', 4),
 (10, '2024_05_31_112516_create_orders_table', 5),
-(11, '2024_05_31_112651_create_order_items_table', 6);
+(11, '2024_05_31_112651_create_order_items_table', 6),
+(12, '2024_06_03_075806_create_carts_table', 7),
+(13, '2024_06_03_082248_create_wishlists_table', 8);
 
 -- --------------------------------------------------------
 
@@ -248,9 +268,34 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin@gmail.com', NULL, '$2y$10$QWG/SdkUwlDrWLFSV51mI.7oPjwLXqbOD9HTb6R3SWdFxdR31TPhu', NULL, '2024-05-31 05:31:34', '2024-05-31 05:31:34');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlists`
+--
+
+CREATE TABLE `wishlists` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `menu_item_id` bigint(20) UNSIGNED NOT NULL,
+  `cart_id` bigint(20) UNSIGNED NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `amount` double(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `carts_menu_item_id_foreign` (`menu_item_id`),
+  ADD KEY `carts_order_id_foreign` (`order_id`);
 
 --
 -- Indexes for table `categories`
@@ -328,14 +373,28 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indexes for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `wishlists_menu_item_id_foreign` (`menu_item_id`),
+  ADD KEY `wishlists_cart_id_foreign` (`cart_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -353,13 +412,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -386,8 +445,21 @@ ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `carts`
+--
+ALTER TABLE `carts`
+  ADD CONSTRAINT `carts_menu_item_id_foreign` FOREIGN KEY (`menu_item_id`) REFERENCES `menu_items` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `carts_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `menu_items`
@@ -407,6 +479,13 @@ ALTER TABLE `orders`
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_menu_item_id_foreign` FOREIGN KEY (`menu_item_id`) REFERENCES `menu_items` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD CONSTRAINT `wishlists_cart_id_foreign` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `wishlists_menu_item_id_foreign` FOREIGN KEY (`menu_item_id`) REFERENCES `menu_items` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
