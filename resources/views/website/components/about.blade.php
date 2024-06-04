@@ -1,28 +1,19 @@
-<section class="about_section layout_padding">
-    <div class="container  ">
-
-        <div class="row">
-            <div class="col-md-6 ">
-                <div class="img-box">
-                    <img src="{{asset('asset/images/about-img.png')}}" alt="">
-                </div>
+<section class="py-3 py-md-5">
+    <div class="container">
+        <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
+            <div class="col-12 col-lg-6 col-xl-7">
+                <img src="{{asset('asset/images/about-img.png')}}" alt="" width="70%" height="400px">
             </div>
-            <div class="col-md-6">
-                <div class="detail-box">
-                    <div class="heading_container">
-                        <h2>
-                            We Are Feane
-                        </h2>
+            <div class="col-12 col-lg-6 col-xl-5">
+                <div class="row justify-content-xl-center">
+                    <div class="col-12 col-xl-11">
+                        <h2 class="mb-3">  We are about to take off ?</h2>
+                        <p class="lead fs-4 text-secondary mb-3">We help people to build incredible brands and
+                            superior products. Our perspective is to furnish outstanding captivating services.</p>
+                        <p class="mb-5">We are a fast-growing company, but we have never lost sight of our
+                            core values. We believe in collaboration, innovation, and customer satisfaction.
+                            We are always looking for new ways to improve our products and services.</p>
                     </div>
-                    <p>
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-                        in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-                        are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-                        the middle of text. All
-                    </p>
-                    <a href="">
-                        Read More
-                    </a>
                 </div>
             </div>
         </div>
