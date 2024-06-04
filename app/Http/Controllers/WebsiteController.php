@@ -74,9 +74,9 @@ class WebsiteController extends Controller
     /**
      * @return View
      */
-    public function bookTable(): View
+    public function contact(): View
     {
-        return view('website.bookTable');
+        return view('website.contact');
 
     }
 

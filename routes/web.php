@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebsiteController::class,'index'])->name('website.home');
 Route::get('/menu/{slug?}', [WebsiteController::class,'menu'])->name('website.menu');
 Route::get('/about', [WebsiteController::class,'about'])->name('website.about');
-Route::get('/book-table', [WebsiteController::class,'bookTable'])->name('website.bookTable.blade.php');
+Route::get('/contact', [WebsiteController::class,'contact'])->name('website.contact.blade.php');
 Route::get('/shop-details/{id}', [WebsiteController::class,'shopDeals'])->name('website.shopDetails');
 Route::get('/cart-shop-details', [WebsiteController::class,'cartShopDeals'])->name('website.cartShopDetails');
 

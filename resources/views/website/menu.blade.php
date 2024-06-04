@@ -1,7 +1,7 @@
 @extends("website.layouts.master")
 @section("title", "Food Index")
 @section("content")
-    @include('website.components.hero')
+    @include('website.components.hero', ['height' => '50vh'])
 
     <section class="food_section layout_padding-bottom">
         <div class="container">
