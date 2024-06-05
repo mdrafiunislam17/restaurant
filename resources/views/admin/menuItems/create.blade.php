@@ -1,13 +1,13 @@
 @extends("Admin.layouts.master")
-@section("title", "Create menuItems")
+@section("title", "Create Menu Items")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Create menuItems</h1>
-            <a href="{{ route("Admin.menuItems.index") }}"
+            <h1 class="h3 mb-0 text-gray-800">Create Menu Items</h1>
+            <a href="{{ route("admin.menuItems.index") }}"
                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-eye fa-sm text-white-50"></i> menuItems index</a>
+                    class="fas fa-eye fa-sm text-white-50"></i> Menu Items index</a>
         </div>
 
         @if ($errors->any())
@@ -44,19 +44,8 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
-                <form action="{{ route("Admin.menuItems.store") }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route("admin.menuItems.store") }}" method="post" enctype="multipart/form-data">
                     @csrf
-{{--                    <div class="form-group row">--}}
-{{--                        <label for="restaurant_id" class="col-sm-3 col-form-label text-right font-weight-bold">Restaurant *</label>--}}
-{{--                        <div class="col-sm-6">--}}
-{{--                            <select class="form-control" id="restaurant_id" name="restaurant_id" required>--}}
-{{--                                <option value="" selected disabled>Select Restaurant</option>--}}
-{{--                                @foreach ($restaurants as $restaurant)--}}
-{{--                                    <option value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
 
                     <div class="form-group row">
                         <label for="category_id" class="col-sm-3 col-form-label text-right font-weight-bold">Category *</label>

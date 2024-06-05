@@ -35,7 +35,7 @@
                     <p><a class="text-white" href="{{route('website.home')}}">Home</a></p>
                     <p><a class="text-white" href="{{route('website.menu')}}">Menu</a></p>
                     <p><a class="text-white" href="{{route('website.about')}}">About</a></p>
-                    <p><a class="text-white" href="{{route('website.contact.blade.php')}}">Book Table</a></p>
+                    <p><a class="text-white" href="{{route('website.contact')}}">Contact</a></p>
                 </div>
 
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">

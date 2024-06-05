@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Category;
 use App\Models\MenuItem;
 use Illuminate\Database\Eloquent\Builder;
@@ -27,6 +28,7 @@ class WebsiteController extends Controller
         return MenuItem::all();
     }
 
+
     /**
      * @param $categorySlug
      * @return Builder[]|Collection
@@ -37,6 +39,11 @@ class WebsiteController extends Controller
             $query->where('slug', $categorySlug);
         })->get();
     }
+    private function about(): Collection
+    {
+        return About::all();
+
+    }
 
     /**
      * @return View
@@ -45,9 +52,10 @@ class WebsiteController extends Controller
     {
         $categories = $this->categories();
         $menuItems =$this->menuItems();
+        $about = $this->about();
         $selectedCategory = null;
 
-        return view('website.index',compact('categories','menuItems','selectedCategory'));
+        return view('website.index',compact('categories','menuItems','selectedCategory','about'));
     }
 
     /**
@@ -65,9 +73,10 @@ class WebsiteController extends Controller
     /**
      * @return View
      */
-    public function about(): View
+    public function abouts(): View
     {
-        return view('website.about');
+        $about = $this->about();
+        return view('website.about', compact('about'));
 
     }
 

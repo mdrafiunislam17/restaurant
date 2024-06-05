@@ -48,7 +48,7 @@ class MenuItemController extends Controller
         // Create the menu item
         MenuItem::create($validatedData);
 
-        return redirect()->route('Admin.menuItems.index')->with('success', 'Menu item created successfully.');
+        return redirect()->route('admin.menuItems.index')->with('success', 'Menu item created successfully.');
     }
 
     public function show($id)
@@ -99,7 +99,7 @@ class MenuItemController extends Controller
         // Update the menu item
         $menuItem->update($validatedData);
 
-        return redirect()->route('Admin.menuItems.index')->with('success', 'Menu item updated successfully.');
+        return redirect()->route('admin.menuItems.index')->with('success', 'Menu item updated successfully.');
     }
 
 
@@ -119,6 +119,6 @@ class MenuItemController extends Controller
         // Delete the menu item
         $menuItem->delete();
 
-        return redirect()->route('Admin.menuItems.index')->with('success', 'Menu item deleted successfully.');
+        return redirect()->route('admin.menuItems.index')->with('success', 'Menu item deleted successfully.');
     }
 }

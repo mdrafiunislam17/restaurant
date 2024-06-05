@@ -1,13 +1,13 @@
 @extends("Admin.layouts.master")
-@section("title", "Edit menuItem")
+@section("title", "Edit Menu Item")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Edit menuItem</h1>
-            <a href="{{ route("Admin.menuItems.index") }}"
+            <h1 class="h3 mb-0 text-gray-800">Edit Menu Item</h1>
+            <a href="{{ route("admin.menuItems.index") }}"
                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-eye fa-sm text-white-50"></i> menuItems index</a>
+                    class="fas fa-eye fa-sm text-white-50"></i> Menu Items index</a>
         </div>
 
         @if ($errors->any())
@@ -44,7 +44,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
-                <form action="{{ route("Admin.menuItems.update", $menuItem->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route("admin.menuItems.update", $menuItem->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

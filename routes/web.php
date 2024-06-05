@@ -1,9 +1,8 @@
 <?php
 
 
-
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuItemController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -31,8 +30,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebsiteController::class,'index'])->name('website.home');
 Route::get('/menu/{slug?}', [WebsiteController::class,'menu'])->name('website.menu');
-Route::get('/about', [WebsiteController::class,'about'])->name('website.about');
-Route::get('/contact', [WebsiteController::class,'contact'])->name('website.contact.blade.php');
+Route::get('/about-usa', [WebsiteController::class,'abouts'])->name('website.about');
+Route::get('/contact', [WebsiteController::class,'contact'])->name('website.contact');
 Route::get('/shop-details/{id}', [WebsiteController::class,'shopDeals'])->name('website.shopDetails');
 Route::get('/cart-shop-details', [WebsiteController::class,'cartShopDeals'])->name('website.cartShopDetails');
 
@@ -51,31 +50,38 @@ Route::delete('remove-wishlist/{id}', [WishlistsController::class,'removeWishlis
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 
-//DashboardController
-Route::get('/dashboard',[DashboardController::class,'index'])->name('Admin.dashboard.index');
 
 //RestaurantController
 
 //CategoryController
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('Admin.categories.index');
-Route::get('/categories/create', [CategoryController::class, 'create'])->name('Admin.categories.create');
-Route::post('/categories', [CategoryController::class, 'store'])->name('Admin.categories.store');
-Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('Admin.categories.show');
-Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('Admin.categories.edit');
-Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('Admin.categories.update');
-Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('Admin.categories.destroy');
+Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
+Route::post('/admin/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
+Route::get('/admin/categories/{id}', [CategoryController::class, 'show'])->name('admin.categories.show');
+Route::get('/admin/categories/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+Route::put('/admin/categories/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+Route::delete('/admin/categories/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
 //MenuItemController
-Route::get('/menuItems', [MenuItemController::class, 'index'])->name('Admin.menuItems.index');
-Route::get('/menuItems/create', [MenuItemController::class, 'create'])->name('Admin.menuItems.create');
-Route::post('/menuItems', [MenuItemController::class, 'store'])->name('Admin.menuItems.store');
-Route::get('/menuItems/{id}', [MenuItemController::class, 'show'])->name('Admin.menuItems.show');
-Route::get('/menuItems/{id}/edit', [MenuItemController::class, 'edit'])->name('Admin.menuItems.edit');
-Route::put('/menuItems/{id}', [MenuItemController::class, 'update'])->name('Admin.menuItems.update');
-Route::delete('/menuItems/{id}', [MenuItemController::class, 'destroy'])->name('Admin.menuItems.destroy');
+Route::get('/admin/menuItems', [MenuItemController::class, 'index'])->name('admin.menuItems.index');
+Route::get('/admin/menuItems/create', [MenuItemController::class, 'create'])->name('admin.menuItems.create');
+Route::post('/admin/menuItems', [MenuItemController::class, 'store'])->name('admin.menuItems.store');
+Route::get('/admin/menuItems/{id}', [MenuItemController::class, 'show'])->name('admin.menuItems.show');
+Route::get('/admin/menuItems/{id}/edit', [MenuItemController::class, 'edit'])->name('admin.menuItems.edit');
+Route::put('/admin/menuItems/{id}', [MenuItemController::class, 'update'])->name('admin.menuItems.update');
+Route::delete('/admin/menuItems/{id}', [MenuItemController::class, 'destroy'])->name('admin.menuItems.destroy');
+
+//AboutController
+Route::get('/admin/about', [AboutController::class, 'index'])->name('admin.about.index');
+Route::get('/admin/about/create', [AboutController::class, 'create'])->name('admin.about.create');
+Route::post('/admin/about', [AboutController::class, 'store'])->name('admin.about.store');
+Route::get('/admin/about/{about}', [AboutController::class, 'show'])->name('admin.about.show');
+Route::get('/admin/about/{about}/edit', [AboutController::class, 'edit'])->name('admin.about.edit');
+Route::put('/admin/about/{about}', [AboutController::class, 'update'])->name('admin.about.update');
+Route::delete('/admin/about/{about}', [AboutController::class, 'destroy'])->name('admin.about.destroy');
 
 
 

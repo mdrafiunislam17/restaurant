@@ -1,13 +1,13 @@
 @extends("Admin.layouts.master")
-@section("title", "Edit Category")
+@section("title", "Create About")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Edit Category</h1>
-            <a href="{{ route("admin.categories.index") }}"
+            <h1 class="h3 mb-0 text-gray-800">Create About</h1>
+            <a href="{{ route("admin.about.index") }}"
                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-eye fa-sm text-white-50"></i> Categories Index</a>
+                    class="fas fa-eye fa-sm text-white-50"></i> About index</a>
         </div>
 
         @if ($errors->any())
@@ -44,50 +44,54 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
-                <form action="{{ route("admin.categories.update", $category->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route("admin.about.store") }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
+
+
+
 
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label text-right font-weight-bold">Name *</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="name" value="{{ old("name", $category->name) }}"
-                                   name="name"
-                                   autofocus>
+                            <input type="text" class="form-control" id="name" value="{{ old("name") }}"
+                                   name="name">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="slug" class="col-sm-3 col-form-label text-right font-weight-bold">Slug *</label>
+                        <label for="title" class="col-sm-3 col-form-label text-right font-weight-bold">Title *</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="slug" value="{{ old("slug", $category->slug) }}"
-                                   name="slug">
+                            <input type="text" class="form-control" id="title" value="{{ old("title") }}"
+                                   name="title">
                         </div>
                     </div>
+
 
                     <div class="form-group row">
                         <label for="image"
-                               class="col-sm-3 col-form-label text-right font-weight-bold">Existing Image</label>
-                        <div class="col-sm-6">
-                            <img src="{{ asset("storage/uploads/$category->image") }}" width="120" alt="{{ $category->image }}">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="image"
-                               class="col-sm-3 col-form-label text-right font-weight-bold">Image</label>
+                               class="col-sm-3 col-form-label text-right font-weight-bold">Image *</label>
                         <div class="col-sm-6">
                             <input type="file" class="form-control" id="image" name="image">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="description"
+                               class="col-sm-3 col-form-label text-right font-weight-bold">Description *</label>
+                        <div class="col-sm-6">
+                            <textarea name="description" id="description" class="form-control">{{ old("description") }}</textarea>
+                        </div>
+                    </div>
+
 
                     <div class="form-group row">
                         <div class="offset-3 col-sm-6">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+
     </div>
 @endsection
+

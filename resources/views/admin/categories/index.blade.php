@@ -5,7 +5,7 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Categories</h1>
-            <a href="{{ route("Admin.categories.create") }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <a href="{{ route("admin.categories.create") }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Create Category
             </a>
         </div>
@@ -50,9 +50,9 @@
                                 <td>{{ $categorie->slug }}</td>
                                 <td><img src="{{ asset("storage/uploads/$categorie->image") }}" width="100" alt=""></td>
                                 <td>
-                                    <a href="{{ route("Admin.categories.show", $categorie->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
-                                    <a href="{{ route("Admin.categories.edit", $categorie->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
-                                    <form action="{{ route('Admin.categories.destroy', $categorie->id) }}" method="post" class="d-inline">
+                                    <a href="{{ route("admin.categories.show", $categorie->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route("admin.categories.edit", $categorie->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('admin.categories.destroy', $categorie->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm" onclick="return confirm('Are you sure to delete?')">

@@ -19,7 +19,7 @@
                         <a class="nav-link text-white {{ request()->routeIs('website.about') ? 'active' : '' }}" href="{{route('website.about')}}">About</a>
                     </li>
                     <li class="nav-item pl-4">
-                        <a class="nav-link text-white {{ request()->routeIs('website.contact.blade.php') ? 'active' : '' }}" href="{{route('website.contact.blade.php')}}">Contact</a>
+                        <a class="nav-link text-white {{ request()->routeIs('website.contact') ? 'active' : '' }}" href="{{route('website.contact')}}">Contact</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto d-flex align-items-center">
