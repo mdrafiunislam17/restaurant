@@ -66,12 +66,13 @@ class WebsiteController extends Controller
      * @param string $selectedCategory
      * @return View
      */
-    public function menu(string $selectedCategory): View
+    public function menu(string $selectedCategory = null): View
     {
         $categories = $this->categories();
         $menuItems = $selectedCategory ? $this->selectMenuItems($selectedCategory) : $this->menuItems();
+        $settings =  $this->settings();
 
-        return view('website.menu', compact('categories', 'menuItems', 'selectedCategory'));
+        return view('website.menu', compact('categories', 'menuItems', 'selectedCategory','settings'));
     }
 
     /**
