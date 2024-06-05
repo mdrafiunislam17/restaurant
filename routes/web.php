@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MenuItemController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -84,5 +85,12 @@ Route::put('/admin/about/{about}', [AboutController::class, 'update'])->name('ad
 Route::delete('/admin/about/{about}', [AboutController::class, 'destroy'])->name('admin.about.destroy');
 
 
-
+//ContactController
+Route::get('/admin/contact', [ContactController::class, 'index'])->name('admin.contact.index');
+Route::get('/admin/contact/create', [ContactController::class, 'create'])->name('admin.contact.create');
+Route::post('/admin/contact', [ContactController::class, 'store'])->name('admin.contact.store');
+Route::get('/admin/contact/{contact}', [ContactController::class, 'show'])->name('admin.contact.show');
+Route::get('/admin/contact/{contact}/edit', [ContactController::class, 'edit'])->name('admin.contact.edit');
+Route::put('/admin/contact/{contact}', [ContactController::class, 'update'])->name('admin.contact.update');
+Route::delete('/admin/contact/{contact}', [ContactController::class, 'destroy'])->name('admin.contact.destroy');
 

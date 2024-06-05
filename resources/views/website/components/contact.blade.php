@@ -10,26 +10,33 @@
                 <div class="col-lg-6">
                     <div class="contact-box ml-3">
                         <h1 class="font-weight-light mt-2">Quick Contact</h1>
-                        <form class="mt-4">
+                        <form action="{{ route('admin.contact.store') }}" method="post" class="mt-4">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
-                                        <input class="form-control" type="text" placeholder="name">
+                                        <input class="form-control" type="text" name="name" id="name" placeholder="name">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
-                                        <input class="form-control" type="email" placeholder="email address">
+                                        <input class="form-control" type="number" name="phone" id="phone" placeholder="phone">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
-                                        <input class="form-control" type="text" placeholder="phone">
+                                        <input class="form-control" type="email" name="email" id="email" placeholder="email address">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <textarea class="form-control" rows="3" name="address" id="address" placeholder="address"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
-                                        <textarea class="form-control" rows="3" placeholder="message"></textarea>
+                                        <textarea class="form-control" rows="3" name="description" id="description" placeholder="message"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">

@@ -50,8 +50,19 @@
     request()->routeIs('admin.about.edit')
     ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.about.index') }}">
-            <i class="fa-solid fa-address-card"></i>
+            <i class="fa-solid fa-location-dot"></i>
             <span>About Us</span>
+        </a>
+    </li>
+
+    <li class="nav-item {{
+    request()->routeIs('admin.contact.index') ||
+    request()->routeIs('admin.contact.show') ||
+    request()->routeIs('admin.contact.edit')
+    ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.contact.index') }}">
+            <i class="fa-solid fa-address-card"></i>
+            <span>contact Us</span>
         </a>
     </li>
 
