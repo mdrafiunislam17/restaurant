@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2024 at 04:48 PM
+-- Generation Time: Jun 05, 2024 at 06:01 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `restaurant`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `abouts`
+--
+
+CREATE TABLE `abouts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `abouts`
+--
+
+INSERT INTO `abouts` (`id`, `name`, `title`, `description`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'About US', 'What are ultra-processed foods?', 'Make your business shine online with a custom food website designed just for you by a professional designer. Need ideas? We’ve collected some amazing examples of food websites from our global community of designers. Get inspired and start planning the perfect food web design today.', '1717531533.jpg', '2024-06-04 14:05:34', '2024-06-04 14:11:09');
 
 -- --------------------------------------------------------
 
@@ -167,7 +190,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2024_05_31_112516_create_orders_table', 5),
 (11, '2024_05_31_112651_create_order_items_table', 6),
 (12, '2024_06_03_075806_create_carts_table', 7),
-(13, '2024_06_03_082248_create_wishlists_table', 8);
+(13, '2024_06_03_082248_create_wishlists_table', 8),
+(15, '2024_06_04_184500_create_abouts_table', 9);
 
 -- --------------------------------------------------------
 
@@ -266,7 +290,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'Admin@gmail.com', NULL, '$2y$10$QWG/SdkUwlDrWLFSV51mI.7oPjwLXqbOD9HTb6R3SWdFxdR31TPhu', NULL, '2024-05-31 05:31:34', '2024-05-31 05:31:34');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$QWG/SdkUwlDrWLFSV51mI.7oPjwLXqbOD9HTb6R3SWdFxdR31TPhu', NULL, '2024-05-31 05:31:34', '2024-05-31 05:31:34');
 
 -- --------------------------------------------------------
 
@@ -288,6 +312,12 @@ CREATE TABLE `wishlists` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `abouts`
+--
+ALTER TABLE `abouts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `carts`
@@ -385,6 +415,12 @@ ALTER TABLE `wishlists`
 --
 
 --
+-- AUTO_INCREMENT for table `abouts`
+--
+ALTER TABLE `abouts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
@@ -418,7 +454,7 @@ ALTER TABLE `menu_items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `orders`
