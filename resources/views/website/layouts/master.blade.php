@@ -11,7 +11,7 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="{{asset('asset/images/favicon.png')}}" type="">
+    <link rel="icon" type="image/x-icon" href="{{ asset("storage/uploads/" . $settings["SETTING_SITE_FAVICON"]) }}"/>
 
     <title>Web : : @yield("title")</title>
 

@@ -2,7 +2,10 @@
     <div class="container">
         <nav class="navbar mb-3 navbar-expand-lg navbar-light bg-dark">
             <a href="#" class="navbar-brand">
-                <img src="{{asset('asset/images/logo.png')}}" class="d-inline-block align-top" width="100%" height="50px" alt="Footcap logo">
+                <img src="{{ asset("storage/uploads/" . $settings["SETTING_SITE_LOGO"]) }}"
+                     class="img-fluid"
+                     alt="{{ $settings["SETTING_SITE_LOGO"] }}"
+                     style="max-height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

@@ -3,40 +3,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="card-shadow">
-                        <img class="img-fluid" src="{{url('https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/2.jpg')}}"  alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
                     <div class="contact-box ml-3">
                         <h1 class="font-weight-light mt-2">Quick Contact</h1>
-                        <form action="{{ route('admin.contact.store') }}" method="post" class="mt-4">
+                        <form action="#" method="post" class="mt-4">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
-                                        <input class="form-control" type="text" name="name" id="name" placeholder="name">
+                                        <input type="text" name="name" class="form-control mb-4" id="name" placeholder="Your Name" autofocus>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
-                                        <input class="form-control" type="number" name="phone" id="phone" placeholder="phone">
+                                        <input type="text" name="email" class="form-control mb-4" id="name" placeholder="Email Address">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
-                                        <input class="form-control" type="email" name="email" id="email" placeholder="email address">
+                                        <input type="text" name="subject" class="form-control mb-4" id="name" placeholder="Subject">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
-                                        <textarea class="form-control" rows="3" name="address" id="address" placeholder="address"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group mt-2">
-                                        <textarea class="form-control" rows="3" name="description" id="description" placeholder="message"></textarea>
+                                        <textarea class="form-control" rows="3" name="description" id="description" placeholder="Message..."></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -46,56 +36,74 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="card mt-4 border-0 mb-4">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <div class="card-body d-flex align-items-center c-detail pl-0">
-                                    <div class="mr-3 align-self-center">
-                                        <img src="{{url('https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon1.png')}}" alt="">
-                                    </div>
-                                    <div class="">
-                                        <h6 class="font-weight-medium">Address</h6>
-                                        <p class="">601 Sherwood Ave.
-                                            <br> San Bernandino</p>
+                <div class="col-lg-6">
+                    <div class="contact-box ml-3">
+                        <h1 class="font-weight-light mt-2">Contact Information</h1>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <b>Email Address</b>
+                                        <p>{!! $settings["CONTACT_EMAIL"] !!}</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <div class="card-body d-flex align-items-center c-detail">
-                                    <div class="mr-3 align-self-center">
-                                        <img src="{{url('https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon2.png')}}" alt="">
-                                    </div>
-                                    <div class="">
-                                        <h6 class="font-weight-medium">Phone</h6>
-                                        <p class="">251 546 9442
-                                            <br> 630 446 8851</p>
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <b>Phone Number</b>
+                                        <p>{!! $settings["CONTACT_PHONE"] !!}</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <div class="card-body d-flex align-items-center c-detail">
-                                    <div class="mr-3 align-self-center">
-                                        <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png">
-                                    </div>
-                                    <div class="">
-                                        <h6 class="font-weight-medium">Email</h6>
-                                        <p class="">
-                                            info@wrappixel.com
-                                            <br> 123@wrappixel.com
-                                        </p>
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <b>Address</b>
+                                        <p>{!! $settings["CONTACT_ADDRESS"] !!}</p>
                                     </div>
                                 </div>
+
                             </div>
+
+                    </div>
+                    <div class="mb-4 p-4 rounded-2">
+                        <div class="d-flex justify-content-between">
+                            @if (!empty($settings["SETTING_SOCIAL_FACEBOOK"]))
+                                <a href="{{ $settings["SETTING_SOCIAL_FACEBOOK"] }}" class="text-decoration-none">
+                                    <i class="fa-brands fa-facebook fa-2x"></i>
+                                </a>
+                            @endif
+
+                            @if (!empty($settings["SETTING_SOCIAL_YOUTUBE"]))
+                                <a href="{{ $settings["SETTING_SOCIAL_YOUTUBE"] }}" class="text-decoration-none">
+                                    <i class="fa-brands fa-youtube fa-2x" style="color: #ed302f;"></i>
+                                </a>
+                            @endif
+
+                            @if (!empty($settings["SETTING_SOCIAL_INSTAGRAM"]))
+                                <a href="{{ $settings["SETTING_SOCIAL_INSTAGRAM"] }}" class="text-decoration-none">
+                                    <i class="fa-brands fa-instagram fa-2x" style="color: #ac2bac;"></i>
+                                </a>
+                            @endif
+
+                            @if (!empty($settings["SETTING_SOCIAL_LINKEDIN"]))
+                                <a href="{{ $settings["SETTING_SOCIAL_LINKEDIN"] }}" class="text-decoration-none">
+                                    <i class="fa-brands fa-linkedin fa-2x" style="color: #0082ca;"></i>
+                                </a>
+                            @endif
+
+                            @if (!empty($settings["SETTING_SOCIAL_TWITTER"]))
+                                <a href="{{ $settings["SETTING_SOCIAL_TWITTER"] }}" class="text-decoration-none">
+                                    <i class="fa-brands fa-twitter fa-2x" style="color: #55acee;"></i>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="map_container ">
-                        <div id="googleMap"></div>
+                        {!! $settings["CONTACT_GOOGLE_MAP"] !!}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

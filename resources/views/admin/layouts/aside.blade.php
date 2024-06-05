@@ -43,26 +43,15 @@
         </a>
     </li>
 
-    <li class="nav-item {{
-    request()->routeIs('admin.about.index') ||
-    request()->routeIs('admin.about.create') ||
-    request()->routeIs('admin.about.show') ||
-    request()->routeIs('admin.about.edit')
-    ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.about.index') }}">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>About Us</span>
-        </a>
-    </li>
 
-    <li class="nav-item {{
-    request()->routeIs('admin.contact.index') ||
-    request()->routeIs('admin.contact.show') ||
-    request()->routeIs('admin.contact.edit')
-    ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.contact.index') }}">
-            <i class="fa-solid fa-address-card"></i>
-            <span>contact Us</span>
+
+    <li class="nav-item  {{
+    request()->routeIs("admin.settings.index") ||
+    request()->routeIs("admin.settings.update")
+    ? "active" : "" }}">
+        <a class="nav-link" href="{{ route("admin.settings.index") }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Settings</span>
         </a>
     </li>
 

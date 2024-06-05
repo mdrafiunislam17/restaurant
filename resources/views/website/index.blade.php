@@ -68,5 +68,4 @@
     </section>
 
     @include('website.components.about')
-    @include('website.components.contact')
 @endsection

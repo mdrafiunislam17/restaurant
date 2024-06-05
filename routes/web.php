@@ -1,10 +1,10 @@
 <?php
 
 
-use App\Http\Controllers\Admin\AboutController;
+
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MenuItemController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WebsiteController;
@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebsiteController::class,'index'])->name('website.home');
 Route::get('/menu/{slug?}', [WebsiteController::class,'menu'])->name('website.menu');
-Route::get('/about-usa', [WebsiteController::class,'abouts'])->name('website.about');
+Route::get('/about-us', [WebsiteController::class,'about'])->name('website.about');
 Route::get('/contact', [WebsiteController::class,'contact'])->name('website.contact');
 Route::get('/shop-details/{id}', [WebsiteController::class,'shopDeals'])->name('website.shopDetails');
 Route::get('/cart-shop-details', [WebsiteController::class,'cartShopDeals'])->name('website.cartShopDetails');
@@ -75,22 +75,7 @@ Route::get('/admin/menuItems/{id}/edit', [MenuItemController::class, 'edit'])->n
 Route::put('/admin/menuItems/{id}', [MenuItemController::class, 'update'])->name('admin.menuItems.update');
 Route::delete('/admin/menuItems/{id}', [MenuItemController::class, 'destroy'])->name('admin.menuItems.destroy');
 
-//AboutController
-Route::get('/admin/about', [AboutController::class, 'index'])->name('admin.about.index');
-Route::get('/admin/about/create', [AboutController::class, 'create'])->name('admin.about.create');
-Route::post('/admin/about', [AboutController::class, 'store'])->name('admin.about.store');
-Route::get('/admin/about/{about}', [AboutController::class, 'show'])->name('admin.about.show');
-Route::get('/admin/about/{about}/edit', [AboutController::class, 'edit'])->name('admin.about.edit');
-Route::put('/admin/about/{about}', [AboutController::class, 'update'])->name('admin.about.update');
-Route::delete('/admin/about/{about}', [AboutController::class, 'destroy'])->name('admin.about.destroy');
 
-
-//ContactController
-Route::get('/admin/contact', [ContactController::class, 'index'])->name('admin.contact.index');
-Route::get('/admin/contact/create', [ContactController::class, 'create'])->name('admin.contact.create');
-Route::post('/admin/contact', [ContactController::class, 'store'])->name('admin.contact.store');
-Route::get('/admin/contact/{contact}', [ContactController::class, 'show'])->name('admin.contact.show');
-Route::get('/admin/contact/{contact}/edit', [ContactController::class, 'edit'])->name('admin.contact.edit');
-Route::put('/admin/contact/{contact}', [ContactController::class, 'update'])->name('admin.contact.update');
-Route::delete('/admin/contact/{contact}', [ContactController::class, 'destroy'])->name('admin.contact.destroy');
-
+// SettingsController
+Route::get("settings", [SettingController::class, "index"])->name("admin.settings.index");
+Route::put("settings", [SettingController::class, "update"])->name("admin.settings.update");
