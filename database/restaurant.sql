@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2024 at 06:01 AM
+-- Generation Time: Jun 05, 2024 at 08:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -86,6 +86,30 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `created_at`, `updated_
 (12, 'Pizza', 'All Season Gulliver Pizza (20 Inch)', '1717342056.jpg', '2024-06-02 09:27:36', '2024-06-02 09:27:36'),
 (13, 'Pasta', 'Pasta Arrabiata', '1717342343.jpg', '2024-06-02 09:32:23', '2024-06-02 09:32:23'),
 (14, 'Fries', 'Perfect French Fries', '1717342419.jpeg', '2024-06-02 09:33:40', '2024-06-02 09:33:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `phone` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `address` text DEFAULT NULL,
+  `description` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `phone`, `email`, `address`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Giacomo Kemp', 1788888888, 'rivur@mailinator.com', 'Quis qui quos et et', 'Harum et ab laborum', '2024-06-05 00:32:09', '2024-06-05 00:38:02');
 
 -- --------------------------------------------------------
 
@@ -191,7 +215,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2024_05_31_112651_create_order_items_table', 6),
 (12, '2024_06_03_075806_create_carts_table', 7),
 (13, '2024_06_03_082248_create_wishlists_table', 8),
-(15, '2024_06_04_184500_create_abouts_table', 9);
+(15, '2024_06_04_184500_create_abouts_table', 9),
+(19, '2024_06_05_053146_create_contacts_table', 10);
 
 -- --------------------------------------------------------
 
@@ -334,6 +359,13 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `contacts_email_unique` (`email`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -433,6 +465,12 @@ ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
@@ -454,7 +492,7 @@ ALTER TABLE `menu_items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `orders`
