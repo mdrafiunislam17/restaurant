@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('asset/css/bootstrap.css')}}" />
 
 
-{{--    <link href="{{asset('asset/css/style.css')}}" rel="stylesheet" />--}}
+
 
 
     <link rel="stylesheet" href="{{asset('asset/css/custom.css')}}">
@@ -30,10 +30,7 @@
 
     @stack("styles")
 
-    <style>
 
-
-    </style>
 </head>
 
 <body>

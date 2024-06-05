@@ -1,7 +1,7 @@
 <main class="main" style="height: {{ $height }};">
     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     <section id="hero" class="hero section ">
-        <img src="{{asset('asset/images/hero-bg.jpg')}}" alt="Hero Background">
+        <img src="{{ asset("storage/uploads/" . $settings["SETTING_PAGE_BANNER"]) }}" alt="Hero Background">
         <div class="container">
 
             <div class="row align-items-center custom-food pt-5">
