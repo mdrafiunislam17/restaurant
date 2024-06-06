@@ -16,8 +16,6 @@
                 </div>
             </div>
 
-
-
             <div class="form-group row mb-4">
                 <label for="email" class="col-sm-3 col-form-label text-right font-weight-bold">Email *</label>
                 <div class="col-sm-9">
@@ -26,14 +24,12 @@
                 </div>
             </div>
 
-
             <div class="form-group row mb-4">
                 <label for="address" class="col-sm-3 col-form-label text-right font-weight-bold">Address</label>
                 <div class="col-sm-9">
                     <textarea name="address" id="address" class="form-control">{{ $customer->address }}</textarea>
                 </div>
             </div>
-
 
             <div class="form-group row mb-4">
                 <label for="image" class="col-sm-3 col-form-label text-right font-weight-bold">Image</label>
@@ -45,45 +41,20 @@
                             <img src="{{ asset("user.jpg") }}" id="croppie_image_show" width="200" height="200" alt="Member Image">
                         @endif
                     </div>
-                    <div>
-                        <input type="hidden" id="croppie_image_base64_{{ $customer->id }}" name="image">
-                    </div>
                 </div>
             </div>
 
             <div class="form-group row mb-4">
                 <label for="image" class="col-sm-3 col-form-label text-right font-weight-bold"></label>
                 <div class="col-sm-9">
-                    <input type="file" class="form-control" id="croppie_image_file" accept="image/*">
-                </div>
-            </div>
-
-            <div class="form-group row mb-4">
-                <label for="password" class="col-sm-3 col-form-label text-right font-weight-bold">Password
-                </label>
-                <div class="col-sm-9">
-                    <input type="password" class="form-control" id="password" name="password">
-                    <small class="form-text text-muted">
-                        Password minimum 6 digits.<br>
-                        If you input a new password, the previous password will change otherwise there will
-                        be no change.</small>
-                </div>
-            </div>
-
-            <div class="form-group row mb-4">
-                <label for="password_confirmation"
-                       class="col-sm-3 col-form-label text-right font-weight-bold">Confirm Password
-                </label>
-                <div class="col-sm-9">
-                    <input type="password" class="form-control" id="password_confirmation"
-                           name="password_confirmation">
+                    <input type="file" class="form-control" id="croppie_image_file" name="image" accept="image/*">
                 </div>
             </div>
 
             <div class="form-group row mb-4">
                 <label for="" class="col-sm-3 col-form-label text-right font-weight-bold"></label>
                 <div class="col-sm-9">
-                    <button type="submit" class="btn btn-primary w-100">Registration</button>
+                    <button type="submit" class="btn btn-primary w-100">Profile Update</button>
                 </div>
             </div>
         </form>

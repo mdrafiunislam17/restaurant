@@ -72,11 +72,13 @@ class CustomerController extends Controller
         return view('website.customer.dashboard', compact('settings'));
     }
 
-    public function passwordChange()
+    public function order()
     {
         $settings =  $this->settings();
-        return view('website.customer.password_change', compact('settings'));
+        return view('website.customer.order', compact('settings'));
     }
+
+
 
     public function profile(): View
     {
@@ -98,12 +100,8 @@ class CustomerController extends Controller
                 "email",
                 Rule::unique('customers')->ignore($customerId)
             ],
-            "password" => [
-                "nullable",
-                "string",
-                Password::min(6),
-                "confirmed",
-            ],
+            "address" => "nullable|string",
+            "image" => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
         ]);
 
         if ($request->hasFile('image')) {
@@ -113,18 +111,44 @@ class CustomerController extends Controller
             $validatedData['image'] = $imageName;
         }
 
-        if (!empty($validatedData['password'])) {
-            $validatedData['password'] = Hash::make($validatedData['password']);
-        } else {
-            unset($validatedData['password']);
-        }
-
         Customer::query()
             ->where('id', '=', $customerId)
             ->update($validatedData);
 
         return redirect()->route('website.customer.profile')->with('success', 'Customer updated successfully.');
     }
+
+    public function passwordChange()
+    {
+        $settings =  $this->settings();
+        return view('website.customer.password_change', compact('settings'));
+    }
+
+    public function passwordUpdate(Request $request)
+    {
+        $validatedData = $request->validate([
+            'password' => [
+                'nullable',
+                'string',
+                Password::min(6),
+            ],
+        ]);
+
+        if (!empty($validatedData['password'])) {
+            $validatedData['password'] = Hash::make($validatedData['password']);
+        } else {
+            unset($validatedData['password']);
+        }
+
+        $customerId = Auth::guard('customer')->id();
+
+        Customer::query()
+            ->where('id', '=', $customerId)
+            ->update($validatedData);
+
+        return redirect()->route('website.customer.profile')->with('success', 'Password updated successfully.');
+    }
+
     public function logout(): RedirectResponse
     {
         Auth::logout();

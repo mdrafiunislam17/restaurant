@@ -5,7 +5,7 @@
     <h2 class="text-center py-4 bg-primary text-white">Profile</h2>
 
     <div class="mt-5">
-        <form action="{{ route('website.customer.profile') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('website.customer.password_update') }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group row mb-4">
