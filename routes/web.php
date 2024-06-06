@@ -58,6 +58,12 @@ Route::post('customer/forgot-password', [CustomerControllerFrontEnd::class, 'sen
 Route::get('customer/new-password/{token}', [CustomerControllerFrontEnd::class, 'newPassword'])->name('website.customer.new_password');
 Route::put('customer/new-password/{token}', [CustomerControllerFrontEnd::class, 'newPasswordSave'])->name('website.customer.new_password');
 
+Route::get('customer/dashboard', [CustomerControllerFrontEnd::class, 'dashboard'])->name('website.customer.dashboard')
+    ->middleware('auth.customer');
+
+Route::get('customer/password-change', [CustomerControllerFrontEnd::class, 'passwordChange'])->name('website.customer.password_change')
+    ->middleware('auth.customer');
+
 Route::get('customer/profile', [CustomerControllerFrontEnd::class, 'profile'])->name('website.customer.profile')
     ->middleware('auth.customer');
 
