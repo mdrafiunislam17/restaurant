@@ -26,11 +26,29 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto d-flex align-items-center">
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="fa fa-user text-white" aria-hidden="true"></i>
-                        </a>
-                    </li>
+                    @auth("customer")
+                        <li class="nav-item">
+                            <a href="{{route('website.customer.profile')}}" class="nav-link text-white">Profile
+                                <i class="fa fa-user text-white" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('website.customer.logout')}}" class="nav-link text-white">Logout
+                                <i class="fa-solid fa-right-from-bracket text-white"></i>
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="{{route('website.registration')}}" class="nav-link text-white">Registration
+                                <i class="fa-regular fa-registered text-white"></i>
+                            </a>
+                            </li>
+                        <li class="nav-item">
+                            <a href="{{route('website.customer.login')}}" class="nav-link text-white">Login
+                                <i class="fa-solid fa-arrow-right-to-bracket text-white"></i>
+                            </a>
+                        </li>
+                    @endauth
                     <li class="nav-item pl-4">
                         <a href="{{route('website.cartShopDetails')}}" class="nav-link">
                             <i class="fa-solid fa-cart-shopping text-white"></i>

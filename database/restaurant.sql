@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2024 at 06:04 PM
+-- Generation Time: Jun 06, 2024 at 05:56 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -80,6 +80,16 @@ CREATE TABLE `customers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `email`, `address`, `image`, `password`, `created_at`, `updated_at`) VALUES
+(2, 'TaShya Holman', 'cowyqele@mailinator.com', NULL, '1717654341.jpg', '$2y$10$ZcIdWFlVCGeMHZ8aBORLkuKF9nsh8TEUeCUi0yAV9WVml0mJwyUY.', '2024-06-06 00:12:22', '2024-06-06 03:58:31'),
+(3, 'Denton Harding', 'mavabug@mailinator.com', NULL, '1717655958.jpg', 'Pa$$w0rd!', '2024-06-06 00:39:18', '2024-06-06 00:39:18'),
+(4, 'Alexander Hammond', 'howiw@mailinator.com', NULL, NULL, '$2y$10$UljZG24syzYnKrhe7doT3OXKSPC3hF45C02eDMLAJErscK/qRixOi', '2024-06-06 04:19:36', '2024-06-06 04:19:36'),
+(6, 'user', 'user@gmail.com', NULL, NULL, '$2y$10$TKoWKLv/0d6xX0Jy0rXl/OJ46IDHsRpD7dxdUMklSCXust1X/rzL6', '2024-06-06 05:05:55', '2024-06-06 05:05:55');
 
 -- --------------------------------------------------------
 
@@ -442,7 +452,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

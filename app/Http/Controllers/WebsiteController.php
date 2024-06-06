@@ -32,7 +32,6 @@ class WebsiteController extends Controller
 
     private function settings(): Collection
     {
-//        Setting::pluck('value', 'setting_name')->toArray();
         return new Collection(Setting::pluck('value', 'setting_name'));
     }
 

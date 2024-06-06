@@ -43,6 +43,18 @@
         </a>
     </li>
 
+    <li class="nav-item {{
+    request()->routeIs('admin.customers.index') ||
+    request()->routeIs('admin.customers.create') ||
+    request()->routeIs('admin.customers.show') ||
+    request()->routeIs('admin.customers.edit')
+    ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.customers.index') }}">
+            <i class="fa-solid fa-person-military-pointing"></i>
+            <span>Customers</span>
+        </a>
+    </li>
+
 
 
     <li class="nav-item  {{

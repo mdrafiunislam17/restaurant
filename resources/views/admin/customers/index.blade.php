@@ -1,12 +1,12 @@
 @extends("Admin.layouts.master")
-@section("title", "customers")
+@section("title", "Customers")
 @section("content")
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">customers</h1>
-            <a href="{{ route("Admin.customers.create") }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa-sm text-white-50"></i> Create customers
+            <h1 class="h3 mb-0 text-gray-800">Customers</h1>
+            <a href="{{ route("admin.customers.create") }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <i class="fas fa-plus fa-sm text-white-50"></i> Create Customers
             </a>
         </div>
 
@@ -35,9 +35,9 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>Image</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Contact Info</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -45,13 +45,20 @@
                         @foreach($customers as $i => $customer)
                             <tr>
                                 <td>{{ ++$i }}</td>
+                                <td>
+                                    @if (file_exists(public_path("storage/uploads/customers/$customer->image")) && !empty($customer->image))
+                                        <img src="{{ asset("storage/uploads/customers/$customer->image") }}" width="80" alt="">
+                                    @else
+                                        <img src="{{ asset("customer.png") }}" width="80" alt="Placeholder">
+                                    @endif
+                                </td>
                                 <td>{{ $customer->name }}</td>
                                 <td>{{ $customer->email }}</td>
-                                <td>{{ $customer->contact_info }}</td>
                                    <td>
-                                       <a href="{{ route("Admin.customers.show", $customer->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
-                                       <a href="{{ route("Admin.customers.edit", $customer->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
-                                       <form action="{{ route('Admin.customers.destroy', $customer->id) }}" method="post" class="d-inline">
+
+                                       <a href="{{ route("admin.customers.show", $customer->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
+                                       <a href="{{ route("admin.customers.edit", $customer->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
+                                       <form action="{{ route('admin.customers.destroy', $customer->id) }}" method="post" class="d-inline">
                                            @csrf
                                            @method('DELETE')
                                            <button class="btn btn-sm" onclick="return confirm('Are you sure to delete?')">

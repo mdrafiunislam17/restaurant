@@ -3,12 +3,15 @@
 
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\MenuItemController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WishlistsController;
+use App\Http\Controllers\CustomerController as CustomerControllerFrontEnd;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +50,26 @@ Route::delete('remove-from-cart/{id}', [CartController::class,'removeFromCart'])
 Route::get('wishlist/count', [WishlistsController::class,'wishListCount'])->name('wishlist-count');
 Route::delete('remove-wishlist/{id}', [WishlistsController::class,'removeWishlist'])->name('remove-wishlist');
 
+//CustomerControllerFrontEnd
+Route::get('customer/login', [CustomerControllerFrontEnd::class,'login'])->name('website.customer.login');
+Route::post('customer/login', [CustomerControllerFrontEnd::class,'loginCheck'])->name('website.customer.storeLogin');
+Route::get('customer/forgot-password', [CustomerControllerFrontEnd::class, 'forgotPassword'])->name('website.customer.forgot_password');
+Route::post('customer/forgot-password', [CustomerControllerFrontEnd::class, 'sendResetLinkEmail'])->name('website.customer.forgot_password');
+Route::get('customer/new-password/{token}', [CustomerControllerFrontEnd::class, 'newPassword'])->name('website.customer.new_password');
+Route::put('customer/new-password/{token}', [CustomerControllerFrontEnd::class, 'newPasswordSave'])->name('website.customer.new_password');
+
+Route::get('customer/profile', [CustomerControllerFrontEnd::class, 'profile'])->name('website.customer.profile')
+    ->middleware('auth.customer');
+
+Route::put('customer/profile', [CustomerControllerFrontEnd::class, 'profileUpdate'])->name('website.customer.profile')
+    ->middleware('auth.customer');
+
+Route::get('/customer/logout', [CustomerControllerFrontEnd::class, 'logout'])->name('website.customer.logout')
+    ->middleware('auth.customer');
+// RegistrationController
+Route::get('/registration', [RegistrationController::class, 'index'])->name('website.registration');
+Route::post('/registration', [RegistrationController::class, 'create'])->name('website.registration');
+
 
 
 Auth::routes();
@@ -54,7 +77,6 @@ Auth::routes();
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 
 
-//RestaurantController
 
 //CategoryController
 
@@ -74,6 +96,18 @@ Route::get('/admin/menuItems/{id}', [MenuItemController::class, 'show'])->name('
 Route::get('/admin/menuItems/{id}/edit', [MenuItemController::class, 'edit'])->name('admin.menuItems.edit');
 Route::put('/admin/menuItems/{id}', [MenuItemController::class, 'update'])->name('admin.menuItems.update');
 Route::delete('/admin/menuItems/{id}', [MenuItemController::class, 'destroy'])->name('admin.menuItems.destroy');
+
+
+//CustomerController
+
+Route::get('/admin/customers', [CustomerController::class, 'index'])->name('admin.customers.index');
+Route::get('/admin/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
+Route::post('/admin/customers', [CustomerController::class, 'store'])->name('admin.customers.store');
+Route::get('/admin/customers/{customer}/show', [CustomerController::class, 'show'])->name('admin.customers.show');
+Route::get('/admin/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('admin.customers.edit');
+Route::put('/admin/customers/{customer}', [CustomerController::class, 'update'])->name('admin.customers.update');
+Route::delete('/admin/customers/{customer}', [CustomerController::class, 'destroy'])->name('admin.customers.destroy');
+
 
 
 // SettingsController
