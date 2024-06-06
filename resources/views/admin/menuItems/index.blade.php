@@ -1,13 +1,13 @@
 @extends('Admin.layouts.master')
-@section('title', 'menuItems')
+@section('title', 'MenuItems')
 @section('content')
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">menuItems</h1>
-            <a href="{{ route('Admin.menuItems.create') }}"
+            <h1 class="h3 mb-0 text-gray-800">Menu Items</h1>
+            <a href="{{ route('admin.menuItems.create') }}"
                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-plus fa-sm text-white-50"></i>Create menuItems</a>
+                    class="fas fa-plus fa-sm text-white-50"></i>Create Menu Items</a>
         </div>
 
         @if (session()->has('success'))
@@ -55,9 +55,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('Admin.menuItems.show', $menuItem->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
-                                    <a href="{{ route('Admin.menuItems.edit', $menuItem->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
-                                    <form action="{{ route('Admin.menuItems.destroy', $menuItem->id) }}" method="post" class="d-inline">
+                                    <a href="{{ route('admin.menuItems.show', $menuItem->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('admin.menuItems.edit', $menuItem->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('admin.menuItems.destroy', $menuItem->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm" onclick="return confirm('Are you sure to delete?')">

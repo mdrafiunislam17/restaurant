@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Category;
 use App\Models\MenuItem;
+use App\Models\Setting;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -27,6 +29,13 @@ class WebsiteController extends Controller
         return MenuItem::all();
     }
 
+
+    private function settings(): Collection
+    {
+        return new Collection(Setting::pluck('value', 'setting_name'));
+    }
+
+
     /**
      * @param $categorySlug
      * @return Builder[]|Collection
@@ -38,6 +47,7 @@ class WebsiteController extends Controller
         })->get();
     }
 
+
     /**
      * @return View
      */
@@ -46,20 +56,22 @@ class WebsiteController extends Controller
         $categories = $this->categories();
         $menuItems =$this->menuItems();
         $selectedCategory = null;
+        $settings =  $this->settings();
 
-        return view('website.index',compact('categories','menuItems','selectedCategory'));
+        return view('website.index',compact('categories','menuItems','selectedCategory','settings'));
     }
 
     /**
      * @param string $selectedCategory
      * @return View
      */
-    public function menu(string $selectedCategory): View
+    public function menu(string $selectedCategory = null): View
     {
         $categories = $this->categories();
         $menuItems = $selectedCategory ? $this->selectMenuItems($selectedCategory) : $this->menuItems();
+        $settings =  $this->settings();
 
-        return view('website.menu', compact('categories', 'menuItems', 'selectedCategory'));
+        return view('website.menu', compact('categories', 'menuItems', 'selectedCategory','settings'));
     }
 
     /**
@@ -67,7 +79,8 @@ class WebsiteController extends Controller
      */
     public function about(): View
     {
-        return view('website.about');
+        $settings =  $this->settings();
+        return view('website.about' , compact('settings'));
 
     }
 
@@ -76,7 +89,8 @@ class WebsiteController extends Controller
      */
     public function contact(): View
     {
-        return view('website.contact');
+        $settings =  $this->settings();
+        return view('website.contact', compact('settings'));
 
     }
 

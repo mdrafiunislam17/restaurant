@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2024 at 04:48 PM
+-- Generation Time: Jun 06, 2024 at 05:56 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -80,6 +80,16 @@ CREATE TABLE `customers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `email`, `address`, `image`, `password`, `created_at`, `updated_at`) VALUES
+(2, 'TaShya Holman', 'cowyqele@mailinator.com', NULL, '1717654341.jpg', '$2y$10$ZcIdWFlVCGeMHZ8aBORLkuKF9nsh8TEUeCUi0yAV9WVml0mJwyUY.', '2024-06-06 00:12:22', '2024-06-06 03:58:31'),
+(3, 'Denton Harding', 'mavabug@mailinator.com', NULL, '1717655958.jpg', 'Pa$$w0rd!', '2024-06-06 00:39:18', '2024-06-06 00:39:18'),
+(4, 'Alexander Hammond', 'howiw@mailinator.com', NULL, NULL, '$2y$10$UljZG24syzYnKrhe7doT3OXKSPC3hF45C02eDMLAJErscK/qRixOi', '2024-06-06 04:19:36', '2024-06-06 04:19:36'),
+(6, 'user', 'user@gmail.com', NULL, NULL, '$2y$10$TKoWKLv/0d6xX0Jy0rXl/OJ46IDHsRpD7dxdUMklSCXust1X/rzL6', '2024-06-06 05:05:55', '2024-06-06 05:05:55');
 
 -- --------------------------------------------------------
 
@@ -167,7 +177,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2024_05_31_112516_create_orders_table', 5),
 (11, '2024_05_31_112651_create_order_items_table', 6),
 (12, '2024_06_03_075806_create_carts_table', 7),
-(13, '2024_06_03_082248_create_wishlists_table', 8);
+(13, '2024_06_03_082248_create_wishlists_table', 8),
+(15, '2024_06_04_184500_create_abouts_table', 9),
+(19, '2024_06_05_053146_create_contacts_table', 10),
+(20, '2024_06_05_121108_create_settings_table', 11);
 
 -- --------------------------------------------------------
 
@@ -247,6 +260,39 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `setting_name` varchar(255) NOT NULL,
+  `value` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`setting_name`, `value`, `created_at`, `updated_at`) VALUES
+('CONTACT_ADDRESS', '2267 Genesee St , Buffalo- NY-14211.', NULL, '2024-06-05 08:19:00'),
+('CONTACT_EMAIL', 'admin@gmail.com<br>contact@gmial.com', NULL, '2024-06-05 08:19:00'),
+('CONTACT_GOOGLE_MAP', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921.8568138366277!2d-78.79975230000001!3d42.9180607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d30d23b89acc4d%3A0xe10d612b12e87288!2s2267%20Genesee%20St%2C%20Buffalo%2C%20NY%2014211%2C%20USA!5e0!3m2!1sen!2sbd!4v1704691566026!5m2!1sen!2sbd\" width=\"800\" height=\"600\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', NULL, '2024-06-05 08:19:00'),
+('CONTACT_PHONE', 'PH:+1 (716)4160357<br> PH: +1(347)6088808 <br>PH: +1 (917)6001965 <br> PH:+1 (347)9356585 <br>PH: +1 (718)5765237', NULL, '2024-06-05 08:19:00'),
+('SETTING_ABOUT_US', '<h4 style=\"text-align: center;\">Fast Food About Us</h4>\r\n<p style=\"text-align: justify;\">&nbsp;</p>\r\n<p class=\"topic-paragraph\"><strong>Fast food is</strong>, a mass-produced food product designed for quick and efficient preparation and distribution that certain restaurants, concession stands, and convenience stores sell. Fast food is perhaps most associated with chain restaurants&mdash;including such prominent&nbsp;brands&nbsp;as&nbsp;<span id=\"ref1305852\"></span>McDonald&rsquo;s,&nbsp;<span id=\"ref1305853\"></span>Burger King, and&nbsp;<span id=\"ref1305854\"></span>Taco Bell&mdash;that typically offer take-out and drive-through services, as convenience and speed are prioritized. Common fast foods include&nbsp;<span id=\"ref1305855\"></span>hamburgers,&nbsp;<span id=\"ref1305871\"></span>hot dogs,&nbsp;<span id=\"ref1305856\"></span>french fries,&nbsp;<span id=\"ref1305868\"></span>pizza,&nbsp;<span id=\"ref1322300\"></span>tacos,&nbsp;<span id=\"ref1305870\"></span>burritos,&nbsp;<span id=\"ref1322301\"></span>salads, and&nbsp;<span id=\"ref1305869\"></span>sandwiches.</p>\r\n<p class=\"topic-paragraph\">Critics of fast food production food often subordinate quality to efficiency, affordability, and profit. Fast-food products are usually highly <span id=\"ref1322302\"></span>processed and precooked or frozen and may contain artificial preservatives in addition to high levels of sodium, cholesterol, saturated fats, and refined grains and sugars. Thus, the term&nbsp;<em>fast food</em>&nbsp;has come to carry negative&nbsp;connotations&nbsp;regarding health, and it raises&nbsp;ethical issues in the fields of agriculture and labor. However polarizing, fast food remains highly popular internationally for its convenience and flavor.</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>', NULL, '2024-06-05 08:19:00'),
+('SETTING_PAGE_BANNER', 'banner.jpg', NULL, '2024-06-05 08:02:40'),
+('SETTING_SITE_FAVICON', 'favicon.jpg', NULL, '2024-06-05 08:02:40'),
+('SETTING_SITE_LOGO', 'logo.jpg', NULL, '2024-06-05 08:02:40'),
+('SETTING_SITE_TITLE', 'Fast Food Restaurant', NULL, '2024-06-05 08:19:00'),
+('SETTING_SOCIAL_FACEBOOK', 'https://www.facebook.com/share/b5D1wfN6HZv3DPPw/?mibextid=K35XfP', NULL, '2024-06-05 08:19:00'),
+('SETTING_SOCIAL_INSTAGRAM', '#', NULL, '2024-06-05 08:19:00'),
+('SETTING_SOCIAL_LINKEDIN', '#', NULL, '2024-06-05 08:19:00'),
+('SETTING_SOCIAL_TWITTER', '#', NULL, '2024-06-05 08:19:00'),
+('SETTING_SOCIAL_YOUTUBE', '#', NULL, '2024-06-05 08:19:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -266,7 +312,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'Admin@gmail.com', NULL, '$2y$10$QWG/SdkUwlDrWLFSV51mI.7oPjwLXqbOD9HTb6R3SWdFxdR31TPhu', NULL, '2024-05-31 05:31:34', '2024-05-31 05:31:34');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$QWG/SdkUwlDrWLFSV51mI.7oPjwLXqbOD9HTb6R3SWdFxdR31TPhu', NULL, '2024-05-31 05:31:34', '2024-05-31 05:31:34');
 
 -- --------------------------------------------------------
 
@@ -366,6 +412,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`setting_name`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -400,7 +452,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -418,7 +470,7 @@ ALTER TABLE `menu_items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `orders`
