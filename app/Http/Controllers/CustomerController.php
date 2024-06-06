@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -65,6 +66,18 @@ class CustomerController extends Controller
         }
     }
 
+    public function dashboard()
+    {
+        $settings =  $this->settings();
+        return view('website.customer.dashboard', compact('settings'));
+    }
+
+    public function passwordChange()
+    {
+        $settings =  $this->settings();
+        return view('website.customer.password_change', compact('settings'));
+    }
+
     public function profile(): View
     {
         $settings =  $this->settings();
@@ -74,11 +87,17 @@ class CustomerController extends Controller
     }
 
 
-    public function profileUpdate(Request $request, Customer $customer): RedirectResponse
+    public function profileUpdate(Request $request): RedirectResponse
     {
+        $customerId = Auth::guard('customer')->id();
+
         $validatedData = $request->validate([
             "name" => "required",
-            "email" => "required|email|unique:customers,email," . $customer->id,
+            "email" => [
+                "required",
+                "email",
+                Rule::unique('customers')->ignore($customerId)
+            ],
             "password" => [
                 "nullable",
                 "string",
@@ -100,7 +119,10 @@ class CustomerController extends Controller
             unset($validatedData['password']);
         }
 
-        $customer->update($validatedData);
+        Customer::query()
+            ->where('id', '=', $customerId)
+            ->update($validatedData);
+
         return redirect()->route('website.customer.profile')->with('success', 'Customer updated successfully.');
     }
     public function logout(): RedirectResponse
