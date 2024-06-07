@@ -42,9 +42,9 @@ Route::get('/cart-shop-details', [WebsiteController::class,'cartShopDeals'])->na
 
 //CartController
 Route::get('add-to-cart/{id}', [CartController::class,'addToCart'])->name('addToCart');
-Route::post('cart/single-add/{menuItem}',[CartController::class,'singleAddToCart'])->name('singleAddToCart');
-Route::put('update-cart/{id}', [CartController::class,'updateCart'])->name('updateCart');
-Route::delete('remove-from-cart/{id}', [CartController::class,'removeFromCart'])->name('removeFromCart');
+Route::post('cart/single-add/{id}',[CartController::class,'singleAddToCart'])->name('singleAddToCart');
+Route::put('update-cart/{id?}', [CartController::class,'updateCart'])->name('updateCart');
+Route::delete('remove-from-cart/{id?}', [CartController::class,'removeFromCart'])->name('removeFromCart');
 
 //WishlistsController
 Route::get('wishlist/count', [WishlistsController::class,'wishListCount'])->name('wishlist-count');

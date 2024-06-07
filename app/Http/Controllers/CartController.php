@@ -5,131 +5,113 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\MenuItem;
 use App\Models\Wishlist;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class CartController extends Controller
 {
     protected $menuItem;
+
     public function __construct(MenuItem $menuItem)
     {
-
         $this->menuItem = $menuItem;
-
     }
-    public function addToCart(Request $request)
+
+    public function addToCart(Request $request, $id): RedirectResponse
     {
-        if (empty($request->slug)) {
-            session()->flash('error', 'Invalid');
-            return back();
-        }
-
-        $menuItem = MenuItem::where('slug', $request->slug)->first();
-
-        if (!$menuItem) {
-            session()->flash('error', 'MenuItem not found');
-            return back();
-        }
-
-        $already_cart = Cart::where('user_id', auth()->user()->id)
-            ->where('order_id')
-            ->where('menu_item_id', $menuItem->id)
-            ->first();
-
-        if ($already_cart) {
-            $already_cart->quantity += 1;
-            $already_cart->amount += $menuItem->price * (1 - $menuItem->discount / 100);
-
-
-            $already_cart->save();
+        $menuItem = MenuItem::findOrFail($id);
+        $cart = session()->get('cart', []);
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
         } else {
-            $cart = new Cart;
-            $cart->user_id = auth()->user()->id;
-            $cart->menu_item_id = $menuItem->id;
-            $cart->price = $menuItem->price * (1 - $menuItem->discount / 100);
-            $cart->quantity = 1;
-            $cart->amount = $cart->price * $cart->quantity;
-
-
-
-            $cart->save();
-            Wishlist::where('user_id', auth()->user()->id)
-                ->where('cart_id')
-                ->update(['cart_id' => $cart->id]);
+            $cart[$id] = [
+                "name" => $menuItem->name,
+                "image" => $menuItem->image,
+                "price" => $menuItem->price,
+                "quantity" => 1
+            ];
         }
 
-        session()->flash('success', 'Product successfully added to cart');
-        return back();
+        session()->put('cart', $cart);
+
+        return redirect()->route('website.cartShopDetails')->with('success', 'Item added to cart successfully!');
     }
 
-    public function singleAddToCart(MenuItem $menuItem)
+    public function singleAddToCart($id): RedirectResponse
     {
-        $already_cart = Cart::where('user_id', auth()->user()->id)
-            ->where('order_id')
-            ->where('menu_item_id', $menuItem->id)
-            ->first();
+        $menuItem = MenuItem::findOrFail($id);
+        $cart = session()->get('cart', []);
 
-        if ($already_cart) {
-            $already_cart->quantity += 1;
-            $already_cart->amount += $menuItem->price * (1 - $menuItem->discount / 100);
-
-
-
-            $already_cart->save();
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
         } else {
-            $cart = new Cart;
-            $cart->user_id = auth()->user()->id;
-            $cart->menu_item_id = $menuItem->id;
-            $cart->price = $menuItem->price * (1 - $menuItem->discount / 100);
-            $cart->quantity = 1;
-            $cart->amount = $cart->price * $cart->quantity;
-
-
-
-            $cart->save();
-            Wishlist::where('user_id', auth()->user()->id)
-                ->where('cart_id')
-                ->update(['cart_id' => $cart->id]);
+            $cart[$id] = [
+                "name" => $menuItem->name,
+                "image" => $menuItem->image,
+                "price" => $menuItem->price,
+                "quantity" => 1
+            ];
         }
 
-        session()->flash('success', 'Product successfully added to cart');
-        return back();
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
-    public function updateCart(Request $request, $id)
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function updateCart(Request $request, $id = null): RedirectResponse
     {
-        $cart = Cart::where('id', $id)
-            ->where('user_id', auth()->user()->id)
-            ->first();
-
-        if ($cart) {
-            $cart->quantity = $request->quantity;
-            $cart->amount = $cart->price * $cart->quantity;
-            $cart->save();
-
-            session()->flash('success', 'Cart updated successfully');
-        } else {
-            session()->flash('error', 'Cart item not found');
+        if (!$id) {
+            return redirect()->back()->with('error', 'Missing item ID in request!');
         }
 
-        return back();
+        $quantity = $request->get('quantity', 1);
+        $cart = session()->get('cart', []);
+
+        if ($quantity < 1) {
+            return redirect()->back()->with('error', 'Invalid quantity. Please enter a positive value.');
+        }
+
+        if (!isset($cart[$id])) {
+            return redirect()->back()->with('error', 'Item not found in cart!');
+        }
+        $cart[$id]['quantity'] = $quantity;
+
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Cart updated successfully!');
     }
 
-    public function removeFromCart(Request $request)
+    /**
+     * @param $id
+     * @return RedirectResponse
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+
+    public function removeFromCart($id = null):RedirectResponse
     {
-        $cart = Cart::where('user_id', auth()->user()->id)
-            ->where('menu_item_id', $request->menu_item_id)
-            ->where('order_id')
-            ->first();
-
-        if ($cart) {
-            $cart->delete();
-            session()->flash('success', 'Cart item removed successfully');
-        } else {
-            session()->flash('error', 'Cart item not found');
+        if (!$id) {
+            return redirect()->back()->with('error', 'Missing item ID in request!');
         }
 
-        return back();
+        $cart = session()->get('cart', []);
+        if (!isset($cart[$id])) {
+            return redirect()->back()->with('error', 'Item not found in cart!');
+        }
+        unset($cart[$id]);
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Item removed from cart successfully!');
     }
+
 
 
 }
