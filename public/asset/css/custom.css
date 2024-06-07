@@ -120,6 +120,7 @@
     border-radius: 15px;
     overflow: hidden;
     background: #ffffff linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
+    height: 100%;
 }
 
 .food_section .box .img-box {

@@ -37,14 +37,13 @@ Route::get('/menu/{slug?}', [WebsiteController::class,'menu'])->name('website.me
 Route::get('/about-us', [WebsiteController::class,'about'])->name('website.about');
 Route::get('/contact', [WebsiteController::class,'contact'])->name('website.contact');
 Route::get('/shop-details/{id}', [WebsiteController::class,'shopDeals'])->name('website.shopDetails');
-Route::get('/cart-shop-details', [WebsiteController::class,'cartShopDeals'])->name('website.cartShopDetails');
-
+Route::get('/cart-shop-details', [WebsiteController::class,'cartShopDetail'])->name('website.cartShopDetails');
 
 //CartController
-Route::get('add-to-cart/{id}', [CartController::class,'addToCart'])->name('addToCart');
+Route::get('add-to-cart/{id}', [CartController::class,'addToCart'])->name('website.addToCart');
 Route::post('cart/single-add/{id}',[CartController::class,'singleAddToCart'])->name('singleAddToCart');
 Route::put('update-cart/{id?}', [CartController::class,'updateCart'])->name('updateCart');
-Route::delete('remove-from-cart/{id?}', [CartController::class,'removeFromCart'])->name('removeFromCart');
+Route::get('remove-from-cart/{index}', [CartController::class,'removeFromCart'])->name('website.removeFromCart');
 
 //WishlistsController
 Route::get('wishlist/count', [WishlistsController::class,'wishListCount'])->name('wishlist-count');

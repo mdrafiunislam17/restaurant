@@ -10,7 +10,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
-                                        <input type="text" name="name" class="form-control mb-4" id="name" placeholder="Your Name" autofocus>
+                                        <input type="text" name="name" class="form-control mb-4" id="name" placeholder="Your Name">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
