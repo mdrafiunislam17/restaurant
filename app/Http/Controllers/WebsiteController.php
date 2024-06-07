@@ -10,6 +10,7 @@ use App\Models\Setting;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
 class WebsiteController extends Controller
@@ -105,11 +106,12 @@ class WebsiteController extends Controller
 
 
 
-    public function cartShopDeals()
+    public function cartShopDetail()
     {
         $settings =  $this->settings();
 
+        $carts = Session::get('cart');
 
-        return view('website.cartShopDetail', compact('settings'));
+        return view('website.cartShopDetail', compact('settings', 'carts'));
     }
 }
