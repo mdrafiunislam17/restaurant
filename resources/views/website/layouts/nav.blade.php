@@ -32,11 +32,6 @@
                                 <i class="fa fa-user text-white" aria-hidden="true"></i>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('website.customer.logout')}}" class="nav-link text-white">Logout
-                                <i class="fa-solid fa-right-from-bracket text-white"></i>
-                            </a>
-                        </li>
                     @else
                         <li class="nav-item">
                             <a href="{{route('website.registration')}}" class="nav-link text-white">Registration

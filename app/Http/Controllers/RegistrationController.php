@@ -41,23 +41,11 @@ class RegistrationController extends Controller
                 ],
             ]);
 
-            // Hash the password
             $validatedData['password'] = Hash::make($validatedData['password']);
-
-            // Process image upload if exists
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('public/uploads/customers', $imageName);
-                $validatedData['image'] = $imageName;
-            }
-
             Customer::query()->create($validatedData);
-
             return redirect()
-                ->back()
-                ->withInput()
-                ->with("success", "Customer created successfully.");
+                ->route('website.customer.login')
+                ->with("success", "Registration successfully.");
         } catch (QueryException $exception) {
             Log::error($exception->getMessage());
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\MenuItem;
 use App\Models\Setting;
@@ -96,13 +97,19 @@ class WebsiteController extends Controller
 
     public function shopDeals(Request $request, $id)
     {
+        $settings =  $this->settings();
         $menuItem = MenuItem::findOrFail($id);
         $quantity = $request->input('quantity', 1);
-        return view('website.shopDetail', compact('menuItem', 'quantity'));
+        return view('website.shopDetail', compact('menuItem', 'quantity','settings'));
     }
+
+
 
     public function cartShopDeals()
     {
-        return view('website.cartShopDetail');
+        $settings =  $this->settings();
+
+
+        return view('website.cartShopDetail', compact('settings'));
     }
 }

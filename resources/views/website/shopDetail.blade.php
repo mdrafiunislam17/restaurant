@@ -51,7 +51,8 @@
                             <div class="col-lg-12 mt-3">
                                 <div class="row">
                                     <div class="col-lg-3 pb-2">
-                                        <a href="{{route('website.cartShopDetails')}}" class="btn btn-danger w-100">Add To Cart</a>
+                                        <!-- "Add To Cart" বাটনে ক্লিক করলে JavaScript ফাংশন addToCart() কল করা হবে -->
+                                        <a href="{{route('addToCart', $menuItem->id)}}" class="btn btn-danger w-100">Add To Cart</a>
                                     </div>
                                     <div class="col-lg-3">
                                         <a href="#" class="btn btn-success w-100">Shop Now</a>
@@ -64,6 +65,10 @@
             </div>
         </div>
     </div>
+
+
+
+
 @endsection
 
 

@@ -42,9 +42,9 @@ Route::get('/cart-shop-details', [WebsiteController::class,'cartShopDeals'])->na
 
 //CartController
 Route::get('add-to-cart/{id}', [CartController::class,'addToCart'])->name('addToCart');
-Route::post('cart/single-add/{menuItem}',[CartController::class,'singleAddToCart'])->name('singleAddToCart');
-Route::put('update-cart/{id}', [CartController::class,'updateCart'])->name('updateCart');
-Route::delete('remove-from-cart/{id}', [CartController::class,'removeFromCart'])->name('removeFromCart');
+Route::post('cart/single-add/{id}',[CartController::class,'singleAddToCart'])->name('singleAddToCart');
+Route::put('update-cart/{id?}', [CartController::class,'updateCart'])->name('updateCart');
+Route::delete('remove-from-cart/{id?}', [CartController::class,'removeFromCart'])->name('removeFromCart');
 
 //WishlistsController
 Route::get('wishlist/count', [WishlistsController::class,'wishListCount'])->name('wishlist-count');
@@ -61,14 +61,26 @@ Route::put('customer/new-password/{token}', [CustomerControllerFrontEnd::class, 
 Route::get('customer/dashboard', [CustomerControllerFrontEnd::class, 'dashboard'])->name('website.customer.dashboard')
     ->middleware('auth.customer');
 
-Route::get('customer/password-change', [CustomerControllerFrontEnd::class, 'passwordChange'])->name('website.customer.password_change')
+Route::get('customer/order', [CustomerControllerFrontEnd::class, 'order'])->name('website.customer.order')
     ->middleware('auth.customer');
 
-Route::get('customer/profile', [CustomerControllerFrontEnd::class, 'profile'])->name('website.customer.profile')
+
+Route::get('/profile', [CustomerControllerFrontEnd::class, 'profile'])->name('website.customer.profile')
     ->middleware('auth.customer');
 
-Route::put('customer/profile', [CustomerControllerFrontEnd::class, 'profileUpdate'])->name('website.customer.profile')
+
+Route::put('/profile', [CustomerControllerFrontEnd::class, 'profileUpdate'])->name('website.customer.profile')
     ->middleware('auth.customer');
+
+
+
+Route::get('password-change', [CustomerControllerFrontEnd::class, 'passwordChange'])->name('website.customer.password_change')
+    ->middleware('auth.customer');
+
+
+Route::put('password-change', [CustomerControllerFrontEnd::class, 'passwordUpdate'])->name('website.customer.password_update')
+    ->middleware('auth.customer');
+
 
 Route::get('/customer/logout', [CustomerControllerFrontEnd::class, 'logout'])->name('website.customer.logout')
     ->middleware('auth.customer');
