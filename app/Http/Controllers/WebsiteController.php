@@ -101,7 +101,9 @@ class WebsiteController extends Controller
         $settings =  $this->settings();
         $menuItem = MenuItem::findOrFail($id);
         $quantity = $request->input('quantity', 1);
-        return view('website.shopDetail', compact('menuItem', 'quantity','settings'));
+        $carts = Session::get('cart');
+
+        return view('website.shopDetail', compact('menuItem', 'quantity','settings','carts'));
     }
 
 

@@ -42,11 +42,11 @@ class CartController extends Controller
                 if ($cartItem['product']->id == $menuItem->id) {
                     $found = true;
 
-                    if ($cartItem['quantity'] <= 1 && $action == 'delete') {
+                    if ($cartItem['quantity'] <= 1 && $action === 'delete') {
                         break;
                     }
 
-                    if ($action == 'delete') {
+                    if ($action === 'delete') {
                         $cartItem['quantity'] -= 1;
                     } else {
                         $cartItem['quantity'] += 1;
@@ -69,24 +69,9 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function singleAddToCart($id): RedirectResponse
+    public function singleAddToCart($id)
     {
-        $menuItem = MenuItem::findOrFail($id);
-        $cart = session()->get('cart', []);
 
-        if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $menuItem->name,
-                "image" => $menuItem->image,
-                "price" => $menuItem->price,
-                "quantity" => 1
-            ];
-        }
-
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
 

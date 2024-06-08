@@ -44,15 +44,28 @@
                                 <p>Category :{{$menuItem->name}}</p>
                                 <p>Sub Category :{{$menuItem->slug}}</p>
                             </div>
-                            <div class="col-lg-4">
-                                <h6>Quantity :</h6>
-                                <input type="number" class="form-control text-center w-100" value="1">
-                            </div>
+
+                                <div class="input-group quantity col-lg-3">
+                                    <div class="input-group-prepend">
+                                        <a href="" class="btn btn-primary btn-decrement text-light" type="button">
+                                            <i class="fa fa-minus"></i>
+                                        </a>
+                                    </div>
+                                    <input type="text" class="form-control text-center quantity-input" value="1" disabled/>
+                                    <div class="input-group-append">
+                                        <a href="" class="btn btn-primary btn-increment text-light" type="button">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+
+
                             <div class="col-lg-12 mt-3">
                                 <div class="row">
                                     <div class="col-lg-3 pb-2">
-                                        <!-- "Add To Cart" বাটনে ক্লিক করলে JavaScript ফাংশন addToCart() কল করা হবে -->
-                                        <a href="{{route('addToCart', $menuItem->id)}}" class="btn btn-danger w-100">Add To Cart</a>
+                                        <a href="{{route('website.addToCart', $menuItem->id)}}" class="btn btn-danger w-100">Add To Cart</a>
                                     </div>
                                     <div class="col-lg-3">
                                         <a href="#" class="btn btn-success w-100">Shop Now</a>
