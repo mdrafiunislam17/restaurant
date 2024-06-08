@@ -45,19 +45,21 @@
                                 <p>Sub Category :{{$menuItem->slug}}</p>
                             </div>
 
-                                <div class="input-group quantity col-lg-3">
-                                    <div class="input-group-prepend">
-                                        <a href="" class="btn btn-primary btn-decrement text-light" type="button">
-                                            <i class="fa fa-minus"></i>
-                                        </a>
-                                    </div>
-                                    <input type="text" class="form-control text-center quantity-input" value="1" disabled/>
-                                    <div class="input-group-append">
-                                        <a href="" class="btn btn-primary btn-increment text-light" type="button">
-                                            <i class="fa fa-plus"></i>
-                                        </a>
-                                    </div>
+                            <div class="input-group quantity">
+                                <div class="input-group-prepend">
+                                    <a href="{{ route('website.addToCart', $menuItem->id) . '?action=delete' }}" class="btn btn-primary btn-decrement text-light" type="button">
+                                        <i class="fa fa-minus"></i>
+                                    </a>
                                 </div>
+                                <input type="text" class="form-control text-center quantity-input"
+                                       value="1" disabled/>
+                                <div class="input-group-append">
+                                    <a href="{{ route('website.addToCart', $menuItem->id) }}"
+                                       class="btn btn-primary btn-increment text-light" type="button">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
 
 
 

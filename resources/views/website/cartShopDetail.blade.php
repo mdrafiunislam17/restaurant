@@ -24,48 +24,50 @@
                         @php
                         $subtotal = 0;
                         @endphp
+                            @if(!empty($carts))
+                                @foreach($carts as $i => $cart)
+                                    @php
+                                        $subtotal += $cart['total'];
+                                    @endphp
+                                    <tr data-id="{{ $i }}">
+                                        <td class="image" data-title="No">
+                                            <img src="{{ asset('storage/uploads/menuItems/' . $cart['product']->image) }}"
+                                                 height="70px" alt="">
+                                        </td>
+                                        <td class="menuItem-des" data-title="Description">
+                                            <p class="menuItem-name">{{ $cart['product']->name }}</p>
+                                        </td>
+                                        <td class="price" data-title="Price">
+                                            <span>{{ Helper::CURRENCY_SYMBOL }}{{ $cart['price'] }}</span>
+                                        </td>
+                                        <td class="qty" data-title="Qty">
+                                            <div class="input-group quantity">
+                                                <div class="input-group-prepend">
+                                                    <a href="{{ route('website.addToCart', $cart['product']->id) . '?action=delete' }}" class="btn btn-primary btn-decrement text-light" type="button">
+                                                        <i class="fa fa-minus"></i>
+                                                    </a>
+                                                </div>
+                                                <input type="text" class="form-control text-center quantity-input"
+                                                       value="{{ $cart['quantity'] }}" disabled/>
+                                                <div class="input-group-append">
+                                                    <a href="{{ route('website.addToCart', $cart['product']->id) }}"
+                                                       class="btn btn-primary btn-increment text-light" type="button">
+                                                        <i class="fa fa-plus"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="total-amount cart_single_price" data-title="Total">
+                                            <span class="money">{{ Helper::CURRENCY_SYMBOL }}{{ number_format($cart['total'], 2) }}</span>
+                                        </td>
+                                        <td class="action" data-title="Remove">
+                                            <a href="{{ route('website.removeFromCart', $i) }}" class="btn btn-danger"><i
+                                                    class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
 
-                        @foreach($carts as $i => $cart)
-                            @php
-                                $subtotal += $cart['total'];
-                            @endphp
-                            <tr data-id="{{ $i }}">
-                                <td class="image" data-title="No">
-                                    <img src="{{ asset('storage/uploads/menuItems/' . $cart['product']->image) }}"
-                                         height="70px" alt="">
-                                </td>
-                                <td class="menuItem-des" data-title="Description">
-                                    <p class="menuItem-name">{{ $cart['product']->name }}</p>
-                                </td>
-                                <td class="price" data-title="Price">
-                                    <span>{{ Helper::CURRENCY_SYMBOL }}{{ $cart['price'] }}</span>
-                                </td>
-                                <td class="qty" data-title="Qty">
-                                    <div class="input-group quantity">
-                                        <div class="input-group-prepend">
-                                            <a href="{{ route('website.addToCart', $cart['product']->id) . '?action=delete' }}" class="btn btn-primary btn-decrement text-light" type="button">
-                                                <i class="fa fa-minus"></i>
-                                            </a>
-                                        </div>
-                                        <input type="text" class="form-control text-center quantity-input"
-                                               value="{{ $cart['quantity'] }}" disabled/>
-                                        <div class="input-group-append">
-                                            <a href="{{ route('website.addToCart', $cart['product']->id) }}"
-                                               class="btn btn-primary btn-increment text-light" type="button">
-                                                <i class="fa fa-plus"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="total-amount cart_single_price" data-title="Total">
-                                    <span class="money">{{ Helper::CURRENCY_SYMBOL }}{{ number_format($cart['total'], 2) }}</span>
-                                </td>
-                                <td class="action" data-title="Remove">
-                                    <a href="{{ route('website.removeFromCart', $i) }}" class="btn btn-danger"><i
-                                                class="fa fa-trash"></i></a>
-                                </td>
-                            </tr>
-                        @endforeach
                         </tbody>
                     </table>
                 </div>

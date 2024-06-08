@@ -51,9 +51,10 @@
                             </form>
                         </li>
                         <li class="col-lg-12 nav-item dropdown pl-4">
-                            <a href="#" class="nav-link dropdown-toggle" id="cartDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa-solid fa-cart-shopping text-white"></i>
-                            </a>
+                            <button type="button" class="btn btn-success" data-toggle="dropdown">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                                <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                            </button>
                             <div class="col-lg-12 dropdown-menu p-3" aria-labelledby="cartDropdown">
                                 <div class="row total-header-section">
                                     <div class="col-12 text-right">
