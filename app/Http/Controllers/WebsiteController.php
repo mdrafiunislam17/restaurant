@@ -59,8 +59,9 @@ class WebsiteController extends Controller
         $menuItems =$this->menuItems();
         $selectedCategory = null;
         $settings =  $this->settings();
+        $carts = session()->get('cart', []);
 
-        return view('website.index',compact('categories','menuItems','selectedCategory','settings'));
+        return view('website.index',compact('categories','menuItems','selectedCategory','settings','carts'));
     }
 
     /**

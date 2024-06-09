@@ -28,6 +28,8 @@ class CustomerController extends Controller
         return new Collection(Setting::pluck('value', 'setting_name'));
     }
 
+
+
     public function login(): View|RedirectResponse
     {
         $settings =  $this->settings();

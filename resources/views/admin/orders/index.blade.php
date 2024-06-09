@@ -37,45 +37,13 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Menu Item</th>
+                            <th>Phone</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($orders as $i => $order)
-                            <tr>
-                                <td>{{ ++$i }}</td>
-                                <td>{{ $order->customer->name }}</td>
-                                <td>{{ $order->customer->email }}</td>
-                                <td>
-                                    @foreach($order->menuItems as $menuItem)
-                                        {{ $menuItem->name }}
-                                        @if (!$loop->last)
-                                            ,
-                                        @endif
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @if ($order->status == 1)
-                                        <span class="badge badge-success badge-counter">Active</span>
-                                    @else
-                                        <span class="badge badge-danger badge-counter">Inactive</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{ route("Admin.orders.show", $order->id) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
-                                    <a href="{{ route("Admin.orders.edit", $order->id) }}" class="btn btn-sm"><i class="fa fa-edit"></i></a>
-                                    <form action="{{ route('Admin.orders.destroy', $order->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-sm" onclick="return confirm('Are you sure to delete?')">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
+
                         </tbody>
                     </table>
                 </div>

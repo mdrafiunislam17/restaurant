@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <h3 class="text-uppercase fw-bold">Products</h3>
+                    <h3 class="text-uppercase fw-bold">COMPANY</h3>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px">
                     <p><a class="text-white" href="{{route('website.home')}}">Home</a></p>
                     <p><a class="text-white" href="{{route('website.menu')}}">Menu</a></p>

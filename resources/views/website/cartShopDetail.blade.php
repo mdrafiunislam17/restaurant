@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title text-center">Cart Summary</h4>
@@ -88,7 +88,12 @@
                             </li>
                             <div class="row mt-3">
                                 <div class="col-lg-4">
-                                    <a href="#" class="btn btn-primary me-2" role="button"> Checkout</a>
+                                    <a href="{{route('checkout.index')}}" class="btn btn-primary me-2" role="button"> Checkout</a>
+{{--                                    @auth--}}
+{{--                                        <a href="{{ route('checkout.index') }}" class="btn btn-primary me-2" role="button">Checkout</a>--}}
+{{--                                    @else--}}
+{{--                                        <a href="{{ route('website.customer.login') }}" class="btn btn-primary me-2" role="button">Login to Checkout</a>--}}
+{{--                                    @endauth--}}
                                 </div>
                                 <div class="col-lg-8 pr-3">
                                     <a href="#" class="btn btn-secondary" role="button">Continue Shopping</a>
@@ -101,27 +106,5 @@
         </div>
     </div>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-lg-12">
-                <form action="#">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="form-group">
-                                <label for="additionalComments">Additional Comments</label>
-                                <textarea id="additionalComments" rows="4" class="form-control"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="promoCode">Promo Code</label>
-                                <input type="text" id="promoCode" class="form-control">
-                                <button type="submit" class="btn btn-primary mt-2">Apply Code</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
 @endsection
