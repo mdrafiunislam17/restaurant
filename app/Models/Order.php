@@ -14,4 +14,8 @@ class Order extends Model
         'discount',
         'status',
     ];
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }

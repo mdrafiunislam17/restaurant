@@ -19,6 +19,7 @@ class CartController extends Controller
     {
         return new Collection(Setting::pluck('value', 'setting_name'));
     }
+
     protected $menuItem;
 
     public function __construct(MenuItem $menuItem)
@@ -129,17 +130,15 @@ class CartController extends Controller
 
     public function checkoutIndex()
     {
-        $settings =  $this->settings();
+        $settings = $this->settings();
         if (!Auth::guard('customer')->check()) {
             return redirect()->route('website.customer.login');
         }
         $carts = session()->get('cart', []);
 
-        return view('website.checkout',compact('settings','carts'));
+        return view('website.checkout', compact('settings', 'carts'));
 
     }
-
-
 
 
 }

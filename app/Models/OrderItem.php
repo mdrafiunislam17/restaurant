@@ -16,4 +16,13 @@ class OrderItem extends Model
         'price',
         'discount',
     ];
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function menuItem()
+    {
+        return $this->belongsTo(MenuItem::class);
+    }
 }
