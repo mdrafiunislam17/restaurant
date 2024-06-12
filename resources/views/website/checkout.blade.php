@@ -125,6 +125,44 @@
                                     </div>
                                 </div>
                                 <hr />
+                                <!-- Payment Options -->
+                                <h4 class="mb-3">Payment</h4>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="cashOnDelivery" value="cash_on_delivery" />
+                                    <label class="form-check-label" for="cashOnDelivery">
+                                        <img src="{{asset("asset/images/c2.png")}}" alt="Cash on Delivery" height="30px"> Cash on delivery
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="credit_card" />
+                                    <p>Credit card / Debit card</p>
+                                    <label class="form-check-label" for="creditCard">
+                                        <i class="fa-regular fa-credit-card text-danger fa-3x"></i>
+                                        <i class="fa-solid fa-credit-card fa-3x"></i>
+                                    </label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="ccName">Name on Card</label>
+                                        <input type="text" class="form-control" id="ccName" name="ccName" placeholder="" />
+                                        <small class="text-muted">Full name as displayed on card</small>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="ccNumber">Credit Card Number</label>
+                                        <input type="text" class="form-control" id="ccNumber" name="ccNumber" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="ccExpiration">Expiration</label>
+                                        <input type="text" class="form-control" id="ccExpiration" name="ccExpiration" placeholder="" />
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="ccCvv">CVV</label>
+                                        <input type="text" class="form-control" id="ccCvv" name="ccCvv" placeholder="" />
+                                    </div>
+                                </div>
+                                <hr />
                                 <div class="float-end">
                                     <button class="btn btn-light border">Cancel</button>
                                     <button type="submit" class="btn btn-success shadow-0 border">Continue</button>
