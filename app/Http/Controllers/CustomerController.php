@@ -57,7 +57,11 @@ class CustomerController extends Controller
                 $request->session()->regenerate();
                 sleep(1);
 
-                return redirect()->route("website.customer.profile")->withInput();
+                if ($request->input('redirect')) {
+                    return redirect($request->input('redirect'));
+                } else {
+                    return redirect()->route("website.customer.profile")->withInput();
+                }
             } else {
                 return back()->with("error", "Email or Password is not valid.")->onlyInput();
             }

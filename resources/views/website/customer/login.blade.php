@@ -32,7 +32,7 @@
                             <h2>Login</h2>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('website.customer.storeLogin') }}" method="post">
+                            <form action="{{ route('website.customer.storeLogin') . "?" . request()->getQueryString()  }}" method="post">
                                 @csrf
                                 <div class="form-group mb-4">
                                     <label for="email" class="form-label">Email address</label>

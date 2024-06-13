@@ -47,6 +47,8 @@ Route::put('update-cart/{id?}', [CartController::class,'updateCart'])->name('upd
 Route::get('remove-from-cart/{index}', [CartController::class,'removeFromCart'])->name('website.removeFromCart');
 Route::get('/checkout', [CartController::class, 'checkoutIndex'])->name('checkout.index');
 
+Route::post('/order', [CartController::class, 'order'])->name('order')->middleware('auth.customer');
+
 
 
 

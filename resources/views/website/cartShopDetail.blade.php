@@ -14,7 +14,7 @@
                             <th>IMAGE</th>
                             <th>NAME</th>
                             <th>PRICE</th>
-                            <th>QUANTITY</th>
+                            <th style="width: 150px">QUANTITY</th>
                             <th>TOTAL</th>
                             <th>Remove</th>
                         </tr>
@@ -86,19 +86,20 @@
                                 <strong>You Pay</strong>
                                 <span>{{ Helper::CURRENCY_SYMBOL }}{{ number_format($subtotal, 2) }}</span>
                             </li>
-                            <div class="row mt-3">
-                                <div class="col-lg-4">
-                                    <a href="{{route('checkout.index')}}" class="btn btn-primary me-2" role="button"> Checkout</a>
-{{--                                    @auth--}}
-{{--                                        <a href="{{ route('checkout.index') }}" class="btn btn-primary me-2" role="button">Checkout</a>--}}
-{{--                                    @else--}}
-{{--                                        <a href="{{ route('website.customer.login') }}" class="btn btn-primary me-2" role="button">Login to Checkout</a>--}}
-{{--                                    @endauth--}}
+                            <li>
+                                <div class="row mt-3">
+                                    <div class="col-lg-4">
+                                        @auth('customer')
+                                            <a href="{{ route('checkout.index')}}" class="btn btn-primary me-2" role="button">Checkout</a>
+                                        @else
+                                            <a href="{{ route('checkout.index')}}?redirect={{ route('checkout.index') }}" class="btn btn-primary me-2" role="button">Checkout</a>
+                                        @endauth
+                                    </div>
+                                    <div class="col-lg-8 pr-3">
+                                        <a href="#" class="btn btn-secondary" role="button">Continue Shopping</a>
+                                    </div>
                                 </div>
-                                <div class="col-lg-8 pr-3">
-                                    <a href="#" class="btn btn-secondary" role="button">Continue Shopping</a>
-                                </div>
-                            </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
