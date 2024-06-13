@@ -54,9 +54,9 @@
 <!-- custom js -->
 <script src="{{asset('asset/js/custom.js')}}"></script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="{{url('https://code.jquery.com/jquery-3.2.1.slim.min.js')}}"></script>
+<script src="{{url('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')}}"></script>
+<script src="{{url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')}}"></script>
 <script>
     function initMap() {
         var mapProp = {
@@ -66,10 +66,14 @@
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=initMap"></script>
+<script src="{{url('https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=initMap')}}"></script>
 
 
 @stack("scripts")
+
+
+
+
 
 </body>
 

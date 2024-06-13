@@ -155,8 +155,16 @@ class CartController extends Controller
     public function order(Request $request)
     {
         /**
-         * All Validation need
+         * Validate the request
          */
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+            'email' => 'nullable|email|max:255',
+            'address' => 'required|string|max:500',
+            'note' => 'nullable|string|max:1000',
+            'payment_method' => 'required|in:Cash On Delivery,bKash',
+        ]);
 
         DB::beginTransaction();
 
@@ -169,7 +177,7 @@ class CartController extends Controller
                 'status' => 'Pending',
             ]);
             $order->save();
-            $order_id = $order->__get('id');
+            $order_id = $order->id;
 
             // OrderItems
             $carts = Session::get('cart');
@@ -211,8 +219,8 @@ class CartController extends Controller
 
             DB::commit();
 
-            toastr()->addSuccess('Your order successfully');
-            Session::remove('cart');
+            toastr()->addSuccess('Your order has been successfully placed');
+            Session::forget('cart');
 
             return redirect()->route('website.customer.order');
         } catch (Exception $exception) {
@@ -224,6 +232,7 @@ class CartController extends Controller
                 ->withInput();
         }
     }
+
 
 
 }
