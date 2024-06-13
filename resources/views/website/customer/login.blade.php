@@ -1,19 +1,6 @@
 @extends("website.layouts.master")
 @section("title", "Food Login")
 @section("content")
-
-    <div class="banner-area d-flex align-items-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="banner-text">
-                        <h1 class="text-center">Login</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <section class="my-5">
         <div class="container">
             <div class="row justify-content-center">

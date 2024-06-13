@@ -2,9 +2,9 @@
     <div class="container">
         <nav class="navbar mb-3 navbar-expand-lg navbar-light bg-dark">
             <a href="#" class="navbar-brand">
-                <img src="{{ asset("storage/uploads/" . $settings["SETTING_SITE_LOGO"]) }}"
+                <img src="{{ asset('storage/uploads/' . $settings['SETTING_SITE_LOGO']) }}"
                      class="img-fluid"
-                     alt="{{ $settings["SETTING_SITE_LOGO"] }}"
+                     alt="{{ $settings['SETTING_SITE_LOGO'] }}"
                      style="max-height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,30 +32,113 @@
                                 <i class="fa fa-user text-white" aria-hidden="true"></i>
                             </a>
                         </li>
+                        <li class="col-lg-12 nav-item dropdown pl-4">
+                            <button type="button" class="btn btn-success" data-toggle="dropdown">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                                <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                            </button>
+                            @php
+                                $subtotal = 0;
+                            @endphp
+                            @if(!empty($carts))
+                                @foreach($carts as $i => $cart)
+                                    @php
+                                        $subtotal += $cart['total'];
+                                    @endphp
+                                    <div class="col-lg-12 dropdown-menu p-3" aria-labelledby="cartDropdown">
+                                        <div class="row total-header-section">
+                                            <div class="col-12 text-right">
+                                                <span class="money">Total: {{ \App\Helper::CURRENCY_SYMBOL }}{{ number_format($cart['total'], 2) }}</span>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row cart-detail align-items-center mb-3">
+                                            <div class="col-4 cart-detail-img">
+                                                <img src="{{ asset('storage/uploads/menuItems/' . $cart['product']->image) }}" height="40px" alt="">
+                                            </div>
+                                            <div class="col-8">
+                                                <p class="mb-1 font-weight-bold">{{ $cart['product']->name }}</p>
+                                                <span class="price text-info d-block">{{ \App\Helper::CURRENCY_SYMBOL }}{{ number_format($cart['price'], 2) }}</span>
+                                                <span class="count">Quantity: {{ $cart['quantity'] }}</span>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <a href="{{ route('website.cartShopDetails') }}" class="btn btn-primary btn-block">View all</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+
+
+
+                        </li>
                     @else
                         <li class="nav-item">
                             <a href="{{route('website.registration')}}" class="nav-link text-white">Registration
                                 <i class="fa-regular fa-registered text-white"></i>
                             </a>
-                            </li>
+                        </li>
                         <li class="nav-item">
                             <a href="{{route('website.customer.login')}}" class="nav-link text-white">Login
                                 <i class="fa-solid fa-arrow-right-to-bracket text-white"></i>
                             </a>
                         </li>
-                    @endauth
-                    <li class="nav-item pl-4">
-                        <a href="{{route('website.cartShopDetails')}}" class="nav-link">
-                            <i class="fa-solid fa-cart-shopping text-white"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item pl-4">
-                        <form class="form-inline" action="/search" method="GET">
-                            <button type="submit" class="btn btn-link" aria-label="Search">
-                                <i class="fa fa-search text-white" aria-hidden="true"></i>
+                        <li class="nav-item pl-4">
+                            <form class="form-inline" action="/search" method="GET">
+                                <button type="submit" class="btn btn-link" aria-label="Search">
+                                    <i class="fa fa-search text-white" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                        </li>
+                        <li class="col-lg-12 nav-item dropdown pl-4">
+                            <button type="button" class="btn btn-success" data-toggle="dropdown">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                                <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                             </button>
-                        </form>
-                    </li>
+                            @php
+                                $subtotal = 0;
+                            @endphp
+                            @if(!empty($carts))
+                                @foreach($carts as $i => $cart)
+                                    @php
+                                        $subtotal += $cart['total'];
+                                    @endphp
+                                    <div class="col-lg-12 dropdown-menu p-3" aria-labelledby="cartDropdown">
+                                        <div class="row total-header-section">
+                                            <div class="col-12 text-right">
+                                                <span class="money">Total: {{ \App\Helper::CURRENCY_SYMBOL }}{{ number_format($cart['total'], 2) }}</span>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row cart-detail align-items-center mb-3">
+                                            <div class="col-4 cart-detail-img">
+                                                <img src="{{ asset('storage/uploads/menuItems/' . $cart['product']->image) }}" height="40px" alt="">
+                                            </div>
+                                            <div class="col-8">
+                                                <p class="mb-1 font-weight-bold">{{ $cart['product']->name }}</p>
+                                                <span class="price text-info d-block">{{ \App\Helper::CURRENCY_SYMBOL }}{{ number_format($cart['price'], 2) }}</span>
+                                                <span class="count">Quantity: {{ $cart['quantity'] }}</span>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <a href="{{ route('website.cartShopDetails') }}" class="btn btn-primary btn-block">View all</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+
+
+                        </li>
+                    @endauth
+
+
+
                 </ul>
             </div>
         </nav>

@@ -5,12 +5,12 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\MenuItemController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\WebsiteController;
-use App\Http\Controllers\WishlistsController;
 use App\Http\Controllers\CustomerController as CustomerControllerFrontEnd;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -39,15 +39,17 @@ Route::get('/contact', [WebsiteController::class,'contact'])->name('website.cont
 Route::get('/shop-details/{id}', [WebsiteController::class,'shopDeals'])->name('website.shopDetails');
 Route::get('/cart-shop-details', [WebsiteController::class,'cartShopDetail'])->name('website.cartShopDetails');
 
+
 //CartController
 Route::get('add-to-cart/{id}', [CartController::class,'addToCart'])->name('website.addToCart');
 Route::post('cart/single-add/{id}',[CartController::class,'singleAddToCart'])->name('singleAddToCart');
 Route::put('update-cart/{id?}', [CartController::class,'updateCart'])->name('updateCart');
 Route::get('remove-from-cart/{index}', [CartController::class,'removeFromCart'])->name('website.removeFromCart');
+Route::get('/checkout', [CartController::class, 'checkoutIndex'])->name('checkout.index');
 
-//WishlistsController
-Route::get('wishlist/count', [WishlistsController::class,'wishListCount'])->name('wishlist-count');
-Route::delete('remove-wishlist/{id}', [WishlistsController::class,'removeWishlist'])->name('remove-wishlist');
+
+
+
 
 //CustomerControllerFrontEnd
 Route::get('customer/login', [CustomerControllerFrontEnd::class,'login'])->name('website.customer.login');
@@ -56,6 +58,7 @@ Route::get('customer/forgot-password', [CustomerControllerFrontEnd::class, 'forg
 Route::post('customer/forgot-password', [CustomerControllerFrontEnd::class, 'sendResetLinkEmail'])->name('website.customer.forgot_password');
 Route::get('customer/new-password/{token}', [CustomerControllerFrontEnd::class, 'newPassword'])->name('website.customer.new_password');
 Route::put('customer/new-password/{token}', [CustomerControllerFrontEnd::class, 'newPasswordSave'])->name('website.customer.new_password');
+
 
 Route::get('customer/dashboard', [CustomerControllerFrontEnd::class, 'dashboard'])->name('website.customer.dashboard')
     ->middleware('auth.customer');
@@ -125,7 +128,13 @@ Route::get('/admin/customers/{customer}/edit', [CustomerController::class, 'edit
 Route::put('/admin/customers/{customer}', [CustomerController::class, 'update'])->name('admin.customers.update');
 Route::delete('/admin/customers/{customer}', [CustomerController::class, 'destroy'])->name('admin.customers.destroy');
 
-
+//OrderController
+Route::get('/admin/orders',[OrderController::class,"index"])->name('admin.orders.index');
+Route::post('/admin/orders',[OrderController::class,"store"])->name('admin.orders.store');
+Route::get('/admin/orders/{order}',[OrderController::class,"show"])->name('admin.orders.show');
+Route::get('/admin/orders/{order}/edit',[OrderController::class,"edit"])->name('admin.orders.edit');
+route::put('/admin/orders/{order}', [OrderController::class, 'update'])->name('admin.orders.update');
+Route::delete('/admin/orders/{order}', [OrderController::class, 'destroy'])->name('admin.orders.destroy');
 
 // SettingsController
 Route::get("settings", [SettingController::class, "index"])->name("admin.settings.index");

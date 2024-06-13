@@ -23,7 +23,7 @@ class CustomerAuthenticate
         if ($request->ajax() || $request->wantsJson()) {
             return response("Unauthorized.", 401);
         } else {
-            return redirect()->route("customer.login");
+            return redirect()->route("website.customer.login");
         }
     }
 }

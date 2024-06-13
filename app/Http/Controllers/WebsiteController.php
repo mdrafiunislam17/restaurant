@@ -59,8 +59,9 @@ class WebsiteController extends Controller
         $menuItems =$this->menuItems();
         $selectedCategory = null;
         $settings =  $this->settings();
+        $carts = session()->get('cart', []);
 
-        return view('website.index',compact('categories','menuItems','selectedCategory','settings'));
+        return view('website.index',compact('categories','menuItems','selectedCategory','settings','carts'));
     }
 
     /**
@@ -101,7 +102,9 @@ class WebsiteController extends Controller
         $settings =  $this->settings();
         $menuItem = MenuItem::findOrFail($id);
         $quantity = $request->input('quantity', 1);
-        return view('website.shopDetail', compact('menuItem', 'quantity','settings'));
+        $carts = Session::get('cart');
+
+        return view('website.shopDetail', compact('menuItem', 'quantity','settings','carts'));
     }
 
 
