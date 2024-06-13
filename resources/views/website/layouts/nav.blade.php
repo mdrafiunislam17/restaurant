@@ -32,16 +32,27 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto d-flex align-items-center">
-                    <li class="nav-item">
-                        <a href="{{route('website.registration')}}" class="nav-link text-white">Registration
-                            <i class="fa-regular fa-registered text-white"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('website.customer.login')}}" class="nav-link text-white">Login
-                            <i class="fa-solid fa-arrow-right-to-bracket text-white"></i>
-                        </a>
-                    </li>
+                    @auth("customer")
+                        <li class="nav-item">
+                            <a href="{{ route('website.customer.profile') }}" class="nav-link text-white">Profile
+                                <i class="fa fa-user text-white" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="{{ route('website.registration') }}" class="nav-link text-white">
+                                Registration
+                                <i class="fa-regular fa-registered text-white"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('website.customer.login') }}" class="nav-link text-white">
+                                Login
+                                <i class="fa-solid fa-arrow-right-to-bracket text-white"></i>
+                            </a>
+                        </li>
+                    @endauth
+
                     <li class="nav-item pl-4">
                         <form class="form-inline" action="/search" method="GET">
                             <button type="submit" class="btn btn-link" aria-label="Search">
@@ -49,6 +60,7 @@
                             </button>
                         </form>
                     </li>
+
                     <li class="col-lg-12 nav-item dropdown pl-4">
                         <button type="button" class="btn btn-success" data-toggle="dropdown">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
@@ -74,8 +86,7 @@
                                 @foreach($carts as $i => $cart)
                                     <div class="row cart-detail align-items-center mb-3">
                                         <div class="col-4 cart-detail-img">
-                                            <img src="{{ asset('storage/uploads/menuItems/' . $cart['product']->image) }}"
-                                                 height="40px" alt="">
+                                            <img src="{{ asset('storage/uploads/menuItems/' . $cart['product']->image) }}" height="40px" alt="">
                                         </div>
                                         <div class="col-8">
                                             <p class="mb-1 font-weight-bold">{{ $cart['product']->name }}</p>
@@ -87,14 +98,15 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <a href="{{ route('website.cartShopDetails') }}"
-                                           class="btn btn-primary btn-block">View all</a>
+                                        <a href="{{ route('website.cartShopDetails') }}" class="btn btn-primary btn-block">View all</a>
                                     </div>
                                 </div>
                             </div>
                         @endif
                     </li>
                 </ul>
+
+
             </div>
         </nav>
     </div>
