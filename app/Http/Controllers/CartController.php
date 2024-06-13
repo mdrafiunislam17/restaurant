@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\DeliveryAddress;
 use App\Models\MenuItem;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Payment;
 use App\Models\Setting;
+use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -73,6 +79,7 @@ class CartController extends Controller
 
         Session::put('cart', $cart);
 
+        toastr()->addSuccess('Product add to cart');
         return redirect()->back();
     }
 
@@ -122,6 +129,7 @@ class CartController extends Controller
 
             Session::put('cart', $cart);
 
+            toastr()->addSuccess('Product remove to cart');
             return redirect()->back();
         }
 
@@ -132,12 +140,89 @@ class CartController extends Controller
     {
         $settings = $this->settings();
         if (!Auth::guard('customer')->check()) {
-            return redirect()->route('website.customer.login');
+            $query = request()->getQueryString();
+
+            $url = route('website.customer.login') . ($query ? "?$query" : '');
+            return redirect($url);
         }
+
         $carts = session()->get('cart', []);
 
         return view('website.checkout', compact('settings', 'carts'));
 
+    }
+
+    public function order(Request $request)
+    {
+        /**
+         * All Validation need
+         */
+
+        DB::beginTransaction();
+
+        try {
+            // Order
+            $order = new Order();
+            $order->fill([
+                'customer_id' => Auth::guard('customer')->id(),
+                'discount' => 0,
+                'status' => 'Pending',
+            ]);
+            $order->save();
+            $order_id = $order->__get('id');
+
+            // OrderItems
+            $carts = Session::get('cart');
+
+            foreach ($carts as $cart) {
+                $orderItem = new OrderItem();
+                $orderItem->fill([
+                    'order_id' => $order_id,
+                    'menu_item_id' => $cart['product']->id,
+                    'quantity' => $cart['quantity'],
+                    'price' => $cart['total'],
+                    'discount' => 0,
+                ]);
+                $orderItem->save();
+            }
+
+            // DeliveryAddress
+            $deliveryAddress = new DeliveryAddress();
+            $deliveryAddress->fill([
+                'order_id' => $order_id,
+                'name' => $request->input('name'),
+                'phone' => $request->input('phone'),
+                'email' => $request->input('email'),
+                'address' => $request->input('address'),
+                'note' => $request->input('note'),
+            ]);
+            $deliveryAddress->save();
+
+            // Payment
+            $payment = new Payment();
+            $payment->fill([
+                'order_id' => $order_id,
+                'payment_method' => $request->input('payment_method'),
+                'amount' => 0,
+                'transaction_id' => null,
+                'status' => 'Pending',
+            ]);
+            $payment->save();
+
+            DB::commit();
+
+            toastr()->addSuccess('Your order successfully');
+            Session::remove('cart');
+
+            return redirect()->route('website.customer.order');
+        } catch (Exception $exception) {
+            DB::rollBack();
+            toastr()->addError($exception->getMessage());
+
+            return redirect()
+                ->back()
+                ->withInput();
+        }
     }
 
 
