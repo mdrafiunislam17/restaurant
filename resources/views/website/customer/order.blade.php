@@ -1,5 +1,5 @@
 @extends('website.customer.master')
-@section("title", "Food Customer Profile")
+@section("title", "Food Order")
 
 @section('customer-content')
     <h2 class="text-center py-4 bg-primary text-white">Orders</h2>
