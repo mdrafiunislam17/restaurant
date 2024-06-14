@@ -26,7 +26,7 @@ class Order extends Model
     // Define the relationship with DeliveryAddress
     public function deliveryAddress()
     {
-        return $this->belongsTo(DeliveryAddress::class);
+        return $this->hasOne(DeliveryAddress::class);
     }
 
     // Define the relationship with Payment

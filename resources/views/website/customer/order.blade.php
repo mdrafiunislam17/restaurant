@@ -4,9 +4,6 @@
 @section('customer-content')
     <h2 class="text-center py-4 bg-primary text-white">Orders</h2>
 
-{{--    <div class="mt-5">--}}
-{{--        <h5 class="text-center">Order Now</h5>--}}
-{{--    </div>--}}
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
@@ -26,9 +23,9 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $deliveryAddress->name }}</td>
                             <td>{{ $deliveryAddress->phone }}</td>
-                            <td>{{ $deliveryAddress->email }}</td> <!-- corrected typo 'emial' to 'email' -->
+                            <td>{{ $deliveryAddress->email }}</td>
                             <td>
-                                <a href="{{route('website.customer.order.show')}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> View</a>
+                                <a href="{{ route('website.customer.order.show', $deliveryAddress->order_id) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> View</a>
                             </td>
                         </tr>
                     @empty

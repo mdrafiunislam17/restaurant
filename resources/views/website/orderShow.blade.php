@@ -35,23 +35,28 @@
                             <h5 class="card-title mb-3">Delivery Address</h5>
                             <ul class="list-group list-group-flush">
                                 @if($order->deliveryAddress)
-                                    <li class="list-group-item">
-                                        <strong>Name:</strong> {{ $order->deliveryAddress->name }}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>Name:</strong>
+                                        <span>{{ $order->deliveryAddress->name }}</span>
                                     </li>
-                                    <li class="list-group-item">
-                                        <strong>Phone:</strong> {{ $order->deliveryAddress->phone }}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>Phone:</strong>
+                                        <span>{{ $order->deliveryAddress->phone }}</span>
                                     </li>
-                                    <li class="list-group-item">
-                                        <strong>Email:</strong> {{ $order->deliveryAddress->email }}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>Email:</strong>
+                                        <span>{{ $order->deliveryAddress->email }}</span>
                                     </li>
-                                    <li class="list-group-item">
-                                        <strong>Address:</strong> {{ $order->deliveryAddress->address }}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>Address:</strong>
+                                        <span>{{ $order->deliveryAddress->address }}</span>
                                     </li>
-                                    <li class="list-group-item">
-                                        <strong>Note:</strong> {{ $order->deliveryAddress->note }}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>Note:</strong>
+                                        <span>{{ $order->deliveryAddress->note }}</span>
                                     </li>
                                 @else
-                                    <li class="list-group-item">No delivery address found.</li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">No delivery address found.</li>
                                 @endif
                             </ul>
                         </div>
@@ -104,6 +109,12 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-4">
+                    <a href="{{ route('website.customer.order') }}"
+                       class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-arrow-left fa-sm text-white-50"></i> Back to Order
+                    </a>
                 </div>
             </div>
         </div>
