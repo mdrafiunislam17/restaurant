@@ -68,6 +68,9 @@ Route::get('customer/dashboard', [CustomerControllerFrontEnd::class, 'dashboard'
 Route::get('customer/order', [CustomerControllerFrontEnd::class, 'order'])->name('website.customer.order')
     ->middleware('auth.customer');
 
+Route::get('customer/order/show/', [CustomerControllerFrontEnd::class, 'orderShow'])
+    ->name('website.customer.order.show')->middleware('auth.customer');
+
 
 Route::get('/profile', [CustomerControllerFrontEnd::class, 'profile'])->name('website.customer.profile')
     ->middleware('auth.customer');

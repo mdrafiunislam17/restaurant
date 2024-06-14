@@ -18,4 +18,21 @@ class Order extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    // Define the relationship with DeliveryAddress
+    public function deliveryAddress()
+    {
+        return $this->belongsTo(DeliveryAddress::class);
+    }
+
+    // Define the relationship with Payment
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
+
 }

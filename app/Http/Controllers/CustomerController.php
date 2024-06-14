@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\DeliveryAddress;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Payment;
 use App\Models\Setting;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
@@ -80,8 +84,25 @@ class CustomerController extends Controller
 
     public function order()
     {
-        $settings =  $this->settings();
-        return view('website.customer.order', compact('settings'));
+        $settings = $this->settings();
+        $deliveryAddresses = DeliveryAddress::all();
+        return view('website.customer.order', compact('settings', 'deliveryAddresses'));
+    }
+
+
+    public function orderShow(Order $order)
+    {
+        $settings = $this->settings();
+        // Eager load related data
+        $order->load('orderItems', 'deliveryAddress', 'payment');
+
+        // Calculate total amount
+        $totalAmount = $order->orderItems->sum(function ($item) {
+            return $item->price * $item->quantity;
+        });
+
+        // Pass the order, total amount, and related data to the view
+        return view('website.orderShow', compact('settings','order', 'totalAmount'));
     }
 
 
