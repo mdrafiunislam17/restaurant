@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 05:42 AM
+-- Generation Time: Jun 14, 2024 at 01:49 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -71,7 +71,38 @@ INSERT INTO `customers` (`id`, `name`, `email`, `address`, `image`, `password`, 
 (2, 'TaShya Holman', 'cowyqele@mailinator.com', NULL, '1717654341.jpg', '$2y$10$ZcIdWFlVCGeMHZ8aBORLkuKF9nsh8TEUeCUi0yAV9WVml0mJwyUY.', '2024-06-05 18:12:22', '2024-06-05 21:58:31'),
 (3, 'Denton Harding', 'mavabug@mailinator.com', NULL, '1717655958.jpg', 'Pa$$w0rd!', '2024-06-05 18:39:18', '2024-06-05 18:39:18'),
 (4, 'Alexander Hammond', 'howiw@mailinator.com', NULL, NULL, '$2y$10$UljZG24syzYnKrhe7doT3OXKSPC3hF45C02eDMLAJErscK/qRixOi', '2024-06-05 22:19:36', '2024-06-05 22:19:36'),
-(6, 'user', 'user@gmail.com', NULL, NULL, '$2y$10$TKoWKLv/0d6xX0Jy0rXl/OJ46IDHsRpD7dxdUMklSCXust1X/rzL6', '2024-06-05 23:05:55', '2024-06-05 23:05:55');
+(6, 'user', 'user@gmail.com', NULL, '1718341431.jpg', '$2y$10$TKoWKLv/0d6xX0Jy0rXl/OJ46IDHsRpD7dxdUMklSCXust1X/rzL6', '2024-06-05 23:05:55', '2024-06-13 23:03:51'),
+(7, 'Nero Reese', 'myqivesy@mailinator.com', NULL, '1718341563.jpg', '$2y$10$BmqfOq5O2mnlXb5KRAs2I.k66/5m7lc//rIa3UVq1OI.rjw.TdlNq', '2024-06-13 23:04:47', '2024-06-13 23:06:03'),
+(8, 'Willow Bennett', 'zotyt@mailinator.com', NULL, '1718341621.jpg', '$2y$10$yjpmTRgSIyA95mO0qcOsq.Dx4S.gBsVFM/bQvWvjJa5JcS9Ywbnn.', '2024-06-13 23:06:37', '2024-06-13 23:07:01'),
+(9, 'Levi Estrada', 'rajaqerehy@mailinator.com', NULL, '1718341681.jpg', '$2y$10$d/BvXiOPSHLr5EuHgxTc6us1HD3lpzzZgBQXXP8vA9yGq7UJQ8.zG', '2024-06-13 23:07:35', '2024-06-13 23:08:01'),
+(10, 'Shannon Hopkins', 'zobapymy@mailinator.com', NULL, '1718341808.png', '$2y$10$FWude8Fvtaa0V5Yhoa.1n.5lhHziLr9vAs.Mp8ynBgst7slMESky2', '2024-06-13 23:08:28', '2024-06-13 23:10:08'),
+(11, 'Whitney Walters', 'kuluweg@mailinator.com', NULL, '1718341864.jpg', '$2y$10$bSBMk3KMvFv0Di5qH5xrOe/GUByiyG7OKCuuMwCwy8S.Ii0ugp1O2', '2024-06-13 23:10:37', '2024-06-13 23:11:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `delivery_addresses`
+--
+
+CREATE TABLE `delivery_addresses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `note` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `delivery_addresses`
+--
+
+INSERT INTO `delivery_addresses` (`id`, `order_id`, `name`, `phone`, `email`, `address`, `note`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Tamekah Weeks', '01884413511', 'kebawu@mailinator.com', 'Quis quisquam sed co', 'Ipsum tempora et aut', '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
+(2, 2, 'Noelle Hess', '01987654634', 'hubigim@mailinator.com', 'Nihil consequat Iru', 'Est totam ut in eius', '2024-06-14 04:48:37', '2024-06-14 04:48:37');
 
 -- --------------------------------------------------------
 
@@ -158,7 +189,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2024_05_31_112338_create_menu_items_table', 1),
 (9, '2024_05_31_112516_create_orders_table', 1),
 (10, '2024_05_31_112651_create_order_items_table', 1),
-(11, '2024_06_05_121108_create_settings_table', 1);
+(11, '2024_06_05_121108_create_settings_table', 1),
+(13, '2024_06_13_160755_create_payments_table', 2),
+(14, '2024_06_13_161230_create_delivery_addresses_table', 2);
 
 -- --------------------------------------------------------
 
@@ -174,6 +207,14 @@ CREATE TABLE `orders` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `discount`, `status`, `created_at`, `updated_at`) VALUES
+(1, 6, 0.00, 'Pending', '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
+(2, 6, 0.00, 'Pending', '2024-06-14 04:48:37', '2024-06-14 04:48:37');
 
 -- --------------------------------------------------------
 
@@ -191,6 +232,18 @@ CREATE TABLE `order_items` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `menu_item_id`, `quantity`, `price`, `discount`, `created_at`, `updated_at`) VALUES
+(1, 1, 12, 1, 30.00, 0.00, '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
+(2, 1, 19, 1, 100.00, 0.00, '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
+(3, 1, 21, 1, 202.00, 0.00, '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
+(4, 2, 11, 1, 95.00, 0.00, '2024-06-14 04:48:37', '2024-06-14 04:48:37'),
+(5, 2, 15, 1, 50.00, 0.00, '2024-06-14 04:48:37', '2024-06-14 04:48:37'),
+(6, 2, 18, 1, 100.00, 0.00, '2024-06-14 04:48:37', '2024-06-14 04:48:37');
 
 -- --------------------------------------------------------
 
@@ -215,6 +268,32 @@ CREATE TABLE `password_reset_tokens` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `payment_method` varchar(255) NOT NULL,
+  `amount` decimal(8,2) NOT NULL,
+  `transaction_id` varchar(255) DEFAULT NULL,
+  `status` enum('Pending','Completed','Failed') NOT NULL DEFAULT 'Pending',
+  `paid_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `order_id`, `payment_method`, `amount`, `transaction_id`, `status`, `paid_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 'bKash', 0.00, NULL, 'Pending', NULL, '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
+(2, 2, 'bKash', 0.00, NULL, 'Pending', NULL, '2024-06-14 04:48:37', '2024-06-14 04:48:37');
 
 -- --------------------------------------------------------
 
@@ -253,20 +332,21 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`setting_name`, `value`, `created_at`, `updated_at`) VALUES
-('CONTACT_ADDRESS', '2267 Genesee St , Buffalo- NY-14211.', NULL, '2024-06-05 02:19:00'),
-('CONTACT_EMAIL', 'admin@gmail.com<br>contact@gmial.com', NULL, '2024-06-05 02:19:00'),
-('CONTACT_GOOGLE_MAP', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921.8568138366277!2d-78.79975230000001!3d42.9180607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d30d23b89acc4d%3A0xe10d612b12e87288!2s2267%20Genesee%20St%2C%20Buffalo%2C%20NY%2014211%2C%20USA!5e0!3m2!1sen!2sbd!4v1704691566026!5m2!1sen!2sbd\" width=\"800\" height=\"600\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', NULL, '2024-06-05 02:19:00'),
-('CONTACT_PHONE', 'PH:+1 (716)4160357<br> PH: +1(347)6088808 <br>PH: +1 (917)6001965 <br> PH:+1 (347)9356585 <br>PH: +1 (718)5765237', NULL, '2024-06-05 02:19:00'),
-('SETTING_ABOUT_US', '<h4 style=\"text-align: center;\">Fast Food About Us</h4>\r\n<p style=\"text-align: justify;\">&nbsp;</p>\r\n<p class=\"topic-paragraph\"><strong>Fast food is</strong>, a mass-produced food product designed for quick and efficient preparation and distribution that certain restaurants, concession stands, and convenience stores sell. Fast food is perhaps most associated with chain restaurants&mdash;including such prominent&nbsp;brands&nbsp;as&nbsp;<span id=\"ref1305852\"></span>McDonald&rsquo;s,&nbsp;<span id=\"ref1305853\"></span>Burger King, and&nbsp;<span id=\"ref1305854\"></span>Taco Bell&mdash;that typically offer take-out and drive-through services, as convenience and speed are prioritized. Common fast foods include&nbsp;<span id=\"ref1305855\"></span>hamburgers,&nbsp;<span id=\"ref1305871\"></span>hot dogs,&nbsp;<span id=\"ref1305856\"></span>french fries,&nbsp;<span id=\"ref1305868\"></span>pizza,&nbsp;<span id=\"ref1322300\"></span>tacos,&nbsp;<span id=\"ref1305870\"></span>burritos,&nbsp;<span id=\"ref1322301\"></span>salads, and&nbsp;<span id=\"ref1305869\"></span>sandwiches.</p>\r\n<p class=\"topic-paragraph\">Critics of fast food production food often subordinate quality to efficiency, affordability, and profit. Fast-food products are usually highly <span id=\"ref1322302\"></span>processed and precooked or frozen and may contain artificial preservatives in addition to high levels of sodium, cholesterol, saturated fats, and refined grains and sugars. Thus, the term&nbsp;<em>fast food</em>&nbsp;has come to carry negative&nbsp;connotations&nbsp;regarding health, and it raises&nbsp;ethical issues in the fields of agriculture and labor. However polarizing, fast food remains highly popular internationally for its convenience and flavor.</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>', NULL, '2024-06-05 02:19:00'),
-('SETTING_PAGE_BANNER', 'banner.jpg', NULL, '2024-06-05 02:02:40'),
+('CONTACT_ADDRESS', '2267 Genesee St , Buffalo- NY-14211.', NULL, '2024-06-13 22:56:53'),
+('CONTACT_EMAIL', 'admin@gmail.com<br>contact@gmial.com', NULL, '2024-06-13 22:56:52'),
+('CONTACT_GOOGLE_MAP', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921.8568138366277!2d-78.79975230000001!3d42.9180607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d30d23b89acc4d%3A0xe10d612b12e87288!2s2267%20Genesee%20St%2C%20Buffalo%2C%20NY%2014211%2C%20USA!5e0!3m2!1sen!2sbd!4v1704691566026!5m2!1sen!2sbd\" width=\"800\" height=\"600\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', NULL, '2024-06-13 22:56:53'),
+('CONTACT_PHONE', 'PH:+1 (716)4160357<br> PH: +1(347)6088808 <br>PH: +1 (917)6001965 <br> PH:+1 (347)9356585 <br>PH: +1 (718)5765237', NULL, '2024-06-13 22:56:52'),
+('SETTING_ABOUT_PAGE', 'about.jpg', NULL, '2024-06-13 22:56:53'),
+('SETTING_ABOUT_US', '<h4 style=\"text-align: center;\">Fast Food About Us</h4>\r\n<p style=\"text-align: justify;\">&nbsp;</p>\r\n<p class=\"topic-paragraph\"><strong>Fast food is</strong>, a mass-produced food product designed for quick and efficient preparation and distribution that certain restaurants, concession stands, and convenience stores sell. Fast food is perhaps most associated with chain restaurants&mdash;including such prominent&nbsp;brands&nbsp;as&nbsp;<span id=\"ref1305852\"></span>McDonald&rsquo;s,&nbsp;<span id=\"ref1305853\"></span>Burger King, and&nbsp;<span id=\"ref1305854\"></span>Taco Bell&mdash;that typically offer take-out and drive-through services, as convenience and speed are prioritized. Common fast foods include&nbsp;<span id=\"ref1305855\"></span>hamburgers,&nbsp;<span id=\"ref1305871\"></span>hot dogs,&nbsp;<span id=\"ref1305856\"></span>french fries,&nbsp;<span id=\"ref1305868\"></span>pizza,&nbsp;<span id=\"ref1322300\"></span>tacos,&nbsp;<span id=\"ref1305870\"></span>burritos,&nbsp;<span id=\"ref1322301\"></span>salads, and&nbsp;<span id=\"ref1305869\"></span>sandwiches.</p>\r\n<p class=\"topic-paragraph\">Critics of fast food production food often subordinate quality to efficiency, affordability, and profit. Fast-food products are usually highly <span id=\"ref1322302\"></span>processed and precooked or frozen and may contain artificial preservatives in addition to high levels of sodium, cholesterol, saturated fats, and refined grains and sugars. Thus, the term&nbsp;<em>fast food</em>&nbsp;has come to carry negative&nbsp;connotations&nbsp;regarding health, and it raises&nbsp;ethical issues in the fields of agriculture and labor. However polarizing, fast food remains highly popular internationally for its convenience and flavor.</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>', NULL, '2024-06-13 22:43:25'),
+('SETTING_PAGE_BANNER', 'banner.jpg', NULL, '2024-06-13 22:43:25'),
 ('SETTING_SITE_FAVICON', 'favicon.jpg', NULL, '2024-06-05 02:02:40'),
 ('SETTING_SITE_LOGO', 'logo.jpg', NULL, '2024-06-05 02:02:40'),
-('SETTING_SITE_TITLE', 'Fast Food Restaurant', NULL, '2024-06-05 02:19:00'),
-('SETTING_SOCIAL_FACEBOOK', 'https://www.facebook.com/share/b5D1wfN6HZv3DPPw/?mibextid=K35XfP', NULL, '2024-06-05 02:19:00'),
-('SETTING_SOCIAL_INSTAGRAM', '#', NULL, '2024-06-05 02:19:00'),
-('SETTING_SOCIAL_LINKEDIN', '#', NULL, '2024-06-05 02:19:00'),
-('SETTING_SOCIAL_TWITTER', '#', NULL, '2024-06-05 02:19:00'),
-('SETTING_SOCIAL_YOUTUBE', '#', NULL, '2024-06-05 02:19:00');
+('SETTING_SITE_TITLE', 'Fast Food Restaurant', NULL, '2024-06-13 22:56:52'),
+('SETTING_SOCIAL_FACEBOOK', 'https://www.facebook.com/share/b5D1wfN6HZv3DPPw/?mibextid=K35XfP', NULL, '2024-06-13 22:56:52'),
+('SETTING_SOCIAL_INSTAGRAM', '#', NULL, '2024-06-13 22:56:52'),
+('SETTING_SOCIAL_LINKEDIN', '#', NULL, '2024-06-13 22:56:52'),
+('SETTING_SOCIAL_TWITTER', '#', NULL, '2024-06-13 22:56:52'),
+('SETTING_SOCIAL_YOUTUBE', '#', NULL, '2024-06-13 22:56:52');
 
 -- --------------------------------------------------------
 
@@ -308,6 +388,13 @@ ALTER TABLE `categories`
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `customers_email_unique` (`email`);
+
+--
+-- Indexes for table `delivery_addresses`
+--
+ALTER TABLE `delivery_addresses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `delivery_addresses_order_id_foreign` (`order_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -357,6 +444,13 @@ ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `payments_order_id_foreign` (`order_id`);
+
+--
 -- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -391,7 +485,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `delivery_addresses`
+--
+ALTER TABLE `delivery_addresses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -409,19 +509,25 @@ ALTER TABLE `menu_items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -438,6 +544,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `delivery_addresses`
+--
+ALTER TABLE `delivery_addresses`
+  ADD CONSTRAINT `delivery_addresses_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `menu_items`
@@ -457,6 +569,12 @@ ALTER TABLE `orders`
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_menu_item_id_foreign` FOREIGN KEY (`menu_item_id`) REFERENCES `menu_items` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `payments`
+--
+ALTER TABLE `payments`
+  ADD CONSTRAINT `payments_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
