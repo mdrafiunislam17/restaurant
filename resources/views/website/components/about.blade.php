@@ -4,8 +4,10 @@
 
             <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
                 <div class="col-12 col-lg-6 col-xl-7">
-                    <img class="rounded-lg" src="{{ asset('asset/images/as.jpg') }}"
-                         width="100%" height="60%" alt="" >
+                    <img src="{{ asset('storage/uploads/' . $settings['SETTING_ABOUT_PAGE']) }}"
+                         class="img-fluid"  width="100%" height="60%"
+                         alt="{{ $settings['SETTING_ABOUT_PAGE'] }}"
+                        >
                 </div>
                 <div class="col-12 col-lg-6 col-xl-5">
                     <div class="row justify-content-xl-center">

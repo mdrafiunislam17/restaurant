@@ -97,9 +97,6 @@ class SettingController extends Controller
             Setting::query()->where("setting_name", "CONTACT_GOOGLE_MAP")
                 ->update(["value" => $request->input("CONTACT_GOOGLE_MAP")]);
 
-            // SETTING_ABOUT_US
-            Setting::query()->where("setting_name", "SETTING_ABOUT_US")
-                ->update(["value" => $request->input("SETTING_ABOUT_US")]);
 
             // SETTING_SITE_LOGO
             if ($request->hasFile("SETTING_SITE_LOGO")) {
@@ -151,6 +148,26 @@ class SettingController extends Controller
                 Setting::query()->where("setting_name", "SETTING_PAGE_BANNER")
                     ->update(["value" => $imageName]);
             }
+
+            // SETTING_ABOUT_PAGE
+            if ($request->hasFile("SETTING_ABOUT_PAGE")) {
+                // Delete previous file
+                $filePath = public_path($this->settings["SETTING_ABOUT_PAGE"]);
+                if (File::exists($filePath)) {
+                    File::delete($filePath);
+                }
+
+                // Handle file upload
+                $image = $request->file("SETTING_ABOUT_PAGE");
+                $imageName = "about." . $image->getClientOriginalExtension();
+                $image->storeAs("public/uploads", $imageName);
+
+                Setting::query()->where("setting_name", "SETTING_ABOUT_PAGE")
+                    ->update(["value" => $imageName]);
+            }
+
+
+
 
             return redirect(route("admin.settings.index"))
                 ->with("success", "Settings has been updated successfully!");

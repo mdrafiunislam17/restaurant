@@ -44,7 +44,7 @@
                                 @if (file_exists(public_path("storage/uploads/customers/$customer->image")) && !empty($customer->image))
                                     <img src="{{ asset("storage/uploads/customers/$customer->image") }}" id="croppie_image_show" width="50" height="50" alt="">
                                 @else
-                                    <img src="{{ asset("user.jpg") }}" id="croppie_image_show" width="200" height="200" alt="Member Image">
+                                    <img src="{{ asset("user.jpg") }}" id="croppie_image_show" width="50" height="50" alt="Member Image">
                                 @endif
                                 <span class="ml-2">{{ $customerName }}</span>
                             </a>
