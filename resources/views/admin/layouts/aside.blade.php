@@ -55,6 +55,16 @@
         </a>
     </li>
 
+    <li class="nav-item {{
+    request()->routeIs('admin.orders.index') ||
+    request()->routeIs('admin.orders.show')
+    ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.orders.index') }}">
+            <i class="fa-brands fa-first-order"></i>
+            <span>Orders</span>
+        </a>
+    </li>
+
 
 
     <li class="nav-item  {{

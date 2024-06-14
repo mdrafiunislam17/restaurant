@@ -135,11 +135,7 @@ Route::delete('/admin/customers/{customer}', [CustomerController::class, 'destro
 
 //OrderController
 Route::get('/admin/orders',[OrderController::class,"index"])->name('admin.orders.index');
-Route::post('/admin/orders',[OrderController::class,"store"])->name('admin.orders.store');
 Route::get('/admin/orders/{order}',[OrderController::class,"show"])->name('admin.orders.show');
-Route::get('/admin/orders/{order}/edit',[OrderController::class,"edit"])->name('admin.orders.edit');
-route::put('/admin/orders/{order}', [OrderController::class, 'update'])->name('admin.orders.update');
-Route::delete('/admin/orders/{order}', [OrderController::class, 'destroy'])->name('admin.orders.destroy');
 
 // SettingsController
 Route::get("settings", [SettingController::class, "index"])->name("admin.settings.index");
