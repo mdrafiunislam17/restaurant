@@ -95,7 +95,7 @@
                                         <div class="form-check mb-3">
                                             <input class="form-check-input" type="radio" name="payment_method" id="bkash" value="bKash" @checked('bKash' == old('payment_method')) />
                                             <label class="form-check-label" for="bkash">
-                                                <img src="{{ asset('asset/images/c2.png') }}" alt="bKash" height="20"> bKash ({{ Helper::BKASH_NUMBER }})
+                                                <img src="{{ asset('asset/images/bKash.png') }}" alt="bKash" height="30"> bKash ({{ Helper::BKASH_NUMBER }})
                                             </label>
                                         </div>
                                     </div>
