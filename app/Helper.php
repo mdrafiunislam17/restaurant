@@ -7,7 +7,7 @@ class Helper
     public const CURRENCY = 'USD';
     public const CURRENCY_SYMBOL = '$';
 
-    public const BKASH_NUMBER = '01707093920';
+    public const BKASH_NUMBER = '01794623620';
 
     /**
      * @param string $text

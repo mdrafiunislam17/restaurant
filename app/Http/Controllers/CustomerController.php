@@ -85,7 +85,10 @@ class CustomerController extends Controller
     public function order()
     {
         $settings = $this->settings();
-        $deliveryAddresses = DeliveryAddress::all();
+        $deliveryAddresses = DeliveryAddress::with('order')
+            ->whereHas('order', function($query) {
+                $query->where('customer_id', '=', Auth::guard('customer')->id());
+            })->get();
 
         return view('website.customer.order', compact('settings', 'deliveryAddresses'));
     }
