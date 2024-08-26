@@ -91,6 +91,17 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label for="SETTING_ABOUT_PAGE"
+                               class="col-sm-3 col-form-label text-right font-weight-bold">About Page</label>
+                        <div class="col-sm-6">
+                            <img src="{{ asset('storage/uploads/' . $settings['SETTING_ABOUT_PAGE']) }}"
+                                 alt="{{ $settings["SETTING_ABOUT_PAGE"] }}" width="150">
+                            <input type="file" class="form-control" id="SETTING_ABOUT_PAGE"
+                                   name="SETTING_ABOUT_PAGE">
+                        </div>
+                    </div>
+
                     <hr>
 
                     <div class="form-group row">

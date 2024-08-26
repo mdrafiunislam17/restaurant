@@ -20,7 +20,10 @@
             <div class="row">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
-                    <img src="{{asset("asset/images/logo.png")}}" width="30%" height="30%" alt="Footcap logo">
+                    <img src="{{ asset('storage/uploads/' . $settings['SETTING_SITE_LOGO']) }}"
+                         class="img-fluid"
+                         alt="{{ $settings['SETTING_SITE_LOGO'] }}"
+                         style="max-height: 50px;">
 
                     <p>
                         Here you can use rows and columns to organize your footer

@@ -9,7 +9,7 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <a class="nav-link" target="_blank" href="{{route('website.home')}}">&nbsp;restaurant</a>
-{{--            <i class="fa fa-globe"></i>--}}
+
         </li>
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -23,7 +23,7 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                      document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
                 </a>
 
