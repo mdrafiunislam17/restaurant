@@ -86,8 +86,12 @@ class CustomerController extends Controller
     {
         $settings = $this->settings();
         $deliveryAddresses = DeliveryAddress::all();
+
         return view('website.customer.order', compact('settings', 'deliveryAddresses'));
     }
+
+
+
 
 
     public function orderShow(Order $order)

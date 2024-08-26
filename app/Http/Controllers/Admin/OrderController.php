@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\DeliveryAddress;
 use App\Models\Order;
 use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class OrderController extends Controller
 {
@@ -30,4 +32,37 @@ class OrderController extends Controller
         return view('admin.orders.show', compact('order', 'totalAmount'));
 
     }
+
+//    public function destroy()
+//    {
+//        // Get the order ID from the request
+//        $orderId = request('order_id');
+//
+//        // Delete the order and related data
+//        DB::transaction(function () use ($orderId) {
+//            Order::destroy($orderId);
+//            DeliveryAddress::where('order_id', $orderId)->delete();
+//        });
+//
+//        // Redirect with success message
+//        return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully.');
+//    }
+
+
+public function destroy(Order $order){
+        // Delete the order and related data
+        DB::transaction(function () use ($order) {
+            $order->delete();
+            DeliveryAddress::where('order_id', $order->id)->delete();
+        });
+
+        // Redirect with success message
+        return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully.');
+
+}
+
+
+
+
+
 }

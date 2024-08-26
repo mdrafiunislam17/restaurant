@@ -47,6 +47,18 @@
                                 <td>{{ $deliveryAddress->email }}</td>
                                 <td>
                                     <a href="{{ route('admin.orders.show', $deliveryAddress->order_id) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> View</a>
+
+                                    <form action="{{ route('admin.orders.destroy', $deliveryAddress->order_id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button
+                                            type="submit"
+                                            class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete this item?')">
+                                            <i class="fa fa-trash"></i> Delete
+                                        </button>
+                                    </form>
+
                                 </td>
                             </tr>
                         @empty

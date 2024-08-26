@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2024 at 01:49 PM
+-- Generation Time: Aug 26, 2024 at 12:29 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -68,15 +68,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `address`, `image`, `password`, `created_at`, `updated_at`) VALUES
-(2, 'TaShya Holman', 'cowyqele@mailinator.com', NULL, '1717654341.jpg', '$2y$10$ZcIdWFlVCGeMHZ8aBORLkuKF9nsh8TEUeCUi0yAV9WVml0mJwyUY.', '2024-06-05 18:12:22', '2024-06-05 21:58:31'),
-(3, 'Denton Harding', 'mavabug@mailinator.com', NULL, '1717655958.jpg', 'Pa$$w0rd!', '2024-06-05 18:39:18', '2024-06-05 18:39:18'),
-(4, 'Alexander Hammond', 'howiw@mailinator.com', NULL, NULL, '$2y$10$UljZG24syzYnKrhe7doT3OXKSPC3hF45C02eDMLAJErscK/qRixOi', '2024-06-05 22:19:36', '2024-06-05 22:19:36'),
 (6, 'user', 'user@gmail.com', NULL, '1718341431.jpg', '$2y$10$TKoWKLv/0d6xX0Jy0rXl/OJ46IDHsRpD7dxdUMklSCXust1X/rzL6', '2024-06-05 23:05:55', '2024-06-13 23:03:51'),
-(7, 'Nero Reese', 'myqivesy@mailinator.com', NULL, '1718341563.jpg', '$2y$10$BmqfOq5O2mnlXb5KRAs2I.k66/5m7lc//rIa3UVq1OI.rjw.TdlNq', '2024-06-13 23:04:47', '2024-06-13 23:06:03'),
-(8, 'Willow Bennett', 'zotyt@mailinator.com', NULL, '1718341621.jpg', '$2y$10$yjpmTRgSIyA95mO0qcOsq.Dx4S.gBsVFM/bQvWvjJa5JcS9Ywbnn.', '2024-06-13 23:06:37', '2024-06-13 23:07:01'),
-(9, 'Levi Estrada', 'rajaqerehy@mailinator.com', NULL, '1718341681.jpg', '$2y$10$d/BvXiOPSHLr5EuHgxTc6us1HD3lpzzZgBQXXP8vA9yGq7UJQ8.zG', '2024-06-13 23:07:35', '2024-06-13 23:08:01'),
-(10, 'Shannon Hopkins', 'zobapymy@mailinator.com', NULL, '1718341808.png', '$2y$10$FWude8Fvtaa0V5Yhoa.1n.5lhHziLr9vAs.Mp8ynBgst7slMESky2', '2024-06-13 23:08:28', '2024-06-13 23:10:08'),
-(11, 'Whitney Walters', 'kuluweg@mailinator.com', NULL, '1718341864.jpg', '$2y$10$bSBMk3KMvFv0Di5qH5xrOe/GUByiyG7OKCuuMwCwy8S.Ii0ugp1O2', '2024-06-13 23:10:37', '2024-06-13 23:11:04');
+(12, 'asif', 'asifrafiun@gmail.com', NULL, NULL, '$2y$10$Rw28SZEBxep18tgwcfZ9WOn2EschhWo6u10Z6YN8QVmtwmg3A0.te', '2024-08-26 00:56:18', '2024-08-26 00:56:18');
 
 -- --------------------------------------------------------
 
@@ -101,8 +94,9 @@ CREATE TABLE `delivery_addresses` (
 --
 
 INSERT INTO `delivery_addresses` (`id`, `order_id`, `name`, `phone`, `email`, `address`, `note`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Tamekah Weeks', '01884413511', 'kebawu@mailinator.com', 'Quis quisquam sed co', 'Ipsum tempora et aut', '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
-(2, 2, 'Noelle Hess', '01987654634', 'hubigim@mailinator.com', 'Nihil consequat Iru', 'Est totam ut in eius', '2024-06-14 04:48:37', '2024-06-14 04:48:37');
+(14, 14, 'Nolan Gillespie', '01884318311', 'cilezyvaxu@mailinator.com', 'Dolorem dolor accusa', 'Consequuntur deserun', '2024-08-26 03:32:12', '2024-08-26 03:32:12'),
+(15, 15, 'Lars Carr', '018888888', 'fufijetefi@mailinator.com', 'Cum aspernatur enim', 'Perspiciatis aut ex', '2024-08-26 03:43:10', '2024-08-26 03:43:10'),
+(16, 16, 'Lane Beck', '01854418411', 'zeqamypur@mailinator.com', 'Ut corporis qui recu', 'Omnis cupiditate rer', '2024-08-26 04:25:53', '2024-08-26 04:25:53');
 
 -- --------------------------------------------------------
 
@@ -213,8 +207,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `customer_id`, `discount`, `status`, `created_at`, `updated_at`) VALUES
-(1, 6, 0.00, 'Pending', '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
-(2, 6, 0.00, 'Pending', '2024-06-14 04:48:37', '2024-06-14 04:48:37');
+(14, 12, 0.00, 'Pending', '2024-08-26 03:32:12', '2024-08-26 03:32:12'),
+(15, 6, 0.00, 'Pending', '2024-08-26 03:43:10', '2024-08-26 03:43:10'),
+(16, 6, 0.00, 'Pending', '2024-08-26 04:25:53', '2024-08-26 04:25:53');
 
 -- --------------------------------------------------------
 
@@ -238,12 +233,12 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `menu_item_id`, `quantity`, `price`, `discount`, `created_at`, `updated_at`) VALUES
-(1, 1, 12, 1, 30.00, 0.00, '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
-(2, 1, 19, 1, 100.00, 0.00, '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
-(3, 1, 21, 1, 202.00, 0.00, '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
-(4, 2, 11, 1, 95.00, 0.00, '2024-06-14 04:48:37', '2024-06-14 04:48:37'),
-(5, 2, 15, 1, 50.00, 0.00, '2024-06-14 04:48:37', '2024-06-14 04:48:37'),
-(6, 2, 18, 1, 100.00, 0.00, '2024-06-14 04:48:37', '2024-06-14 04:48:37');
+(21, 14, 14, 1, 50.00, 0.00, '2024-08-26 03:32:12', '2024-08-26 03:32:12'),
+(22, 14, 18, 1, 100.00, 0.00, '2024-08-26 03:32:12', '2024-08-26 03:32:12'),
+(23, 15, 11, 1, 95.00, 0.00, '2024-08-26 03:43:10', '2024-08-26 03:43:10'),
+(24, 15, 22, 1, 275.00, 0.00, '2024-08-26 03:43:10', '2024-08-26 03:43:10'),
+(25, 15, 26, 2, 800.00, 0.00, '2024-08-26 03:43:10', '2024-08-26 03:43:10'),
+(26, 16, 14, 1, 50.00, 0.00, '2024-08-26 04:25:53', '2024-08-26 04:25:53');
 
 -- --------------------------------------------------------
 
@@ -292,8 +287,9 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `order_id`, `payment_method`, `amount`, `transaction_id`, `status`, `paid_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'bKash', 0.00, NULL, 'Pending', NULL, '2024-06-13 23:15:40', '2024-06-13 23:15:40'),
-(2, 2, 'bKash', 0.00, NULL, 'Pending', NULL, '2024-06-14 04:48:37', '2024-06-14 04:48:37');
+(14, 14, 'Cash On Delivery', 0.00, NULL, 'Pending', NULL, '2024-08-26 03:32:12', '2024-08-26 03:32:12'),
+(15, 15, 'Cash On Delivery', 0.00, NULL, 'Pending', NULL, '2024-08-26 03:43:10', '2024-08-26 03:43:10'),
+(16, 16, 'Cash On Delivery', 0.00, NULL, 'Pending', NULL, '2024-08-26 04:25:53', '2024-08-26 04:25:53');
 
 -- --------------------------------------------------------
 
@@ -485,13 +481,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `delivery_addresses`
 --
 ALTER TABLE `delivery_addresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -515,19 +511,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
